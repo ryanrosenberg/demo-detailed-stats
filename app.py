@@ -5,6 +5,8 @@ import sqlite3 as sq
 import altair as alt
 
 st.title('QB League Season 2 Divison 1')
+st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
+             unsafe_allow_html=True)
 
 def fetch_df(cursor):
     rows = cursor.fetchall()
