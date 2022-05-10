@@ -90,6 +90,14 @@ def app():
 
         st.subheader('Buzzes')
         player_buzzes['packet'] = player_buzzes['packet'].astype(int)
-        st.dataframe(player_buzzes[['packet', 'tossup', 'category', 'subcategory', 'answer', 'buzz_position', 'buzz_value']])
+        packets = utils.get_packets()
+        contexts = []
+        for i, row in player_buzzes.iterrows():
+            packet_sani = packets[row['packet'] - 1]['tossups'][row['tossup'] - 1]['question_sanitized'].split(' ')
+            context = packet_sani[row['buzz_position']-8:row['buzz_position']]
+            contexts.append(' '.join(context))
+
+        player_buzzes['context'] = contexts
+        st.dataframe(player_buzzes[['packet', 'tossup', 'category', 'subcategory', 'answer', 'buzz_position', 'buzz_value', 'context']])
 
 

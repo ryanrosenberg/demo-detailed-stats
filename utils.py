@@ -2,6 +2,7 @@ import sqlite3 as sq
 
 import altair as alt
 import pandas as pd
+import json
 from plotnine import *
 from st_aggrid import AgGrid, GridOptionsBuilder
 from st_aggrid.shared import GridUpdateMode
@@ -104,3 +105,10 @@ def fill_out_tossup_values(df):
             if entry not in list(df):
                 df[entry] = 0
     return df
+
+def get_packets():
+    packets = []
+    for i in range(1, 10):
+        with open(f'packet{str(i)}.json', 'r') as f:
+            packets.append(json.load(f))
+    return packets
