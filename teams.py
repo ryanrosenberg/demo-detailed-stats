@@ -17,7 +17,7 @@ def app():
     # Inject CSS with Markdown
     st.markdown(hide_table_row_index, unsafe_allow_html=True)
 
-    buzzes, bonuses, tossup_meta = utils.load_data()
+    buzzes, bonuses, tossup_meta, bonus_meta = utils.load_data()
     full_buzzes = buzzes.merge(tossup_meta[tossup_meta['season'] == 2], on=['packet', 'tossup'])
     team_summary = buzzes.groupby(
             ['team', 'buzz_value']
@@ -107,10 +107,17 @@ def app():
 
 
     bonus_cat = st.container()
+    full_bonuses = bonuses.merge(bonus_meta[bonus_meta['season'] == 2], on=['packet', 'bonus'])
 
     bonus_summary = bonuses.assign(
         tot = lambda x: x.part1_value + x.part2_value + x.part3_value
         ).groupby('team').agg({'tot': 'mean'}).reset_index().rename(
+            columns={'tot': 'PPB'}
+            ).sort_values('PPB', ascending=False)
+
+    bonus_cat_summary = full_bonuses.assign(
+        tot = lambda x: x.part1_value + x.part2_value + x.part3_value
+        ).groupby(['team', 'category']).agg({'tot': 'mean'}).reset_index().rename(
             columns={'tot': 'PPB'}
             ).sort_values('PPB', ascending=False)
 
@@ -124,9 +131,6 @@ def app():
 
         with col4:
             if selection["selected_rows"]:
-                team_bonuses = bonuses[bonuses['team'] == selection["selected_rows"][0]['team']]
-                st.table(team_bonuses.assign(
-        tot = lambda x: x.part1_value + x.part2_value + x.part3_value
-        ).groupby('packet').agg({'tot': 'mean'}).reset_index().rename(
-            columns={'tot': 'PPB'}
-            ))
+                team_bonuses = bonus_cat_summary[bonus_cat_summary['team'] == selection["selected_rows"][0]['team']]
+                team_bonuses['PPB'] = round(team_bonuses['PPB'], 2)
+                st.pyplot(utils.make_category_ppb_chart(team_bonuses, bonus_cat_summary))

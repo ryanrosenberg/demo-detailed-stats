@@ -14,7 +14,7 @@ def app():
     </style>''',
                 unsafe_allow_html=True)
 
-    buzzes, bonuses, tossup_meta = utils.load_data()
+    buzzes, bonuses, tossup_meta, bonus_meta = utils.load_data()
     full_buzzes = buzzes.merge(tossup_meta[tossup_meta['season'] == 2], on=['packet', 'tossup'])
 
     pac = st.selectbox('Packet', options = range(1, 10))

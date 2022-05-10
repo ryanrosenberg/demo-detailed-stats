@@ -17,7 +17,7 @@ def app():
     # Inject CSS with Markdown
     st.markdown(hide_table_row_index, unsafe_allow_html=True)
 
-    buzzes, bonuses, tossup_meta = utils.load_data()
+    buzzes, bonuses, tossup_meta, bonus_meta = utils.load_data()
     full_buzzes = buzzes.merge(tossup_meta[tossup_meta['season'] == 2], on=['packet', 'tossup'])
     player_summary = buzzes.groupby(
             ['player', 'team', 'buzz_value']

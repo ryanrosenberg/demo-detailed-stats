@@ -27,7 +27,10 @@ def load_data():
     cur.execute('SELECT * FROM tossup_meta')
     tossup_meta = fetch_df(cur)
 
-    return buzzes, bonuses, tossup_meta
+    cur.execute('SELECT * FROM bonus_meta')
+    bonus_meta = fetch_df(cur)
+
+    return buzzes, bonuses, tossup_meta, bonus_meta
 
 def make_buzz_chart(df):
     c = alt.Chart(df).mark_circle(size = 100).encode(x='buzz_position', y = alt.Y(field='num', type = 'ordinal', sort='descending'), color='team', tooltip=['player', 'team', 'buzz_position', 'answer'])
@@ -46,13 +49,30 @@ def make_category_buzz_chart(df):
         ) + scale_fill_discrete(guide = False) + theme_bw() + theme(panel_border = element_blank())
     return ggplot.draw(p)
 
-def make_subcategory_buzz_chart(df):
-    # df['buzz_value'] = [1 if x in [15, 10] else -0.5 for x in df['buzz_value']]
-    # c = alt.Chart(df).mark_bar().encode(
-    #     x='buzz_position', y = alt.Y(field='buzz_value', type = 'quantitative'), color='category', tooltip=['player', 'team', 'category', 'buzz_position', 'answer']
-    #         )
-    p = ggplot(df, aes("buzz_position")) + geom_density(aes(fill = "subcategory"), alpha = .5) + scale_x_continuous(limits = [0, 150]) + theme_bw() + theme(panel_border = element_blank())
+def make_category_ppb_chart(df, cat_ppb):
+    # df['category'] = ['Other' if cat in ['Geo/CE', 'Other Academic'] else cat for cat in df['category']]
+    cat_ppb['rank'] = cat_ppb.groupby('category')['PPB'].rank('min', ascending=False).astype(int)
+    cat_ppb['rank'] = ['#' + str(c) for c in cat_ppb['rank']]
+    print(cat_ppb[cat_ppb['team'] == df['team'].unique()[0]])
+    p = ggplot() + geom_col(cat_ppb, 
+        aes(x = "category", y = "PPB"), fill = 'white', color = 'black', alpha = 0
+        ) + geom_col(df,
+        aes( x = "category", y = "PPB", fill = "category")
+        ) + geom_text(df, 
+        aes(x = "category", y = "PPB", label = "PPB"), va = 'bottom'
+        ) + geom_label(cat_ppb[cat_ppb['team'] == df['team'].unique()[0]], 
+        aes(x = "category", y = "PPB", label = "rank"), va = 'top', nudge_y = -1
+        ) + geom_tile(df,
+        aes(x = 7, y = 31, width = .5, height = 2), alpha = 0, color = 'black'
+        ) + annotate(geom = "text",
+        x = "Science", y = 30, va = 'bottom', label = 'Top PBB'
+        ) + scale_fill_cmap_d() + scale_y_continuous(
+            limits = [0, 32], breaks = [0, 5, 10, 15, 20, 25, 30]
+        ) + theme_bw() + theme(
+            panel_border = element_blank(), axis_ticks=element_blank(), axis_text_x=element_text(angle = 45)
+            )
     return ggplot.draw(p)
+
 
 def aggrid_interactive_table(df: pd.DataFrame):
         """Creates an st-aggrid interactive table based on a dataframe.
