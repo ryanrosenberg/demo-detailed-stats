@@ -17,8 +17,8 @@ def app():
     buzzes, bonuses, tossup_meta = utils.load_data()
     full_buzzes = buzzes.merge(tossup_meta[tossup_meta['season'] == 2], on=['packet', 'tossup'])
 
-    pac = st.selectbox('Packet', options = range(5, 7))
-    tu = st.selectbox('Tossup', options = range(1, 21), format_func= lambda x: str(x) + ' (' + full_buzzes['answer'][full_buzzes['packet'] == pac].unique()[x-1] + ')')
+    pac = st.selectbox('Packet', options = range(1, 10))
+    tu = st.selectbox('Tossup', options = range(1, 21), format_func= lambda x: str(x) + ' (' + full_buzzes['answer'][full_buzzes['packet'] == pac][full_buzzes['tossup'] == x].unique()[0] + ')')
 
     with open(f'packet{pac}.json', 'r') as f:
         question_text = json.load(f)
