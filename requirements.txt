@@ -1,0 +1,6 @@
+sqlite3
+altair
+plotnine
+pandas
+st_aggrid
+streamlit
