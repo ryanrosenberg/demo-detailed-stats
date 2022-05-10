@@ -1,1 +1,2 @@
 plotnine
+streamlit-aggrid
