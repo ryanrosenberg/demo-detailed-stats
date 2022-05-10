@@ -1,5 +1,1 @@
-altair
 plotnine
-pandas
-st_aggrid
-streamlit
