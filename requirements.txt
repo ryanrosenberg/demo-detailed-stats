@@ -1,3 +1,4 @@
 plotnine
 streamlit-aggrid
+streamlit-option-menu
 htbuilder
