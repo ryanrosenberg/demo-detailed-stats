@@ -74,9 +74,10 @@ def app(tournaments):
         player_rank = player_cats.merge(player_cat_ranks[['player', 'team', 'category', 'rank']], on=['player', 'team', 'category'])
         player_rank = player_rank[['category', 'P', 'G', 'N', 'Pts', 'rank']].rename(columns={'rank': 'Rk'})
         player_rank['Rk'] = player_rank['Rk'].astype(int)
+        
         col1.dataframe(player_rank)
-        if max(player_cats[['P', 'G', 'N']].max()) >= 2:
-            col2.pyplot(utils.make_category_buzz_chart(player_buzzes))
+        negs = col2.checkbox("Add negs?")
+        col2.altair_chart(utils.make_category_buzz_chart(player_buzzes, negs))
         
         player_subcats = player_buzzes.groupby(['category', 'subcategory', 'buzz_value']).agg(
         'size'
@@ -89,9 +90,8 @@ def app(tournaments):
         player_subcats = player_subcats[['category', 'subcategory', 'P', 'G', 'N']].fillna(0).assign(Pts = lambda x: x.P*15 + x.G*10 - x.N*5)
         player_subcats[['P', 'G', 'N', 'Pts']] = player_subcats[['P', 'G', 'N', 'Pts']].astype(int).sort_values(['Pts'], ascending=False)
 
-        st.subheader('Subcategories')
-        col3, col4 = st.columns(2)
-        col3.dataframe(player_subcats)
+        col1.subheader('Subcategories')
+        col1.dataframe(player_subcats)
         # col4.pyplot(utils.make_subcategory_buzz_chart(player_buzzes))
 
         st.subheader('Buzzes')

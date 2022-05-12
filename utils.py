@@ -1,6 +1,7 @@
 import sqlite3 as sq
 import streamlit as st
 import altair as alt
+from altair import datum
 import pandas as pd
 import json
 from plotnine import *
@@ -56,47 +57,104 @@ def load_bonus_meta():
 
 @st.experimental_memo
 def make_buzz_chart(df):
-    c = alt.Chart(df).mark_circle(size = 100).encode(x='buzz_position', y = alt.Y(field='num', type = 'ordinal', sort='descending'), color=alt.Color('team', legend=None), tooltip=['player', 'team', 'buzz_position', 'answer'])
+    c = alt.Chart(df).mark_square(size = 100).encode(x='buzz_position', y = alt.Y(field='num', type = 'ordinal', sort='descending'), color=alt.Color('team', legend=None), tooltip=['player', 'team', 'buzz_position', 'answer'])
     return c
 
 @st.experimental_memo
-def make_category_buzz_chart(df):
-    # df['buzz_value'] = [1 if x in [15, 10] else -0.5 for x in df['buzz_value']]
-    # c = alt.Chart(df).mark_bar().encode(
-    #     x='buzz_position', y = alt.Y(field='buzz_value', type = 'quantitative'), color='category', tooltip=['player', 'team', 'category', 'buzz_position', 'answer']
-    #         )
+def make_category_buzz_chart(df, negs):
     df['category'] = ['Other' if cat in ['Geo/CE', 'Other Academic'] else cat for cat in df['category']]
-    p = ggplot(df, aes("buzz_position")) + geom_histogram(
-        aes(fill = "category"), binwidth = 10
-        ) + facet_wrap(['category']) + scale_x_continuous(
-            limits = [0, 140], breaks = [0, 20, 40, 60, 80, 100, 120, 140]
-        ) + scale_fill_discrete(guide = False) + theme_bw() + theme(panel_border = element_blank())
-    return ggplot.draw(p)
+    if not negs:
+        df = df[df['buzz_value'].isin([15, 10])]
+    # p = ggplot(df, aes("buzz_position")) + geom_histogram(
+    #     aes(fill = "category"), binwidth = 10
+    #     ) + facet_wrap(['category']) + scale_x_continuous(
+    #         limits = [0, 140], breaks = [0, 20, 40, 60, 80, 100, 120, 140]
+    #     ) + scale_fill_discrete(guide = False) + theme_bw() + theme(panel_border = element_blank())
+    c = alt.Chart(df).mark_bar(
+    opacity=0.8,
+    binSpacing=2
+    ).encode(
+        x= alt.X('buzz_position', bin=alt.Bin(maxbins=10),
+        scale=alt.Scale(domain=(0, 150))),
+        y = alt.Y('count()', stack=None), 
+        color='category', 
+        facet = alt.Facet('category', columns=2)
+    ).properties(
+    width=200,
+    height=150,
+)
+    return c
 
 @st.experimental_memo
 def make_category_ppb_chart(df, cat_ppb):
     # df['category'] = ['Other' if cat in ['Geo/CE', 'Other Academic'] else cat for cat in df['category']]
     cat_ppb['rank'] = cat_ppb.groupby('category')['PPB'].rank('min', ascending=False).astype(int)
+    top_ppb = cat_ppb[cat_ppb['rank'] == 1]
     cat_ppb['rank'] = ['#' + str(c) for c in cat_ppb['rank']]
-    print(cat_ppb[cat_ppb['team'] == df['team'].unique()[0]])
-    p = ggplot() + geom_col(cat_ppb, 
-        aes(x = "category", y = "PPB"), fill = 'white', color = 'black', alpha = 0
-        ) + geom_col(df,
-        aes( x = "category", y = "PPB", fill = "category")
-        ) + geom_text(df, 
-        aes(x = "category", y = "PPB", label = "PPB"), va = 'bottom'
-        ) + geom_label(cat_ppb[cat_ppb['team'] == df['team'].unique()[0]], 
-        aes(x = "category", y = "PPB", label = "rank"), va = 'top', nudge_y = -1
-        ) + geom_tile(df,
-        aes(x = 7, y = 31, width = .5, height = 2), alpha = 0, color = 'black'
-        ) + annotate(geom = "text",
-        x = "Science", y = 30, va = 'bottom', label = 'Top PBB'
-        ) + scale_fill_cmap_d() + scale_y_continuous(
-            limits = [0, 32], breaks = [0, 5, 10, 15, 20, 25, 30]
-        ) + theme_bw() + theme(
-            panel_border = element_blank(), axis_ticks=element_blank(), axis_text_x=element_text(angle = 45)
-            )
-    return ggplot.draw(p)
+    cat_ppb = cat_ppb[cat_ppb['team'] == df['team'].unique()[0]]
+    # print(cat_ppb[cat_ppb['team'] == df['team'].unique()[0]])
+    # p = ggplot() + geom_col(cat_ppb, 
+    #     aes(x = "category", y = "PPB"), fill = 'white', color = 'black', alpha = 0
+    #     ) + geom_col(df,
+    #     aes( x = "category", y = "PPB", fill = "category")
+    #     ) + geom_text(df, 
+    #     aes(x = "category", y = "PPB", label = "PPB"), va = 'bottom'
+    #     ) + geom_label(cat_ppb[cat_ppb['team'] == df['team'].unique()[0]], 
+    #     aes(x = "category", y = "PPB", label = "rank"), va = 'top', nudge_y = -1
+    #     ) + geom_tile(df,
+    #     aes(x = 7, y = 31, width = .5, height = 2), alpha = 0, color = 'black'
+    #     ) + annotate(geom = "text",
+    #     x = "Science", y = 30, va = 'bottom', label = 'Top PBB'
+    #     ) + scale_fill_cmap_d() + scale_y_continuous(
+    #         limits = [0, 32], breaks = [0, 5, 10, 15, 20, 25, 30]
+    #     ) + theme_bw() + theme(
+    #         panel_border = element_blank(), axis_ticks=element_blank(), axis_text_x=element_text(angle = 45)
+    #         )
+    # return ggplot.draw(p)
+
+    bar = alt.Chart(df).mark_bar().encode(
+    x='category',
+    y='PPB',
+    color = alt.Color('category', scale=alt.Scale(scheme='viridis'))
+    ).properties(
+        width=alt.Step(60),  # controls width of bar.
+        height = 350
+    )
+
+    top = alt.Chart(top_ppb).mark_bar(
+        color='black',
+        opacity = 0.15,
+        thickness=2,
+        size=60 * 0.9,  # controls width of tick.
+    ).encode(
+        x='category',
+        y='PPB'
+    )
+
+    ppb = alt.Chart(df).mark_text(
+        color='black',
+        size = 14,
+        dy = -3,
+        baseline='bottom'
+    ).encode(
+        x='category',
+        y='PPB',
+        text = 'PPB'
+    )
+
+    rank = alt.Chart(cat_ppb).mark_text(
+        color='white',
+        fontWeight='bold',
+        size = 14,
+        dy = 5,
+        baseline='top'
+    ).encode(
+        x='category',
+        y='PPB',
+        text = 'rank'
+    )
+
+    return bar + top + ppb + rank
     
 def aggrid_interactive_table(df: pd.DataFrame):
         """Creates an st-aggrid interactive table based on a dataframe.

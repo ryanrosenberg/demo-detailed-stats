@@ -32,7 +32,8 @@ def app(tournaments):
     packets = utils.get_packets()
 
     sani = packets[pac - 1]['tossups'][tu - 1]['question'].split(' ')
-    qbuzz = full_buzzes[full_buzzes['packet'] == pac][buzzes['tossup'] == tu]
+    qbuzz = full_buzzes[full_buzzes['packet'] == pac][full_buzzes['tossup'] == tu]
+    
     for i, row in qbuzz.iterrows():
         sani[row['buzz_position']] = str(
             div(_class = 'buzz')(

@@ -90,8 +90,8 @@ def app(tournaments):
         team_rank = team_rank[['category', 'P', 'G', 'N', 'Pts', 'rank']].rename(columns={'rank': 'Rk'})
         team_rank['Rk'] = team_rank['Rk'].astype(int)
         col1.dataframe(team_rank)
-        if max(team_cats[['P', 'G', 'N']].max()) >= 2:
-            col2.pyplot(utils.make_category_buzz_chart(team_buzzes))
+        negs = col2.checkbox("Add negs?")
+        col2.altair_chart(utils.make_category_buzz_chart(team_buzzes, negs))
         
         team_subcats = team_buzzes.groupby(['category', 'subcategory', 'buzz_value']).agg(
         'size'
@@ -104,10 +104,8 @@ def app(tournaments):
         team_subcats = team_subcats[['category', 'subcategory', 'P', 'G', 'N']].fillna(0).assign(Pts = lambda x: x.P*15 + x.G*10 - x.N*5)
         team_subcats[['P', 'G', 'N', 'Pts']] = team_subcats[['P', 'G', 'N', 'Pts']].astype(int).sort_values(['Pts'], ascending=False)
 
-        st.subheader('Subcategories')
-        col3, col4 = st.columns(2)
-        col3.dataframe(team_subcats)
-        # col4.pyplot(utils.make_subcategory_buzz_chart(player_buzzes))
+        col1.subheader('Subcategories')
+        col1.dataframe(team_subcats)
 
         st.subheader('Buzzes')
         team_buzzes['packet'] = team_buzzes['packet'].astype(int)
@@ -146,4 +144,4 @@ def app(tournaments):
             if selection["selected_rows"]:
                 team_bonuses = bonus_cat_summary[bonus_cat_summary['team'] == selection["selected_rows"][0]['team']]
                 team_bonuses['PPB'] = round(team_bonuses['PPB'], 2)
-                st.pyplot(utils.make_category_ppb_chart(team_bonuses, bonus_cat_summary))
+                st.altair_chart(utils.make_category_ppb_chart(team_bonuses, bonus_cat_summary))
