@@ -1,7 +1,8 @@
+from numpy import full
 import streamlit as st
 import utils
 
-def app():
+def app(tournaments):
     st.title('QB League Season 2 -- Bonuses')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
                 unsafe_allow_html=True)
@@ -19,6 +20,10 @@ def app():
     bonus_meta = utils.load_bonus_meta()
     packets = utils.get_packets()
     full_bonuses = bonuses.merge(bonus_meta[bonus_meta['season'] == 2], on=['packet', 'bonus'])
+    full_bonuses['division'] = [x.split('-')[1] for x in full_bonuses['game_id']]
+    
+    if len(tournaments) > 0:
+        full_bonuses = full_bonuses[full_bonuses['division'].isin(tournaments)]
 
     bonus_summary = full_bonuses.assign(
         part1_value = lambda x: x.part1_value/10, part2_value = lambda x: x.part2_value/10, part3_value = lambda x: x.part3_value/10

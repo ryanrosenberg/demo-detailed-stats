@@ -2,42 +2,35 @@ import streamlit as st
 import pandas as pd
 import sqlite3 as sq
 import altair as alt
+import utils
 
-def app():
-    st.title('QB League Season 2 Divison 1 -- Categories')
+def app(tournaments):
+    st.title('QB League Season 2 -- Categories')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
                 unsafe_allow_html=True)
 
-    def fetch_df(cursor):
-        rows = cursor.fetchall()
-        keys = [k[0] for k in cursor.description]
-        game_results = [dict(zip(keys, row)) for row in rows]
-        results = pd.DataFrame(game_results)
-        return results
-
-    def load_data():
-        con = sq.connect('stats.db')
-        cur = con.cursor()
-
-        cur.execute('SELECT * FROM buzzes')
-        buzzes = fetch_df(cur)
-
-        cur.execute('SELECT * FROM bonuses')
-        bonuses = fetch_df(cur)
-
-        cur.execute('SELECT * FROM tossup_meta')
-        tossup_meta = fetch_df(cur)
-
-        return buzzes, bonuses, tossup_meta
-
-    def make_buzz_chart(df):
-        c = alt.Chart(df).mark_circle(size = 100).encode(x='buzz_position', y = alt.Y(field='num', type = 'ordinal', sort='descending'), color='team', tooltip=['player', 'team', 'buzz_position', 'answer'])
-        return c
+    hide_table_row_index = """
+                <style>
+                .row_heading.level0 {display:none}
+                .stDataFrame {border:1px solid white}
+                .blank {display:none}
+                </style>
+                """
+    
+    # Inject CSS with Markdown
+    st.markdown(hide_table_row_index, unsafe_allow_html=True)
 
     st.subheader('Category data')
 
-    buzzes, bonuses, tossup_meta = load_data()
+    buzzes = utils.load_buzzes()
+    tossup_meta = utils.load_tossup_meta()
+
     full_buzzes = buzzes.merge(tossup_meta[tossup_meta['season'] == 2], on=['packet', 'tossup'])
+    full_buzzes['division'] = [x.split('-')[1] for x in full_buzzes['game_id']]
+    
+    if len(tournaments) > 0:
+        full_buzzes = full_buzzes[full_buzzes['division'].isin(tournaments)]
+
     cats = full_buzzes['category'].unique()
     cats.sort()
     filter_categories = st.multiselect('Categories', cats, default=[])
@@ -56,7 +49,7 @@ def app():
                     index = ['player', 'team'], columns='buzz_value', values=0
                     ).reset_index().rename(columns={15: 'P', 10: 'G', -5:'N'})
 
-        c = make_buzz_chart(subfilter_buzzes)
+        c = utils.make_buzz_chart(subfilter_buzzes)
     else:
         full_buzzes['num'] = full_buzzes.groupby(['buzz_position']).cumcount()+1
         category_summary = full_buzzes.groupby(
@@ -67,7 +60,7 @@ def app():
                     index = ['player', 'team'], columns='buzz_value', values=0
                     ).reset_index().rename(columns={15: 'P', 10: 'G', -5:'N'})
 
-        c = make_buzz_chart(full_buzzes)
+        c = utils.make_buzz_chart(full_buzzes)
                     
     player_stats = category_summary[['player', 'team', 'P', 'G', 'N']].fillna(0).assign(
         Pts = lambda x: x.P*15 + x.G*10 - x.N*5

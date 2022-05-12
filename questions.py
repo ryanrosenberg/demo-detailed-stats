@@ -3,28 +3,36 @@ import utils
 from htbuilder import div, p
 import json
 
-def app():
-    st.title('QB League Season 2 Divison 1 -- Questions')
+def app(tournaments):
+    st.title('QB League Season 2 -- Questions')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
                 unsafe_allow_html=True)
     st.markdown('''<style>
     .buzz {display: inline; background-color: #e4e1e2;}
     .buzz-value {display: inline; background-color: #e4e1e2; font-size: 80%; color: #555555;}
     p {display: inline;}
+    .row_heading.level0 {display:none}
+    .stDataFrame {border:1px solid white}
+    .blank {display:none}
     </style>''',
                 unsafe_allow_html=True)
 
-    buzzes, bonuses, tossup_meta, bonus_meta = utils.load_data()
+    buzzes = utils.load_buzzes()
+    tossup_meta = utils.load_tossup_meta()
+
     full_buzzes = buzzes.merge(tossup_meta[tossup_meta['season'] == 2], on=['packet', 'tossup'])
+    full_buzzes['division'] = [x.split('-')[1] for x in full_buzzes['game_id']]
+    
+    if len(tournaments) > 0:
+        full_buzzes = full_buzzes[full_buzzes['division'].isin(tournaments)]
 
     pac = st.selectbox('Packet', options = range(1, 10))
     tu = st.selectbox('Tossup', options = range(1, 21), format_func= lambda x: str(x) + ' (' + full_buzzes['answer'][full_buzzes['packet'] == pac][full_buzzes['tossup'] == x].unique()[0] + ')')
 
-    with open(f'packet{pac}.json', 'r') as f:
-        question_text = json.load(f)
+    packets = utils.get_packets()
 
-    sani = question_text['tossups'][tu - 1]['question'].split(' ')
-    qbuzz = buzzes[buzzes['packet'] == pac][buzzes['tossup'] == tu]
+    sani = packets[pac - 1]['tossups'][tu - 1]['question'].split(' ')
+    qbuzz = full_buzzes[full_buzzes['packet'] == pac][buzzes['tossup'] == tu]
     for i, row in qbuzz.iterrows():
         sani[row['buzz_position']] = str(
             div(_class = 'buzz')(
@@ -37,10 +45,11 @@ def app():
 
     st.markdown(sani,
     unsafe_allow_html=True)
-    st.markdown('ANSWER: ' + question_text['tossups'][tu - 1]['answer'],
+    st.markdown('ANSWER: ' + packets[pac - 1]['tossups'][tu - 1]['answer'],
     unsafe_allow_html=True)
 
     qbuzz['packet'] = qbuzz['packet'].astype(int)
+    qbuzz = qbuzz[['player', 'team', 'buzz_value', 'buzz_position']]
     st.dataframe(qbuzz.sort_values('buzz_position', ascending=True))
     
 

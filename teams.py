@@ -1,8 +1,8 @@
 import streamlit as st
 import utils
 
-def app():
-    st.title('QB League Season 2 Divison 1 -- Teams')
+def app(tournaments):
+    st.title('QB League Season 2 -- Teams')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
                 unsafe_allow_html=True)
     # CSS to inject contained in a string
@@ -17,9 +17,18 @@ def app():
     # Inject CSS with Markdown
     st.markdown(hide_table_row_index, unsafe_allow_html=True)
 
-    buzzes, bonuses, tossup_meta, bonus_meta = utils.load_data()
+    buzzes = utils.load_buzzes()
+    bonuses = utils.load_bonuses()
+    tossup_meta = utils.load_tossup_meta()
+    bonus_meta = utils.load_bonus_meta()
+
     full_buzzes = buzzes.merge(tossup_meta[tossup_meta['season'] == 2], on=['packet', 'tossup'])
-    team_summary = buzzes.groupby(
+    full_buzzes['division'] = [x.split('-')[1] for x in full_buzzes['game_id']]
+    
+    if len(tournaments) > 0:
+        full_buzzes = full_buzzes[full_buzzes['division'].isin(tournaments)]
+
+    team_summary = full_buzzes.groupby(
             ['team', 'buzz_value']
             ).agg(
                 'size'
@@ -108,8 +117,12 @@ def app():
 
     bonus_cat = st.container()
     full_bonuses = bonuses.merge(bonus_meta[bonus_meta['season'] == 2], on=['packet', 'bonus'])
+    full_bonuses['division'] = [x.split('-')[1] for x in full_bonuses['game_id']]
+    
+    if len(tournaments) > 0:
+        full_bonuses = full_bonuses[full_bonuses['division'].isin(tournaments)]
 
-    bonus_summary = bonuses.assign(
+    bonus_summary = full_bonuses.assign(
         tot = lambda x: x.part1_value + x.part2_value + x.part3_value
         ).groupby('team').agg({'tot': 'mean'}).reset_index().rename(
             columns={'tot': 'PPB'}

@@ -1,8 +1,8 @@
 import streamlit as st
 import utils
 
-def app():
-    st.title('QB League Season 2 Divison 1 -- Players')
+def app(tournaments):
+    st.title('QB League Season 2 -- Players')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
                 unsafe_allow_html=True)
     # CSS to inject contained in a string
@@ -17,9 +17,15 @@ def app():
     # Inject CSS with Markdown
     st.markdown(hide_table_row_index, unsafe_allow_html=True)
 
-    buzzes, bonuses, tossup_meta, bonus_meta = utils.load_data()
+    buzzes = utils.load_buzzes()
+    tossup_meta = utils.load_tossup_meta()
+
     full_buzzes = buzzes.merge(tossup_meta[tossup_meta['season'] == 2], on=['packet', 'tossup'])
-    player_summary = buzzes.groupby(
+    full_buzzes['division'] = [x.split('-')[1] for x in full_buzzes['game_id']]
+    
+    if len(tournaments) > 0:
+        full_buzzes = full_buzzes[full_buzzes['division'].isin(tournaments)]
+    player_summary = full_buzzes.groupby(
             ['player', 'team', 'buzz_value']
             ).agg(
                 'size'

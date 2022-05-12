@@ -1,5 +1,5 @@
 import sqlite3 as sq
-
+import streamlit as st
 import altair as alt
 import pandas as pd
 import json
@@ -7,36 +7,59 @@ from plotnine import *
 from st_aggrid import AgGrid, GridOptionsBuilder
 from st_aggrid.shared import GridUpdateMode
 
-
-def fetch_df(cursor):
-    rows = cursor.fetchall()
-    keys = [k[0] for k in cursor.description]
+def fetch_df(_cursor):
+    rows = _cursor.fetchall()
+    keys = [k[0] for k in _cursor.description]
     game_results = [dict(zip(keys, row)) for row in rows]
     results = pd.DataFrame(game_results)
     return results
 
-def load_data():
+@st.cache
+def load_buzzes():
     con = sq.connect('stats.db')
     cur = con.cursor()
 
     cur.execute('SELECT * FROM buzzes')
     buzzes = fetch_df(cur)
+    con.close()
+    return buzzes
+
+@st.cache
+def load_bonuses():
+    con = sq.connect('stats.db')
+    cur = con.cursor()
 
     cur.execute('SELECT * FROM bonuses')
     bonuses = fetch_df(cur)
+    con.close()
+    return bonuses
+
+@st.cache
+def load_tossup_meta():
+    con = sq.connect('stats.db')
+    cur = con.cursor()
 
     cur.execute('SELECT * FROM tossup_meta')
     tossup_meta = fetch_df(cur)
+    con.close()
+    return tossup_meta
+
+@st.cache
+def load_bonus_meta():
+    con = sq.connect('stats.db')
+    cur = con.cursor()
 
     cur.execute('SELECT * FROM bonus_meta')
     bonus_meta = fetch_df(cur)
+    con.close()
+    return bonus_meta
 
-    return buzzes, bonuses, tossup_meta, bonus_meta
-
+@st.experimental_memo
 def make_buzz_chart(df):
-    c = alt.Chart(df).mark_circle(size = 100).encode(x='buzz_position', y = alt.Y(field='num', type = 'ordinal', sort='descending'), color='team', tooltip=['player', 'team', 'buzz_position', 'answer'])
+    c = alt.Chart(df).mark_circle(size = 100).encode(x='buzz_position', y = alt.Y(field='num', type = 'ordinal', sort='descending'), color=alt.Color('team', legend=None), tooltip=['player', 'team', 'buzz_position', 'answer'])
     return c
 
+@st.experimental_memo
 def make_category_buzz_chart(df):
     # df['buzz_value'] = [1 if x in [15, 10] else -0.5 for x in df['buzz_value']]
     # c = alt.Chart(df).mark_bar().encode(
@@ -50,6 +73,7 @@ def make_category_buzz_chart(df):
         ) + scale_fill_discrete(guide = False) + theme_bw() + theme(panel_border = element_blank())
     return ggplot.draw(p)
 
+@st.experimental_memo
 def make_category_ppb_chart(df, cat_ppb):
     # df['category'] = ['Other' if cat in ['Geo/CE', 'Other Academic'] else cat for cat in df['category']]
     cat_ppb['rank'] = cat_ppb.groupby('category')['PPB'].rank('min', ascending=False).astype(int)
@@ -73,8 +97,7 @@ def make_category_ppb_chart(df, cat_ppb):
             panel_border = element_blank(), axis_ticks=element_blank(), axis_text_x=element_text(angle = 45)
             )
     return ggplot.draw(p)
-
-
+    
 def aggrid_interactive_table(df: pd.DataFrame):
         """Creates an st-aggrid interactive table based on a dataframe.
         Args:
@@ -99,6 +122,7 @@ def aggrid_interactive_table(df: pd.DataFrame):
 
         return selection
 
+@st.experimental_memo
 def fill_out_tossup_values(df):
     tossup_values = ['P', 'G', 'N']
     for entry in tossup_values:
@@ -106,9 +130,10 @@ def fill_out_tossup_values(df):
                 df[entry] = 0
     return df
 
+@st.experimental_memo
 def get_packets():
     packets = []
     for i in range(1, 10):
-        with open(f'packet{str(i)}.json', 'r') as f:
+        with open(f'packets/packet{str(i)}.json', 'r') as f:
             packets.append(json.load(f))
     return packets

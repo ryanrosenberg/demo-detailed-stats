@@ -1,7 +1,7 @@
 import streamlit as st
 import utils
 
-def app():
+def app(tournaments):
     st.title('QB League Season 2 -- Tossups')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
                 unsafe_allow_html=True)
@@ -19,6 +19,10 @@ def app():
     tossup_meta = utils.load_tossup_meta()
 
     full_buzzes = buzzes.merge(tossup_meta[tossup_meta['season'] == 2], on=['packet', 'tossup'])
+    full_buzzes['division'] = [x.split('-')[1] for x in full_buzzes['game_id']]
+    
+    if len(tournaments) > 0:
+        full_buzzes = full_buzzes[full_buzzes['division'].isin(tournaments)]
     
     tossup_summary = full_buzzes.groupby(
             ['packet', 'tossup', 'category', 'subcategory', 'answer', 'buzz_value']
