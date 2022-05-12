@@ -103,7 +103,7 @@ def app(tournaments):
             context = packet_sani[row['buzz_position']-8:row['buzz_position']]
             contexts.append(' '.join(context))
 
-        player_buzzes['context'] = contexts
+        player_buzzes['context'] = [context + ' | *buzz* |' for context in contexts]
         st.dataframe(player_buzzes[['packet', 'tossup', 'category', 'subcategory', 'answer', 'buzz_position', 'buzz_value', 'context']])
 
 
