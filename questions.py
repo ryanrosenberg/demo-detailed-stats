@@ -64,16 +64,25 @@ def app(tournaments):
         st.dataframe(qbuzz.sort_values('buzz_position', ascending=True))
 
     else:
+        qbonus = full_bonuses[full_bonuses['packet'] == pac][full_bonuses['bonus'] == tu]
+        bonus_summary = qbonus.assign(
+        part1_value = lambda x: x.part1_value/10, part2_value = lambda x: x.part2_value/10, part3_value = lambda x: x.part3_value/10
+        ).groupby(['packet', 'bonus', 'category', 'subcategory', 'answers']).agg(
+            {'part1_value': 'mean', 'part2_value': 'mean', 'part3_value': 'mean'}
+            ).reset_index()
+        qbonus = qbonus[['category', 'subcategory', 'team', 'part1_value', 'part2_value', 'part3_value']]
+
         st.markdown(packets[pac - 1]['bonuses'][tu - 1]['leadin'],
                     unsafe_allow_html=True)
         for i in range(0, 3):
-            st.markdown(f"[10{packets[pac - 1]['bonuses'][tu - 1]['difficultyModifiers'][i]}] {packets[pac - 1]['bonuses'][tu - 1]['parts'][i]}",
+            conv = [i for i in bonus_summary[f'part{i+1}_value']]
+            
+            st.markdown(f""" <p style='size:80%; color: #A3A3A3'>{round(conv[0]*100)}% |</p>
+            [10{packets[pac - 1]['bonuses'][tu - 1]['difficultyModifiers'][i]}] {packets[pac - 1]['bonuses'][tu - 1]['parts'][i]}""",
                     unsafe_allow_html=True)
             st.markdown('ANSWER: ' + packets[pac - 1]['bonuses'][tu - 1]['answers'][i],
                     unsafe_allow_html=True)
         
-        qbonus = full_bonuses[full_bonuses['packet'] == pac][full_bonuses['bonus'] == tu]
-        qbonus = qbonus[['category', 'subcategory', 'team', 'part1_value', 'part2_value', 'part3_value']]
         st.dataframe(qbonus)
     
 
