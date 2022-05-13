@@ -11,9 +11,6 @@ def app(tournaments):
     .buzz {display: inline; background-color: #e4e1e2;}
     .buzz-value {display: inline; background-color: #e4e1e2; font-size: 80%; color: #555555;}
     p {display: inline;}
-    .row_heading.level0 {display:none}
-    .stDataFrame {border:1px solid white}
-    .blank {display:none}
     </style>''',
                 unsafe_allow_html=True)
 

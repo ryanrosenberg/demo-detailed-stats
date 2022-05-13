@@ -192,8 +192,12 @@ def aggrid_interactive_table(df: pd.DataFrame):
             df, enableValue=True
         )
 
-        options.configure_default_column(min_column_width=1)
+        options.configure_default_column(min_column_width=0.1)
         options.configure_selection("single")
+
+        for name in df.columns:
+            if name in ['P', 'G', 'N']:
+                options.configure_column(name, width = 1)
         selection = AgGrid(
             df,
             enable_enterprise_modules=True,

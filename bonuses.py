@@ -69,9 +69,54 @@ def app(tournaments):
     ordered_bonuses['medium'] = med_order
     ordered_bonuses['hard'] = hard_order
 
-    ordered_bonuses = ordered_bonuses[['packet', 'bonus', 'team', 'easy', 'medium', 'hard']]
     ordered_bonuses['packet'] = ordered_bonuses['packet'].astype(int)
+    st.header('Category Summary')
+    category_summary = ordered_bonuses.assign(
+            easy = lambda x: x.easy/10, medium = lambda x: x.medium/10, hard = lambda x: x.hard/10
+            ).groupby(
+        ['category'], as_index=False
+        ).agg(
+            {'easy': 'mean', 'medium': 'mean', 'hard': 'mean'}
+            ).assign(
+                easy = lambda x: round(x.easy, 3),
+                medium = lambda x: round(x.medium, 3),
+                hard = lambda x: round(x.hard, 3)
+                ).rename(
+                columns = {'easy': 'Easy conv.', 'medium': 'Medium conv.', 'hard': 'Hard conv.'}
+                ).merge(ordered_bonuses.assign(
+                    total = lambda x: x.easy + x.medium + x.hard
+            ).groupby('category', as_index=False).agg({'total': 'mean'}).rename(columns={'total': 'PPB'}), on = 'category').assign(
+                PPB = lambda x: round(x.PPB, 2)
+            )
+
+    utils.aggrid_interactive_table(category_summary)
+
+    st.header('Subcategory Summary')
+    category_summary = ordered_bonuses.assign(
+            easy = lambda x: x.easy/10, medium = lambda x: x.medium/10, hard = lambda x: x.hard/10
+            ).groupby(
+        ['category', 'subcategory'], as_index=False
+        ).agg(
+            {'easy': 'mean', 'medium': 'mean', 'hard': 'mean'}
+            ).assign(
+                easy = lambda x: round(x.easy, 3),
+                medium = lambda x: round(x.medium, 3),
+                hard = lambda x: round(x.hard, 3)
+                ).rename(
+                columns = {'easy': 'Easy conv.', 'medium': 'Medium conv.', 'hard': 'Hard conv.'}
+                ).merge(ordered_bonuses.assign(
+                    total = lambda x: x.easy + x.medium + x.hard
+            ).groupby(['category', 'subcategory'], as_index=False).agg({'total': 'mean'}).rename(columns={'total': 'PPB'}), 
+            on = ['category', 'subcategory']).assign(
+                PPB = lambda x: round(x.PPB, 2)
+            )
+
+    utils.aggrid_interactive_table(category_summary)
+
+    st.header('All Bonuses')
+    
     selection = utils.aggrid_interactive_table(bonus_summary)
+    ordered_bonuses = ordered_bonuses[['packet', 'bonus', 'team', 'easy', 'medium', 'hard']]
     if selection["selected_rows"]:
         team_bonuses = ordered_bonuses[ordered_bonuses['packet'] == selection["selected_rows"][0]['packet']][ordered_bonuses['bonus'] == selection["selected_rows"][0]['bonus']]
         st.dataframe(team_bonuses)
