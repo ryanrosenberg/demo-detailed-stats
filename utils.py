@@ -390,6 +390,6 @@ def make_scoresheet(game_id, buzzes, bonuses, player_stats):
         alt.hconcat(t1_tossups + player_grid, t1_bonuses + bonus_grid, t1_score + total_grid, spacing = -5), 
         alt.hconcat(t2_tossups + player_grid, t2_bonuses + bonus_grid, t2_score + total_grid, spacing = -5), 
         spacing = -20).configure(
-            font = 'Freestyle Script'
-        ).configure_axis(labelAngle = 45).configure_text(size = 16)
+            font = 'Segoe UI'
+        ).configure_axis(labelAngle = 45).configure_text(size = 11)
     # return team1_buzzes

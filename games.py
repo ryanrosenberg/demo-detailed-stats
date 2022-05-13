@@ -2,6 +2,7 @@ import streamlit as st
 from st_click_detector import click_detector
 import utils
 
+
 def app(tournaments):
     st.title('QB League Season 2 -- Games')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
