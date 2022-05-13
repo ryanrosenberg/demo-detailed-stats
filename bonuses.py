@@ -6,15 +6,6 @@ def app(tournaments):
     st.title('QB League Season 2 -- Bonuses')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
                 unsafe_allow_html=True)
-    st.markdown('''<style>
-    .buzz {display: inline; background-color: #e4e1e2;}
-    .buzz-value {display: inline; background-color: #e4e1e2; font-size: 80%; color: #555555;}
-    p {display: inline;}
-    .row_heading.level0 {display:none}
-    .stDataFrame {border:1px solid white}
-    .blank {display:none}
-    </style>''',
-                unsafe_allow_html=True)
     
     bonuses = utils.load_bonuses()
     bonus_meta = utils.load_bonus_meta()

@@ -198,11 +198,21 @@ def aggrid_interactive_table(df: pd.DataFrame):
         for name in df.columns:
             if name in ['P', 'G', 'N']:
                 options.configure_column(name, width = 1)
+
+        custom_css = {
+            ".ag-header-viewport": {"background-color": "white"},
+            ".ag-theme-streamlit .ag-root-wrapper": {"border": "0px solid pink !important"},
+            ".ag-theme-streamlit .ag-header" : {"border": "0px solid pink !important"},
+            ".ag-header-cell" : {
+                "background-color": "#555555", "color": "white",
+                "border-bottom": "4px solid #ff4b4b !important"}
+        }
         selection = AgGrid(
             df,
             enable_enterprise_modules=True,
             gridOptions=options.build(),
             theme="streamlit",
+            custom_css=custom_css,
             update_mode=GridUpdateMode.SELECTION_CHANGED,
             allow_unsafe_jscode=True,
         )

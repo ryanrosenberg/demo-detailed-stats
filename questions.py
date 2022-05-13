@@ -7,15 +7,6 @@ def app(tournaments):
     st.title('QB League Season 2 -- Questions')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
                 unsafe_allow_html=True)
-    st.markdown('''<style>
-    .buzz {display: inline; background-color: #e4e1e2;}
-    .buzz-value {display: inline; background-color: #e4e1e2; font-size: 80%; color: #555555;}
-    p {display: inline;}
-    .row_heading.level0 {display:none}
-    .stDataFrame {border:1px solid white}
-    .blank {display:none}
-    </style>''',
-                unsafe_allow_html=True)
 
     buzzes = utils.load_buzzes()
     bonuses = utils.load_bonuses()
@@ -46,12 +37,20 @@ def app(tournaments):
         qbuzz = full_buzzes[full_buzzes['packet'] == pac][full_buzzes['tossup'] == tu]
         
         for i, row in qbuzz.iterrows():
-            sani[row['buzz_position']] = str(
-                div(_class = 'buzz')(
-                    sani[row['buzz_position']],
-                    p(_class = 'buzz-value')(' ' + str(row['buzz_value']))
-                    )
-            )
+            if row['buzz_value'] in [15, 10]:
+                sani[row['buzz_position']] = str(
+                    div(_class = 'buzz')(
+                        sani[row['buzz_position']],
+                        p(_class = 'buzz-value correct-buzz-value')(' ' + str(row['buzz_value']))
+                        )
+                )
+            else:
+                sani[row['buzz_position']] = str(
+                    div(_class = 'buzz')(
+                        sani[row['buzz_position']],
+                        p(_class = 'buzz-value incorrect-buzz-value')(' ' + str(row['buzz_value']))
+                        )
+                )
 
         sani = ' '.join(sani)
 
@@ -61,7 +60,8 @@ def app(tournaments):
     unsafe_allow_html=True)
         qbuzz['packet'] = qbuzz['packet'].astype(int)
         qbuzz = qbuzz[['player', 'team', 'buzz_value', 'buzz_position']]
-        st.dataframe(qbuzz.sort_values('buzz_position', ascending=True))
+        st.subheader('Buzzes')
+        utils.aggrid_interactive_table(qbuzz.sort_values('buzz_position', ascending=True))
 
     else:
         qbonus = full_bonuses[full_bonuses['packet'] == pac][full_bonuses['bonus'] == tu]
@@ -83,7 +83,7 @@ def app(tournaments):
             st.markdown('ANSWER: ' + packets[pac - 1]['bonuses'][tu - 1]['answers'][i],
                     unsafe_allow_html=True)
         
-        st.dataframe(qbonus)
+        utils.aggrid_interactive_table(qbonus)
     
 
     

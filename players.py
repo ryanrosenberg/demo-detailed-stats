@@ -5,17 +5,6 @@ def app(tournaments):
     st.title('QB League Season 2 -- Players')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
                 unsafe_allow_html=True)
-    # CSS to inject contained in a string
-    hide_table_row_index = """
-                <style>
-                .row_heading.level0 {display:none}
-                .stDataFrame {border:1px solid white}
-                .blank {display:none}
-                </style>
-                """
-
-    # Inject CSS with Markdown
-    st.markdown(hide_table_row_index, unsafe_allow_html=True)
 
     buzzes = utils.load_buzzes()
     tossup_meta = utils.load_tossup_meta()

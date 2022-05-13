@@ -21,12 +21,15 @@ PAGES = {
 
 st.markdown('''<style>
     .buzz {display: inline; background-color: #e4e1e2;}
-    .buzz-value {display: inline; background-color: #e4e1e2; font-size: 80%; color: #555555;}
+    .buzz-value {display: inline; background-color: #e4e1e2; font-size: 80%;}
+    .buzz-value.correct-buzz-value {color: #555555;}
+    .buzz-value.incorrect-buzz-value {color: #ff4b4b;}
     p {display: inline;}
     .row_heading.level0 {display:none}
     .stDataFrame {border:1px solid white}
     .data {font-size: 12px;}
     .blank {display:none}
+    .ag-header-row {background-color: blue !important;}
     </style>''',
                 unsafe_allow_html=True)
 with st.sidebar:
