@@ -1,4 +1,5 @@
 plotnine
 streamlit-aggrid
 streamlit-option-menu
+st-click-detector
 htbuilder

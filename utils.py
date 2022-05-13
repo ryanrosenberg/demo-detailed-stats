@@ -1,12 +1,18 @@
-import sqlite3 as sq
-import streamlit as st
-import altair as alt
-from altair import datum
-import pandas as pd
 import json
+from pickle import FALSE
+import sqlite3 as sq
+from textwrap import wrap
+from turtle import screensize
+
+import altair as alt
+import pandas as pd
+import numpy as np
+import streamlit as st
+from altair import datum
 from plotnine import *
 from st_aggrid import AgGrid, GridOptionsBuilder
 from st_aggrid.shared import GridUpdateMode
+
 
 def fetch_df(_cursor):
     rows = _cursor.fetchall()
@@ -54,6 +60,26 @@ def load_bonus_meta():
     bonus_meta = fetch_df(cur)
     con.close()
     return bonus_meta
+
+@st.cache
+def load_team_stats():
+    con = sq.connect('stats.db')
+    cur = con.cursor()
+
+    cur.execute('SELECT * FROM team_stats')
+    team_stats = fetch_df(cur)
+    con.close()
+    return team_stats
+
+@st.cache
+def load_player_stats():
+    con = sq.connect('stats.db')
+    cur = con.cursor()
+
+    cur.execute('SELECT * FROM player_stats')
+    player_stats = fetch_df(cur)
+    con.close()
+    return player_stats
 
 @st.experimental_memo
 def make_buzz_chart(df):
@@ -195,3 +221,176 @@ def get_packets():
         with open(f'packets/packet{str(i)}.json', 'r') as f:
             packets.append(json.load(f))
     return packets
+
+def make_scoresheet(game_id, buzzes, bonuses, player_stats):
+    game_buzzes = buzzes[buzzes['game_id'] == game_id]
+    game_bonuses = bonuses[bonuses['game_id'] == game_id]
+
+    game_buzzes['buzz_value'] = game_buzzes['buzz_value'].astype(int)
+
+    # scoresheet = game_buzzes.pivot(
+    #     index = ['tossup'], columns=['team','player'], values='buzz_value'
+    # ).reset_index().fillna(0).astype(int).astype(str).replace('0', '').reset_index()
+
+    # scoresheet.columns = scoresheet.columns.str.replace(' ', '\n')
+
+    # team_tossups = []
+    # for team in player_stats['team']:
+    #     player_tossups = []
+    #     for player in player_stats[player_stats['team'] == team]['player']:
+    #         player_game = [None]*21
+    #         for i, row in buzzes[buzzes['team'] == team][buzzes['player'] == player].iterrows():
+    #             player_game[row['tossup']] = row['buzz_value']
+    #         player_tossups.append({'player': player, 'tossups': player_game})
+    # print(team_tossups)
+    team1_name = game_buzzes['team'].unique().tolist()[0]
+    team2_name = game_buzzes['team'].unique().tolist()[1]
+
+    team1_buzzes = game_buzzes[game_buzzes['team'] == team1_name]
+    team2_buzzes = game_buzzes[game_buzzes['team'] == team2_name]
+
+    team1_bonuses = game_bonuses[game_bonuses['team'] == team1_name]
+    team2_bonuses = game_bonuses[game_bonuses['team'] == team2_name]
+
+    team1_bonuses = team1_bonuses.melt(
+        id_vars = ['tossup', 'answers'],
+        value_vars = ['part1_value', 'part2_value', 'part3_value'],
+        var_name='part', value_name='value'
+    )
+
+    team2_bonuses = team2_bonuses.melt(
+        id_vars = ['tossup', 'answers'],
+        value_vars = ['part1_value', 'part2_value', 'part3_value'],
+        var_name='part', value_name='value'
+    )
+
+    team1_score = []
+    team2_score = []
+    rscore1 = 0
+    rscore2 = 0
+    for i in range(1,21):
+        if len(team1_buzzes[team1_buzzes['tossup'] == i]['buzz_value']) > 0:
+            team1_tossup = sum(team1_buzzes[team1_buzzes['tossup'] == i]['buzz_value'].tolist())
+            team1_bonus = sum(team1_bonuses[team1_bonuses['tossup'] == i]['value'].tolist())
+            team1_score.append(rscore1 + team1_tossup + team1_bonus)
+            rscore1 = rscore1 + team1_tossup + team1_bonus
+        else:
+            team1_score.append(rscore1)
+        
+        if len(team2_buzzes[team2_buzzes['tossup'] == i]['buzz_value']) > 0:
+            team2_tossup = sum(team2_buzzes[team2_buzzes['tossup'] == i]['buzz_value'].tolist())
+            team2_bonus = sum(team2_bonuses[team2_bonuses['tossup'] == i]['value'].tolist())
+            team2_score.append(rscore2 + team2_tossup + team2_bonus)
+            rscore2 = rscore2 + team2_tossup + team2_bonus
+        else:
+            team2_score.append(rscore2)
+
+    team1_score_df = pd.DataFrame({'tossup': list(range(1,21)), 'score': team1_score, 'total': [1]*20})
+    team2_score_df = pd.DataFrame({'tossup': list(range(1,21)), 'score': team2_score, 'total': [1]*20})
+
+    all_player_cells = pd.DataFrame({
+        'player': np.repeat(player_stats['player'].unique(), 20),
+        'tossup': list(range(1, 21))*len(player_stats['player'].unique())
+        })
+
+    all_bonus_cells = pd.DataFrame({
+        'part': np.repeat(['part1_value', 'part2_value', 'part3_value'], 20),
+        'tossup': list(range(1, 21))*3
+        })
+    
+    all_total_cells = pd.DataFrame({
+        'total': np.repeat(1, 20),
+        'tossup': list(range(1, 21))
+        })
+
+    t1_tossups = alt.Chart(team1_buzzes).mark_text(
+        ).encode(
+        x = alt.X(
+            "player:N", 
+            axis = alt.Axis(orient='top', ticks = False, offset=5),
+            scale = alt.Scale(domain = player_stats[player_stats['team'] == team1_name]['player'].unique()),
+            title = None),
+        y = alt.Y(
+            'tossup:O', 
+            scale = alt.Scale(domain=list(range(1,21))),
+            axis = alt.Axis(
+                orient='left', grid = False, ticks = False, tickCount= 20, title=None, labelAlign='right', labelFontWeight='bold', labelAngle=0
+            )),
+        text = 'buzz_value:Q',
+        tooltip = [alt.Tooltip('answer:N', title="Tossup answer"), alt.Tooltip('buzz_position:Q', title="Buzz location")])
+    t1_bonuses = alt.Chart(team1_bonuses).mark_text().encode(
+        x = alt.X(
+            'part:N', 
+            axis = alt.Axis(orient = 'top', ticks = False, labels = False, offset=5, title = wrap(team1_name, width=12))
+            ),
+        y = alt.Y(
+            'tossup:O', 
+            scale = alt.Scale(domain=list(range(1,21))),
+            axis = None),
+        text = 'value:Q',
+        tooltip = [alt.Tooltip('answers:N', title="Bonus answers")])
+    t1_score = alt.Chart(team1_score_df).mark_text().encode(
+        x = alt.X('total:N', axis = alt.Axis(orient='top', ticks = False, labels = False, offset=5)),
+        y = alt.Y(
+            'tossup:O', 
+            scale = alt.Scale(domain=list(range(1,21))),
+            axis = None),
+        text = 'score:Q')
+    t2_tossups = alt.Chart(team2_buzzes).mark_text().encode(
+        x = alt.X(
+            "player:N", 
+            axis = alt.Axis(orient='top', ticks = False, offset=5),
+            scale = alt.Scale(domain = player_stats[player_stats['team'] == team2_name]['player'].unique()),
+            title = None),
+        y = alt.Y(
+            'tossup:O', 
+            scale = alt.Scale(domain=list(range(1,21))),
+            axis = alt.Axis(
+                orient='left', grid = False, ticks = False, tickCount= 20, title=None, labelAlign='right', labelFontWeight='bold', labelAngle=0
+            )),
+        text = 'buzz_value:Q',
+        tooltip = [alt.Tooltip('answer:N', title="Tossup answer"), alt.Tooltip('buzz_position:Q', title="Buzz location")])
+    t2_bonuses = alt.Chart(team2_bonuses).mark_text().encode(
+        x = alt.X(
+            'part:N', 
+            axis = alt.Axis(orient = 'top', ticks = False, labels = False, offset=5, title = wrap(team2_name, width=12))
+            ),
+        y = alt.Y(
+            'tossup:O', 
+            scale = alt.Scale(domain=list(range(1,21))),
+            axis = None),
+        text = 'value:Q',
+        tooltip = [alt.Tooltip('answers:N', title="Bonus answers")])
+    t2_score = alt.Chart(team2_score_df).mark_text().encode(
+        x = alt.X('total:N', axis = alt.Axis(orient='top', ticks = False, offset=5, labels = False)),
+        y = alt.Y(
+            'tossup:O', 
+            scale = alt.Scale(domain=list(range(1,21))),
+            axis = None),
+        text = 'score:Q')
+
+    player_grid = alt.Chart(all_player_cells).mark_rect(
+        stroke = 'black', strokeWidth=.1, fill = None
+        ).encode(
+        x = 'player:N', y = 'tossup:O'
+    )
+
+    bonus_grid = alt.Chart(all_bonus_cells).mark_rect(
+        stroke = 'black', strokeWidth=.1, fill = None
+        ).encode(
+        x = 'part:N', y = 'tossup:O'
+    )
+
+    total_grid = alt.Chart(all_total_cells).mark_rect(
+        stroke = 'black', strokeWidth=.1, fill = None
+        ).encode(
+        x = 'total:N', y = 'tossup:O'
+    )
+
+    return alt.hconcat(
+        alt.hconcat(t1_tossups + player_grid, t1_bonuses + bonus_grid, t1_score + total_grid, spacing = -5), 
+        alt.hconcat(t2_tossups + player_grid, t2_bonuses + bonus_grid, t2_score + total_grid, spacing = -5), 
+        spacing = -20).configure(
+            font = 'Freestyle Script'
+        ).configure_axis(labelAngle = 45).configure_text(size = 16)
+    # return team1_buzzes
