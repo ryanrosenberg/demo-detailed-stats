@@ -2,7 +2,6 @@ import json
 from pickle import FALSE
 import sqlite3 as sq
 from textwrap import wrap
-from turtle import screensize
 
 import altair as alt
 import pandas as pd
