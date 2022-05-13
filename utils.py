@@ -327,7 +327,7 @@ def make_scoresheet(game_id, buzzes, bonuses, player_stats):
             'tossup:O', 
             scale = alt.Scale(domain=list(range(1,21))),
             axis = alt.Axis(
-                orient='left', grid = False, ticks = False, tickCount= 20, title=None, labelAlign='right', labelFontWeight='bold', labelAngle=0
+                orient='left', domain = False, ticks = False, tickCount= 20, title=None, labelAlign='right', labelFontWeight='bold', labelAngle=0
             )),
         text = 'buzz_value:Q',
         tooltip = [alt.Tooltip('answer:N', title="Tossup answer"), alt.Tooltip('buzz_position:Q', title="Buzz location")])
@@ -385,7 +385,7 @@ def make_scoresheet(game_id, buzzes, bonuses, player_stats):
     player_grid = alt.Chart(all_player_cells).mark_rect(
         stroke = 'black', strokeWidth=.1, fill = None
         ).encode(
-        x = 'player:N', y = 'tossup:O'
+        x = 'player:N', y = alt.Y('tossup:O'), detail='count()'
     )
 
     bonus_grid = alt.Chart(all_bonus_cells).mark_rect(
@@ -403,7 +403,7 @@ def make_scoresheet(game_id, buzzes, bonuses, player_stats):
     return alt.hconcat(
         alt.hconcat(t1_tossups + player_grid, t1_bonuses + bonus_grid, t1_score + total_grid, spacing = -5), 
         alt.hconcat(t2_tossups + player_grid, t2_bonuses + bonus_grid, t2_score + total_grid, spacing = -5), 
-        spacing = -20).configure(
+        spacing = -10).configure(
             font = 'Segoe UI'
-        ).configure_axis(labelAngle = 45).configure_text(size = 11)
+        ).configure_view(strokeWidth=0).configure_axis(grid = False, labelAngle = 45).configure_text(size = 11)
     # return team1_buzzes
