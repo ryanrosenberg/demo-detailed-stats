@@ -18,6 +18,17 @@ PAGES = {
     "Bonuses": bonuses,
     "Games" : games
 }
+
+st.markdown('''<style>
+    .buzz {display: inline; background-color: #e4e1e2;}
+    .buzz-value {display: inline; background-color: #e4e1e2; font-size: 80%; color: #555555;}
+    p {display: inline;}
+    .row_heading.level0 {display:none}
+    .stDataFrame {border:1px solid white}
+    .data {font-size: 12px;}
+    .blank {display:none}
+    </style>''',
+                unsafe_allow_html=True)
 with st.sidebar:
     selection = option_menu("Go to", list(PAGES.keys()),
     menu_icon="arrow-down-right",
