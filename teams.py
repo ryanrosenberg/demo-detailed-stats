@@ -1,7 +1,7 @@
 import streamlit as st
 import utils
 
-def app(tournaments):
+def app(tournaments, accent_color):
     st.title('QB League Season 2 -- Teams')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
                 unsafe_allow_html=True)

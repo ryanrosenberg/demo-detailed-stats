@@ -1,7 +1,7 @@
 import streamlit as st
 import utils
 
-def app(tournaments):
+def app(tournaments, accent_color):
     st.title('QB League Season 2 -- Players')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
                 unsafe_allow_html=True)
@@ -42,7 +42,7 @@ def app(tournaments):
 
 
     st.write("Click on a player's row to show more information!")
-    selection = utils.aggrid_interactive_table(player_summary)
+    selection = utils.aggrid_interactive_table(player_summary, accent_color=accent_color)
     
     if selection["selected_rows"]:
         st.subheader(f"{selection['selected_rows'][0]['player']}, {selection['selected_rows'][0]['team']}")
@@ -64,7 +64,8 @@ def app(tournaments):
         player_rank = player_rank[['category', 'P', 'G', 'N', 'Pts', 'rank']].rename(columns={'rank': 'Rk'})
         player_rank['Rk'] = player_rank['Rk'].astype(int)
         
-        col1.dataframe(player_rank)
+        with col1:
+            utils.aggrid_interactive_table(player_rank, accent_color=accent_color)
         negs = col2.checkbox("Add negs?")
         col2.altair_chart(utils.make_category_buzz_chart(player_buzzes, negs))
         
@@ -80,7 +81,8 @@ def app(tournaments):
         player_subcats[['P', 'G', 'N', 'Pts']] = player_subcats[['P', 'G', 'N', 'Pts']].astype(int).sort_values(['Pts'], ascending=False)
 
         col1.subheader('Subcategories')
-        col1.dataframe(player_subcats)
+        with col1:
+            utils.aggrid_interactive_table(player_subcats, accent_color=accent_color)
         # col4.pyplot(utils.make_subcategory_buzz_chart(player_buzzes))
 
         st.subheader('Buzzes')
@@ -93,6 +95,6 @@ def app(tournaments):
             contexts.append(' '.join(context))
 
         player_buzzes['context'] = [context + ' | *buzz* |' for context in contexts]
-        st.dataframe(player_buzzes[['packet', 'tossup', 'category', 'subcategory', 'answer', 'buzz_position', 'buzz_value', 'context']])
+        utils.aggrid_interactive_table(player_buzzes[['packet', 'tossup', 'category', 'subcategory', 'answer', 'buzz_position', 'buzz_value', 'context']], accent_color=accent_color)
 
 

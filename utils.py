@@ -12,7 +12,6 @@ from plotnine import *
 from st_aggrid import AgGrid, GridOptionsBuilder
 from st_aggrid.shared import GridUpdateMode
 
-
 def fetch_df(_cursor):
     rows = _cursor.fetchall()
     keys = [k[0] for k in _cursor.description]
@@ -181,7 +180,7 @@ def make_category_ppb_chart(df, cat_ppb):
 
     return bar + top + ppb + rank
     
-def aggrid_interactive_table(df: pd.DataFrame):
+def aggrid_interactive_table(df: pd.DataFrame, accent_color = '#ff4b4b'):
         """Creates an st-aggrid interactive table based on a dataframe.
         Args:
             df (pd.DataFrame]): Source dataframe
@@ -205,7 +204,7 @@ def aggrid_interactive_table(df: pd.DataFrame):
             ".ag-theme-streamlit .ag-header" : {"border": "0px solid pink !important"},
             ".ag-header-cell" : {
                 "background-color": "#555555", "color": "white",
-                "border-bottom": "4px solid #ff4b4b !important"}
+                "border-bottom": f"4px solid {accent_color} !important"}
         }
         selection = AgGrid(
             df,

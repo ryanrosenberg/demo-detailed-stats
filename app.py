@@ -32,6 +32,9 @@ st.markdown('''<style>
     .ag-header-row {background-color: blue !important;}
     </style>''',
                 unsafe_allow_html=True)
+
+accent_color = "#ff4b4b"
+
 with st.sidebar:
     selection = option_menu("Go to", list(PAGES.keys()),
     menu_icon="arrow-down-right",
@@ -39,11 +42,11 @@ with st.sidebar:
         "menu-title": {"font-size": "20px", "text-align": "left", "margin":"0px"},
         "container": {"padding": "0!important", "background-color": "#F0F2F6"},
         "icon": {"color": "black", "font-size": "16px"}, 
-        "nav-link": {"font-size": "16px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
+        "nav-link": {"font-size": "16px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"}
     })
 
 st.sidebar.subheader('Filters')
 tournaments = st.sidebar.multiselect("Divisions", ['01', '2a', '2b', '3a', '3b'], format_func=lambda x: '1' if x == '01' else x)
 
 page = PAGES[selection]
-page.app(tournaments)
+page.app(tournaments, accent_color)

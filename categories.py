@@ -4,7 +4,7 @@ import sqlite3 as sq
 import altair as alt
 import utils
 
-def app(tournaments):
+def app(tournaments, accent_color):
     st.title('QB League Season 2 -- Categories')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
                 unsafe_allow_html=True)

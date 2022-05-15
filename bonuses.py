@@ -2,7 +2,7 @@ from numpy import full
 import streamlit as st
 import utils
 
-def app(tournaments):
+def app(tournaments, accent_color):
     st.title('QB League Season 2 -- Bonuses')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
                 unsafe_allow_html=True)
@@ -80,7 +80,7 @@ def app(tournaments):
                 PPB = lambda x: round(x.PPB, 2)
             )
 
-    utils.aggrid_interactive_table(category_summary)
+    utils.aggrid_interactive_table(category_summary, accent_color=accent_color)
 
     st.header('Subcategory Summary')
     category_summary = ordered_bonuses.assign(
