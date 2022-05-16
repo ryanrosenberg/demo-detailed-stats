@@ -1,21 +1,21 @@
 import streamlit as st
 import utils
 
-def app(tournaments, accent_color):
-    st.title('QB League Season 2 -- Teams')
+def app(tournaments, divisions, accent_color):
+    st.title(f'QB League Season {tournaments} -- Teams')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
                 unsafe_allow_html=True)
 
-    buzzes = utils.load_buzzes()
-    bonuses = utils.load_bonuses()
+    buzzes = utils.load_buzzes(tournaments)
+    bonuses = utils.load_bonuses(tournaments)
     tossup_meta = utils.load_tossup_meta()
     bonus_meta = utils.load_bonus_meta()
 
-    full_buzzes = buzzes.merge(tossup_meta[tossup_meta['season'] == 2], on=['packet', 'tossup'])
+    full_buzzes = buzzes.merge(tossup_meta[tossup_meta['season'] == tournaments], on=['packet', 'tossup'])
     full_buzzes['division'] = [x.split('-')[1] for x in full_buzzes['game_id']]
     
-    if len(tournaments) > 0:
-        full_buzzes = full_buzzes[full_buzzes['division'].isin(tournaments)]
+    if len(divisions) > 0:
+        full_buzzes = full_buzzes[full_buzzes['division'].isin(divisions)]
 
     team_summary = full_buzzes.groupby(
             ['team', 'buzz_value']
@@ -60,7 +60,7 @@ def app(tournaments, accent_color):
 
         player_stats = utils.fill_out_tossup_values(player_stats).fillna(0).assign(Pts = lambda x: x.P*15 + x.G*10 - x.N*5)[['player', 'P', 'G', 'N', 'Pts']]
         player_stats[['P', 'G', 'N', 'Pts']] = player_stats[['P', 'G', 'N', 'Pts']].astype(int)
-        st.dataframe(player_stats.sort_values('Pts', ascending=False))
+        utils.aggrid_interactive_table(player_stats.sort_values('Pts', ascending=False), accent_color)
         
         team_cats = team_buzzes.groupby(
             ['team', 'category', 'buzz_value']
@@ -78,7 +78,8 @@ def app(tournaments, accent_color):
         team_rank = team_cats.merge(team_cat_ranks[['team', 'category', 'rank']], on=['team', 'category'])
         team_rank = team_rank[['category', 'P', 'G', 'N', 'Pts', 'rank']].rename(columns={'rank': 'Rk'})
         team_rank['Rk'] = team_rank['Rk'].astype(int)
-        col1.dataframe(team_rank)
+        with col1:
+            utils.aggrid_interactive_table(team_rank, accent_color)
         negs = col2.checkbox("Add negs?")
         col2.altair_chart(utils.make_category_buzz_chart(team_buzzes, negs))
         
@@ -94,20 +95,23 @@ def app(tournaments, accent_color):
         team_subcats[['P', 'G', 'N', 'Pts']] = team_subcats[['P', 'G', 'N', 'Pts']].astype(int).sort_values(['Pts'], ascending=False)
 
         col1.subheader('Subcategories')
-        col1.dataframe(team_subcats)
+        with col1:
+            utils.aggrid_interactive_table(team_subcats, accent_color)
 
         st.subheader('Buzzes')
         team_buzzes['packet'] = team_buzzes['packet'].astype(int)
-        st.dataframe(team_buzzes[['packet', 'tossup', 'category', 'subcategory', 'answer', 'buzz_position', 'buzz_value']])
+        utils.aggrid_interactive_table(
+            team_buzzes[['packet', 'tossup', 'category', 'subcategory', 'answer', 'player', 'buzz_value', 'buzz_position']], accent_color
+            )
 
 
 
     bonus_cat = st.container()
-    full_bonuses = bonuses.merge(bonus_meta[bonus_meta['season'] == 2], on=['packet', 'bonus'])
+    full_bonuses = bonuses.merge(bonus_meta[bonus_meta['season'] == tournaments], on=['packet', 'bonus'])
     full_bonuses['division'] = [x.split('-')[1] for x in full_bonuses['game_id']]
     
-    if len(tournaments) > 0:
-        full_bonuses = full_bonuses[full_bonuses['division'].isin(tournaments)]
+    if len(divisions) > 0:
+        full_bonuses = full_bonuses[full_bonuses['division'].isin(divisions)]
 
     bonus_summary = full_bonuses.assign(
         tot = lambda x: x.part1_value + x.part2_value + x.part3_value

@@ -3,25 +3,25 @@ import utils
 from htbuilder import div, p
 import json
 
-def app(tournaments, accent_color):
-    st.title('QB League Season 2 -- Questions')
+def app(tournaments, divisions, accent_color):
+    st.title(f'QB League Season {tournaments} -- Questions')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
                 unsafe_allow_html=True)
 
-    buzzes = utils.load_buzzes()
-    bonuses = utils.load_bonuses()
+    buzzes = utils.load_buzzes(tournaments)
+    bonuses = utils.load_bonuses(tournaments)
     tossup_meta = utils.load_tossup_meta()
     bonus_meta = utils.load_bonus_meta()
 
-    full_buzzes = buzzes.merge(tossup_meta[tossup_meta['season'] == 2], on=['packet', 'tossup'])
+    full_buzzes = buzzes.merge(tossup_meta[tossup_meta['season'] == tournaments], on=['packet', 'tossup'])
     full_buzzes['division'] = [x.split('-')[1] for x in full_buzzes['game_id']]
 
-    full_bonuses = bonuses.merge(bonus_meta[bonus_meta['season'] == 2], on=['packet', 'bonus'])
+    full_bonuses = bonuses.merge(bonus_meta[bonus_meta['season'] == tournaments], on=['packet', 'bonus'])
     full_bonuses['division'] = [x.split('-')[1] for x in full_bonuses['game_id']]
 
-    if len(tournaments) > 0:
-        full_buzzes = full_buzzes[full_buzzes['division'].isin(tournaments)]
-        full_bonuses = full_bonuses[full_bonuses['division'].isin(tournaments)]
+    if len(divisions) > 0:
+        full_buzzes = full_buzzes[full_buzzes['division'].isin(divisions)]
+        full_bonuses = full_bonuses[full_bonuses['division'].isin(divisions)]
 
     pac = st.selectbox('Packet', options = range(1, 10))
     question_type = st.selectbox('Question Type', options = ['Tossup', 'Bonus'])
@@ -30,7 +30,7 @@ def app(tournaments, accent_color):
     else:
         tu = st.selectbox('Question Number', options = range(1, 21), format_func= lambda x: str(x) + ' (' + full_bonuses['answers'][full_bonuses['packet'] == pac][full_bonuses['bonus'] == x].unique()[0] + ')')
 
-    packets = utils.get_packets()
+    packets = utils.get_packets(tournaments)
 
     if question_type == 'Tossup':
         sani = packets[pac - 1]['tossups'][tu - 1]['question'].split(' ')

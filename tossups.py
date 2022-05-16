@@ -1,19 +1,19 @@
 import streamlit as st
 import utils
 
-def app(tournaments, accent_color):
-    st.title('QB League Season 2 -- Tossups')
+def app(tournaments, divisions, accent_color):
+    st.title(f'QB League Season {tournaments} -- Tossups')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
                 unsafe_allow_html=True)
     
-    buzzes = utils.load_buzzes()
+    buzzes = utils.load_buzzes(tournaments)
     tossup_meta = utils.load_tossup_meta()
 
-    full_buzzes = buzzes.merge(tossup_meta[tossup_meta['season'] == 2], on=['packet', 'tossup'])
+    full_buzzes = buzzes.merge(tossup_meta[tossup_meta['season'] == tournaments], on=['packet', 'tossup'])
     full_buzzes['division'] = [x.split('-')[1] for x in full_buzzes['game_id']]
     
-    if len(tournaments) > 0:
-        full_buzzes = full_buzzes[full_buzzes['division'].isin(tournaments)]
+    if len(divisions) > 0:
+        full_buzzes = full_buzzes[full_buzzes['division'].isin(divisions)]
     
     tossup_summary = full_buzzes.groupby(
             ['packet', 'tossup', 'category', 'subcategory', 'answer', 'buzz_value']
@@ -53,8 +53,8 @@ def app(tournaments, accent_color):
         )
     
     st.header('Category Summary')
-    utils.aggrid_interactive_table(category_summary)    
+    utils.aggrid_interactive_table(category_summary, accent_color, height = 250)    
     st.header('Subcategory Summary')
-    utils.aggrid_interactive_table(subcategory_summary) 
+    utils.aggrid_interactive_table(subcategory_summary, accent_color) 
     st.header('All Tossups')         
-    utils.aggrid_interactive_table(tossup_table)
+    utils.aggrid_interactive_table(tossup_table, accent_color)

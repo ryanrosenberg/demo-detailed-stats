@@ -1,19 +1,19 @@
 import streamlit as st
 import utils
 
-def app(tournaments, accent_color):
-    st.title('QB League Season 2 -- Players')
+def app(tournaments, divisions, accent_color):
+    st.title(f'QB League Season {tournaments} -- Players')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
                 unsafe_allow_html=True)
 
-    buzzes = utils.load_buzzes()
+    buzzes = utils.load_buzzes(tournaments)
     tossup_meta = utils.load_tossup_meta()
 
-    full_buzzes = buzzes.merge(tossup_meta[tossup_meta['season'] == 2], on=['packet', 'tossup'])
+    full_buzzes = buzzes.merge(tossup_meta[tossup_meta['season'] == tournaments], on=['packet', 'tossup'])
     full_buzzes['division'] = [x.split('-')[1] for x in full_buzzes['game_id']]
     
-    if len(tournaments) > 0:
-        full_buzzes = full_buzzes[full_buzzes['division'].isin(tournaments)]
+    if len(divisions) > 0:
+        full_buzzes = full_buzzes[full_buzzes['division'].isin(divisions)]
     player_summary = full_buzzes.groupby(
             ['player', 'team', 'buzz_value']
             ).agg(
@@ -87,7 +87,7 @@ def app(tournaments, accent_color):
 
         st.subheader('Buzzes')
         player_buzzes['packet'] = player_buzzes['packet'].astype(int)
-        packets = utils.get_packets()
+        packets = utils.get_packets(tournaments)
         contexts = []
         for i, row in player_buzzes.iterrows():
             packet_sani = packets[row['packet'] - 1]['tossups'][row['tossup'] - 1]['question_sanitized'].split(' ')

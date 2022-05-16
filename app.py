@@ -46,7 +46,11 @@ with st.sidebar:
     })
 
 st.sidebar.subheader('Filters')
-tournaments = st.sidebar.multiselect("Divisions", ['01', '2a', '2b', '3a', '3b'], format_func=lambda x: '1' if x == '01' else x)
+tournaments = st.sidebar.selectbox("Season", [1, 2])
+if tournaments == 1:
+    divisions = st.sidebar.multiselect("Divisions", ['01', '02', '03', '04', '05', '06', '07'], format_func=lambda x: x[1:2])
+else:
+    divisions = st.sidebar.multiselect("Divisions", ['01', '2a', '2b', '3a', '3b'], format_func=lambda x: '1' if x == '01' else x)
 
 page = PAGES[selection]
-page.app(tournaments, accent_color)
+page.app(tournaments, divisions, accent_color)

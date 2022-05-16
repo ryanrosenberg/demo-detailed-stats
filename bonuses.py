@@ -2,19 +2,19 @@ from numpy import full
 import streamlit as st
 import utils
 
-def app(tournaments, accent_color):
-    st.title('QB League Season 2 -- Bonuses')
+def app(tournaments, divisions, accent_color):
+    st.title(f'QB League Season {tournaments} -- Bonuses')
     st.markdown('<style>#vg-tooltip-element{z-index: 1000051}</style>',
                 unsafe_allow_html=True)
     
-    bonuses = utils.load_bonuses()
+    bonuses = utils.load_bonuses(tournaments)
     bonus_meta = utils.load_bonus_meta()
-    packets = utils.get_packets()
-    full_bonuses = bonuses.merge(bonus_meta[bonus_meta['season'] == 2], on=['packet', 'bonus'])
+    packets = utils.get_packets(tournaments)
+    full_bonuses = bonuses.merge(bonus_meta[bonus_meta['season'] == tournaments], on=['packet', 'bonus'])
     full_bonuses['division'] = [x.split('-')[1] for x in full_bonuses['game_id']]
     
-    if len(tournaments) > 0:
-        full_bonuses = full_bonuses[full_bonuses['division'].isin(tournaments)]
+    if len(divisions) > 0:
+        full_bonuses = full_bonuses[full_bonuses['division'].isin(divisions)]
 
     bonus_summary = full_bonuses.assign(
         part1_value = lambda x: x.part1_value/10, part2_value = lambda x: x.part2_value/10, part3_value = lambda x: x.part3_value/10
@@ -27,6 +27,7 @@ def app(tournaments, accent_color):
     med_parts = []
     hard_parts = []
     for i, row in bonus_summary.iterrows():
+        print(f"{row['packet']}-{row['bonus']}")
         # print(f"{i} {int(row['packet'])} - {row['bonus']}")
         # print(f"{int(row['packet']) - 1} {row['bonus']-1}")
         easy_answer = bonus_answers[i][packets[int(row['packet']) - 1]['bonuses'][row['bonus']-1]['difficultyModifiers'].index('e')]
@@ -80,7 +81,7 @@ def app(tournaments, accent_color):
                 PPB = lambda x: round(x.PPB, 2)
             )
 
-    utils.aggrid_interactive_table(category_summary, accent_color=accent_color)
+    utils.aggrid_interactive_table(category_summary, accent_color=accent_color, height = 250)
 
     st.header('Subcategory Summary')
     category_summary = ordered_bonuses.assign(
@@ -102,7 +103,7 @@ def app(tournaments, accent_color):
                 PPB = lambda x: round(x.PPB, 2)
             )
 
-    utils.aggrid_interactive_table(category_summary)
+    utils.aggrid_interactive_table(category_summary, accent_color)
 
     st.header('All Bonuses')
     
@@ -110,5 +111,5 @@ def app(tournaments, accent_color):
     ordered_bonuses = ordered_bonuses[['packet', 'bonus', 'team', 'easy', 'medium', 'hard']]
     if selection["selected_rows"]:
         team_bonuses = ordered_bonuses[ordered_bonuses['packet'] == selection["selected_rows"][0]['packet']][ordered_bonuses['bonus'] == selection["selected_rows"][0]['bonus']]
-        st.dataframe(team_bonuses)
+        utils.aggrid_interactive_table(team_bonuses, accent_color)
 

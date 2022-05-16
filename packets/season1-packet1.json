@@ -1,0 +1,867 @@
+{
+    "tossups": [
+        {
+            "number": 1,
+            "question": "\u003Cb\u003Em6A (\u0022m-6-A\u0022) modifications in one form of these molecules prevents TLR3 (\u0022t-l-r-3\u0022) and TLR7 (\u0022t-l-r-7\u0022) from recognizing their foreign origin. Modified examples of these molecules with 100% \u03A8 (\u0022PSI\u0022) residues have seen recent use with PEG-ylated lipid nanoparticles. One form of these molecules is \u0022charged\u0022 by one of roughly two dozen different aaRS (\u0022A-A-R-S\u0022) proteins. Various stem loops appear in the secondary structure of another type of these molecules, which frequently incorporates (*)\u003C/b\u003E pseudo-uridine residues. One example of these molecules carries information about the spike protein to the ribosome and is found in the first approved COVID-19 vaccines. For 10 points, name these molecules whose \u0022messenger\u0022 type is formed by translation and which have uracil in place of the thymine of DNA.",
+            "answer": "\u003Creq\u003ERNA\u003C/req\u003Es [accept \u003Creq\u003Emessenger RNA\u003C/req\u003Es, \u003Creq\u003EmRNA\u003C/req\u003Es, \u003Creq\u003Etransfer RNA\u003C/req\u003Es or \u003Creq\u003EtRNA\u003C/req\u003Es; accept m\u003Creq\u003ERNA vaccine\u003C/req\u003Es or messenger \u003Creq\u003ERNA vaccine\u003C/req\u003Es before \u0022vaccines\u0022; accept answers with \u003Creq\u003Eribonucleic acid\u003C/req\u003E in place of \u0022RNA\u0022; prompt on nucleic acids; prompt on CureVac, Moderna, or Pfizer-BioNTech COVID-19 vaccines before \u0022vaccines\u0022 with \u0022what molecule is central to their function?\u0022; do not accept or prompt on \u0022DNA\u0022 or \u0022deoxyribonucleic acid\u0022]",
+            "question_sanitized": "m6A (\u0022m-6-A\u0022) modifications in one form of these molecules prevents TLR3 (\u0022t-l-r-3\u0022) and TLR7 (\u0022t-l-r-7\u0022) from recognizing their foreign origin. Modified examples of these molecules with 100% \u03A8 (\u0022PSI\u0022) residues have seen recent use with PEG-ylated lipid nanoparticles. One form of these molecules is \u0022charged\u0022 by one of roughly two dozen different aaRS (\u0022A-A-R-S\u0022) proteins. Various stem loops appear in the secondary structure of another type of these molecules, which frequently incorporates (*) pseudo-uridine residues. One example of these molecules carries information about the spike protein to the ribosome and is found in the first approved COVID-19 vaccines. For 10 points, name these molecules whose \u0022messenger\u0022 type is formed by translation and which have uracil in place of the thymine of DNA.",
+            "answer_sanitized": "RNAs [accept messenger RNAs, mRNAs, transfer RNAs or tRNAs; accept mRNA vaccines or messenger RNA vaccines before \u0022vaccines\u0022; accept answers with ribonucleic acid in place of \u0022RNA\u0022; prompt on nucleic acids; prompt on CureVac, Moderna, or Pfizer-BioNTech COVID-19 vaccines before \u0022vaccines\u0022 with \u0022what molecule is central to their function?\u0022; do not accept or prompt on \u0022DNA\u0022 or \u0022deoxyribonucleic acid\u0022]"
+        },
+        {
+            "number": 2,
+            "question": "\u003Cb\u003EPaul Stanbridge reworked a book of this name in his novel \u003Cem\u003EForbidden Line\u003C/em\u003E. This is the pen-name used by a fictional thriller author who created the character Ismail Smile. A character with this name resolves to combat America with love in a novel by Kathy Acker. This character inspired a 2019 book by Salman Rushdie. The fictional Arab author Cide Hamete Benengeli (\u201Cseed hah-meht ben-en-gehli\u201D) allegedly wrote a book of this name, which inspired the lost Shakespeare play (*) \u003C/b\u003E\u003Cem\u003ECardenio\u003C/em\u003E. In a short story by Borges, Pierre Menard rewrites a novel with this name. The title character of this novel loves Dulcinea and \u0022tilts at windmills.\u0022 For 10 points, Miguel de Cervantes wrote a novel about what character?",
+            "answer": "\u003Creq\u003E\u003Cem\u003EDon Quixote\u003C/req\u003E \u003C/em\u003E[or \u003Creq\u003E\u003Cem\u003EDon Quijote\u003C/req\u003E\u003C/em\u003E; accept \u003Creq\u003E\u003Cem\u003EQuichotte\u003C/req\u003E\u003C/em\u003E]",
+            "question_sanitized": "Paul Stanbridge reworked a book of this name in his novel Forbidden Line. This is the pen-name used by a fictional thriller author who created the character Ismail Smile. A character with this name resolves to combat America with love in a novel by Kathy Acker. This character inspired a 2019 book by Salman Rushdie. The fictional Arab author Cide Hamete Benengeli (\u201Cseed hah-meht ben-en-gehli\u201D) allegedly wrote a book of this name, which inspired the lost Shakespeare play (*) Cardenio. In a short story by Borges, Pierre Menard rewrites a novel with this name. The title character of this novel loves Dulcinea and \u0022tilts at windmills.\u0022 For 10 points, Miguel de Cervantes wrote a novel about what character?",
+            "answer_sanitized": "Don Quixote [or Don Quijote; accept Quichotte]"
+        },
+        {
+            "number": 3,
+            "question": "\u003Cb\u003EIn this country, four large statues of men holding globe-shaped lamps adorn the entrance of a copper-roofed railway station. The furniture company Artek was founded in this country. While working on a sanitarium, an architect from this country designed a curved wooden chair to alleviate the discomfort of tuberculosis patients. An architect from this country designed the (*)\u003C/b\u003E Tulip chair. The TWA Flight Centre at JFK and the main terminal at Dulles were both designed by an architect from this country. An architect from this country designed the Gateway Arch in St Louis. For 10 points, Alvar Aalto and Eero Saarinen are architects from what Nordic country?",
+            "answer": "Republic of \u003Creq\u003EFinland\u003C/req\u003E [or \u003Creq\u003ESuomi\u003C/req\u003E]",
+            "question_sanitized": "In this country, four large statues of men holding globe-shaped lamps adorn the entrance of a copper-roofed railway station. The furniture company Artek was founded in this country. While working on a sanitarium, an architect from this country designed a curved wooden chair to alleviate the discomfort of tuberculosis patients. An architect from this country designed the (*) Tulip chair. The TWA Flight Centre at JFK and the main terminal at Dulles were both designed by an architect from this country. An architect from this country designed the Gateway Arch in St Louis. For 10 points, Alvar Aalto and Eero Saarinen are architects from what Nordic country?",
+            "answer_sanitized": "Republic of Finland [or Suomi]"
+        },
+        {
+            "number": 4,
+            "question": "\u003Cb\u003EThis character disturbs his father with a description of a cockatoo that \u0022is very exotic,...eats every other day, and [is] so white she\u0027s almost blue.\u0022 After a child says a woman\u0027s hair smells like \u0022strawberry\u0022, this character retorts that the scent is actually  \u0022lavender, peach and vanilla.\u0022 This character frequently orders a nonfat latte with the \u0022faintest whisper of cinnamon\u0022 when visiting Caf\u00E9 (*)\u003C/b\u003E Nervosa. This man is married to a never-seen heiress called Maris, and has an unrequited obsession with the physical therapist Daphne Moon. David Hyde Pierce played, for 10 points, what younger brother of Frasier Crane?",
+            "answer": "\u003Creq\u003ENiles\u003C/req\u003E Crane [prompt on Crane]",
+            "question_sanitized": "This character disturbs his father with a description of a cockatoo that \u0022is very exotic,...eats every other day, and [is] so white she\u0027s almost blue.\u0022 After a child says a woman\u0027s hair smells like \u0022strawberry\u0022, this character retorts that the scent is actually  \u0022lavender, peach and vanilla.\u0022 This character frequently orders a nonfat latte with the \u0022faintest whisper of cinnamon\u0022 when visiting Caf\u00E9 (*) Nervosa. This man is married to a never-seen heiress called Maris, and has an unrequited obsession with the physical therapist Daphne Moon. David Hyde Pierce played, for 10 points, what younger brother of Frasier Crane?",
+            "answer_sanitized": "Niles Crane [prompt on Crane]"
+        },
+        {
+            "number": 5,
+            "question": "\u003Cb\u003ESusan Butler\u0027s biography of this woman titled \u003Cem\u003EEast to the Dawn\u003C/em\u003E suggested she had a romantic relationship with Gore Vidal\u0027s father Eugene. Ann Pellegreno and Linda Finch replicated one of this woman\u0027s achievements. This woman married her publicist George Putnam. Bernt Balchen advised this woman whose legacy was promoted by her sister Muriel. A small museum is dedicated to this woman in Derry, Ireland. This woman wrote the hit memoir (*) \u003C/b\u003E\u003Cem\u003E20 Hours 40 Min\u003C/em\u003E about a trip aboard \u003Cem\u003EFriendship\u003C/em\u003E she made with Wilmer Stultz. Before reaching Howland Island, this woman, dubbed \u0022Lady Lindy\u0022, disappeared alongside Fred Noonan. For 10 points, name this American aviator who died trying to circumnavigate the globe.",
+            "answer": "Amelia (Mary) \u003Creq\u003EEarhart\u003C/req\u003E",
+            "question_sanitized": "Susan Butler\u0027s biography of this woman titled East to the Dawn suggested she had a romantic relationship with Gore Vidal\u0027s father Eugene. Ann Pellegreno and Linda Finch replicated one of this woman\u0027s achievements. This woman married her publicist George Putnam. Bernt Balchen advised this woman whose legacy was promoted by her sister Muriel. A small museum is dedicated to this woman in Derry, Ireland. This woman wrote the hit memoir (*) 20 Hours 40 Min about a trip aboard Friendship she made with Wilmer Stultz. Before reaching Howland Island, this woman, dubbed \u0022Lady Lindy\u0022, disappeared alongside Fred Noonan. For 10 points, name this American aviator who died trying to circumnavigate the globe.",
+            "answer_sanitized": "Amelia (Mary) Earhart"
+        },
+        {
+            "number": 6,
+            "question": "\u003Cb\u003ERobert Fisk\u0027s \u003Cem\u003EPity the Nation\u003C/em\u003E describes one period of conflict in this nation. Jean Genet\u0027s book \u003Cem\u003EPrisoner of Love \u003C/em\u003Edescribes the aftermath of an attack on the Shatila refugee camp in this country. The Ta\u0457f (\u0022tah-EEF\u0022) Agreement ended one period of civil war in this country, where sectarian tensions were inflamed by the 2005 assassination of former Prime Minister (*)\u003C/b\u003E Rafic Hariri. Iran supported the development of a political party whose name means \u0022party of God \u0027\u0027 in this country after this country\u0027s 1982 invasion by Israel. This country\u0027s constitution requires the Prime Minister to be Sunni and the President to be a Maronite Christian. For 10 points, name this Middle Eastern country whose Bekaa Valley was a stronghold for Hezbollah.",
+            "answer": "\u003Creq\u003ELebanon\u003C/req\u003E [accept \u003Creq\u003ELebanese\u003C/req\u003E Republic]",
+            "question_sanitized": "Robert Fisk\u0027s Pity the Nation describes one period of conflict in this nation. Jean Genet\u0027s book Prisoner of Love describes the aftermath of an attack on the Shatila refugee camp in this country. The Ta\u0457f (\u0022tah-EEF\u0022) Agreement ended one period of civil war in this country, where sectarian tensions were inflamed by the 2005 assassination of former Prime Minister (*) Rafic Hariri. Iran supported the development of a political party whose name means \u0022party of God \u0027\u0027 in this country after this country\u0027s 1982 invasion by Israel. This country\u0027s constitution requires the Prime Minister to be Sunni and the President to be a Maronite Christian. For 10 points, name this Middle Eastern country whose Bekaa Valley was a stronghold for Hezbollah.",
+            "answer_sanitized": "Lebanon [accept Lebanese Republic]"
+        },
+        {
+            "number": 7,
+            "question": "\u003Cb\u003EThe Savannah is a large open space on this island where the Queen\u0027s Park Oval cricket ground was once located. The town of La Brea on this island is home to the world\u0027s largest asphalt deposit, the Pitch Lake. Streets in the St. James district of this island\u0027s capital are named for Calcutta and Bombay as a reference to this island\u0027s large (*)\u003C/b\u003E Indian population. V. S. Naipaul and Nicki Minaj were both born on this island. This island is separated from Venezuela by the Gulf of Paria and has its capital at Port of Spain. For 10 points, name this island which forms a Caribbean island nation with Tobago.",
+            "answer": "\u003Creq\u003ETrinidad\u003C/req\u003E [prompt on Trinidad and Tobago by saying \u0022which island?\u0022]",
+            "question_sanitized": "The Savannah is a large open space on this island where the Queen\u0027s Park Oval cricket ground was once located. The town of La Brea on this island is home to the world\u0027s largest asphalt deposit, the Pitch Lake. Streets in the St. James district of this island\u0027s capital are named for Calcutta and Bombay as a reference to this island\u0027s large (*) Indian population. V. S. Naipaul and Nicki Minaj were both born on this island. This island is separated from Venezuela by the Gulf of Paria and has its capital at Port of Spain. For 10 points, name this island which forms a Caribbean island nation with Tobago.",
+            "answer_sanitized": "Trinidad [prompt on Trinidad and Tobago by saying \u0022which island?\u0022]"
+        },
+        {
+            "number": 8,
+            "question": "\u003Cb\u003EWhile living in this country, a pseudonymous economist wrote a \u003Cem\u003ECritique of Economic Reason\u003C/em\u003E and argued for \u003Cem\u003EEcology as Politics\u003C/em\u003E. It\u0027s not Italy, but degrowth economics was developed by scholars from this country. An economist from this country introduced the parable of the broken window. This is the home country of the alphabetically latter co-author of (*)\u003C/b\u003E \u003Cem\u003EPoor Economics\u003C/em\u003E. This is the home country of the economist who shared the 2019 Nobel Prize in Economics with her collaborator Abhijit Banerjee. An economist from this country wrote \u003Cem\u003ECapital in the Twenty-First Century\u003C/em\u003E. For 10 points, name this home country of Esther Duflo, Thomas Piketty and Fr\u00E9d\u00E9ric Bastiat.",
+            "answer": "\u003Creq\u003EFrance\u003C/req\u003E [or the \u003Creq\u003EFrench\u003C/req\u003E Republic] (The pseudonymous economist is Andre Gorz.)",
+            "question_sanitized": "While living in this country, a pseudonymous economist wrote a Critique of Economic Reason and argued for Ecology as Politics. It\u0027s not Italy, but degrowth economics was developed by scholars from this country. An economist from this country introduced the parable of the broken window. This is the home country of the alphabetically latter co-author of (*) Poor Economics. This is the home country of the economist who shared the 2019 Nobel Prize in Economics with her collaborator Abhijit Banerjee. An economist from this country wrote Capital in the Twenty-First Century. For 10 points, name this home country of Esther Duflo, Thomas Piketty and Fr\u00E9d\u00E9ric Bastiat.",
+            "answer_sanitized": "France [or the French Republic] (The pseudonymous economist is Andre Gorz.)"
+        },
+        {
+            "number": 9,
+            "question": "\u003Cb\u003EThis is the home country of the first climber to win all bouldering World Cup events in a single season. This country and Norway are home to the two largest ski jumping hills in the world. A former ski jumper from this country wore the Yellow Jersey at the Tour de France in 2020 before losing to a 22 year old cyclist also from this country. In 2014, Atletico Madrid bought this country\u0027s starting goalkeeper from Benfica. By the end of her career, sprinter (*) \u003C/b\u003EMerlene Ottey represented this country instead of Jamaica. A 6\u00278\u0022 All Star guard from this country was the EuroLeague MVP in 2018, after which he was selected third in the NBA draft by the Dallas Mavericks. For 10 points, name this home country of Tadej Poga\u010Dar, Jan Oblak, and Luka Doncic.",
+            "answer": "Republic of \u003Creq\u003ESlovenia\u003C/req\u003E [or \u003Creq\u003ESlovenija\u003C/req\u003E]",
+            "question_sanitized": "This is the home country of the first climber to win all bouldering World Cup events in a single season. This country and Norway are home to the two largest ski jumping hills in the world. A former ski jumper from this country wore the Yellow Jersey at the Tour de France in 2020 before losing to a 22 year old cyclist also from this country. In 2014, Atletico Madrid bought this country\u0027s starting goalkeeper from Benfica. By the end of her career, sprinter (*) Merlene Ottey represented this country instead of Jamaica. A 6\u00278\u0022 All Star guard from this country was the EuroLeague MVP in 2018, after which he was selected third in the NBA draft by the Dallas Mavericks. For 10 points, name this home country of Tadej Poga\u010Dar, Jan Oblak, and Luka Doncic.",
+            "answer_sanitized": "Republic of Slovenia [or Slovenija]"
+        },
+        {
+            "number": 10,
+            "question": "\u003Cb\u003EThe popularity of a novel by this author in South Korea has led to regular allusions to the god Abraxas in the music of BTS.  In a novel by this author, the title character dreams that he embraces his best-friend, who turns into a woman and breastfeeds him. This author used the pseudonym Emil Sinclair to write a novel in which the central character is coached by (*) \u003C/b\u003EDemian to deal with his bully. This author framed another novel around a text called \u003Cem\u003EFor Madmen Only\u003C/em\u003E by Harry Haller.  At the end of a novel by this author, the title character is reunited with Kamala, who has converted to Buddhism. For 10 points, name this German-Swiss author of \u003Cem\u003ESteppenwolf\u003C/em\u003E and \u003Cem\u003ESiddhartha\u003C/em\u003E.",
+            "answer": "Hermann (Karl) \u003Creq\u003EHesse\u003C/req\u003E",
+            "question_sanitized": "The popularity of a novel by this author in South Korea has led to regular allusions to the god Abraxas in the music of BTS.  In a novel by this author, the title character dreams that he embraces his best-friend, who turns into a woman and breastfeeds him. This author used the pseudonym Emil Sinclair to write a novel in which the central character is coached by (*) Demian to deal with his bully. This author framed another novel around a text called For Madmen Only by Harry Haller.  At the end of a novel by this author, the title character is reunited with Kamala, who has converted to Buddhism. For 10 points, name this German-Swiss author of Steppenwolf and Siddhartha.",
+            "answer_sanitized": "Hermann (Karl) Hesse"
+        },
+        {
+            "number": 11,
+            "question": "\u003Cb\u003EA book titled for a year in this decade coined the term \u0022homogenocene\u0022 (\u0022huh-MAH-jen-oh-seen\u0022) to describe the homogenizing effects of globalization. That book titled for a year in this decade was written by a science journalist and is the sequel to a book that describes the Caddo and Norte Chico civilizations among others. Charles Mann wrote a pair of books titled for years in this decade, during which the Treaty of\u003C/b\u003E (*) Tordesillas was signed. Jews were expelled from Spain in this decade under the Alhambra Decree, signed by Ferdinand and Isabella. An explorer landed on San Salvador while aboard the \u003Cem\u003ESanta Maria\u003C/em\u003E during this decade. For 10 points, name the decade during which Christopher Columbus landed in North America.",
+            "answer": "\u003Creq\u003E1490s\u003C/req\u003E [accept specific years in the decade such as \u003Creq\u003E1492\u003C/req\u003E; prompt on the \u201890s]",
+            "question_sanitized": "A book titled for a year in this decade coined the term \u0022homogenocene\u0022 (\u0022huh-MAH-jen-oh-seen\u0022) to describe the homogenizing effects of globalization. That book titled for a year in this decade was written by a science journalist and is the sequel to a book that describes the Caddo and Norte Chico civilizations among others. Charles Mann wrote a pair of books titled for years in this decade, during which the Treaty of (*) Tordesillas was signed. Jews were expelled from Spain in this decade under the Alhambra Decree, signed by Ferdinand and Isabella. An explorer landed on San Salvador while aboard the Santa Maria during this decade. For 10 points, name the decade during which Christopher Columbus landed in North America.",
+            "answer_sanitized": "1490s [accept specific years in the decade such as 1492; prompt on the \u201890s]"
+        },
+        {
+            "number": 12,
+            "question": "\u003Cb\u003EThe very low permittivity of this material makes it the natural choice for insulating coax (\u0022co-ax\u0022) cables in circulating airspaces. Pet birds are vulnerable to fumes emitted from heating this non-metal material. The interior of gaseous diffusion devices used in the Manhattan Project were made from this material because of its tolerance of uranium hexafluoride. This polymer is very susceptible to creep because it largely cannot form cross-links and is almost entirely devoid of van der Waals forces. An attempt to synthesize refrigerants accidentally produced this (*)\u003C/b\u003E perfluorocarbon, which has an incredibly low coefficient of friction. For 10 points, name this very slippery material which covers non-stick cookware.",
+            "answer": "\u003Creq\u003ETeflon\u003C/req\u003E [accept \u003Creq\u003Epolytetrafluoroethylene\u003C/req\u003E or \u003Creq\u003EPTFE\u003C/req\u003E; prompt on polymer fume fever, perfluoroalkoxy alkane, fluorinated ethylene propylene, PFA, or FEP]",
+            "question_sanitized": "The very low permittivity of this material makes it the natural choice for insulating coax (\u0022co-ax\u0022) cables in circulating airspaces. Pet birds are vulnerable to fumes emitted from heating this non-metal material. The interior of gaseous diffusion devices used in the Manhattan Project were made from this material because of its tolerance of uranium hexafluoride. This polymer is very susceptible to creep because it largely cannot form cross-links and is almost entirely devoid of van der Waals forces. An attempt to synthesize refrigerants accidentally produced this (*) perfluorocarbon, which has an incredibly low coefficient of friction. For 10 points, name this very slippery material which covers non-stick cookware.",
+            "answer_sanitized": "Teflon [accept polytetrafluoroethylene or PTFE; prompt on polymer fume fever, perfluoroalkoxy alkane, fluorinated ethylene propylene, PFA, or FEP]"
+        },
+        {
+            "number": 13,
+            "question": "\u003Cb\u003EIn one work by this author, Adam Salton buys a series of mongooses to deal with the copious black snakes he finds on his great uncle\u0027s estate. This author wrote a \u0022love letter\u0022 to Walt Whitman but kept it on his desk for four years before sending it; he eventually met Whitman in person while working as an agent for the actor Henry (*) \u003C/b\u003EIrving. This man wrote \u003Cem\u003EThe Lair of the White Worm\u003C/em\u003E. Quincey Morris dies while using knives to kill the central character of his most famous book, prompting Mina and Jonathan Harker to name their son in his memory. For 10 points, name this Irish author of \u003Cem\u003EDracula\u003C/em\u003E.",
+            "answer": "Bram \u003Creq\u003EStoker\u003C/req\u003E [or Abraham \u003Creq\u003EStoker\u003C/req\u003E]",
+            "question_sanitized": "In one work by this author, Adam Salton buys a series of mongooses to deal with the copious black snakes he finds on his great uncle\u0027s estate. This author wrote a \u0022love letter\u0022 to Walt Whitman but kept it on his desk for four years before sending it; he eventually met Whitman in person while working as an agent for the actor Henry (*) Irving. This man wrote The Lair of the White Worm. Quincey Morris dies while using knives to kill the central character of his most famous book, prompting Mina and Jonathan Harker to name their son in his memory. For 10 points, name this Irish author of Dracula.",
+            "answer_sanitized": "Bram Stoker [or Abraham Stoker]"
+        },
+        {
+            "number": 14,
+            "question": "\u003Cb\u003EIn a book attacking Western ideals of scientific progress, Paul Feyerabend (\u0022FYE-ur-AH-bint\u0022) said \u003Cem\u003EFarewell to\u003C/em\u003E this concept. In a book about the \u003Cem\u003EAspects of\u003C/em\u003E this concept, Paul Grice examined whether the same principles underlie its alethic\u003C/b\u003E \u003Cb\u003E(\u0022uh-LEE-thik\u0022) and standard forms. This function is a necessary result of successful human interaction according to Habermas\u0027s (*) \u003C/b\u003Ecommunicative theory. David Hume said this faculty \u0022is, and ought only to be the slave of the passions.\u0022 Both the \u003Cem\u003EPractical\u003C/em\u003E and \u003Cem\u003EPure \u003C/em\u003Eforms of this cognitive process were the subject of\u003Cem\u003E Critiques\u003C/em\u003E by Immanuel Kant. For 10 points, name this logical process that has inductive and deductive varieties.",
+            "answer": "logical \u003Creq\u003Ereason\u003C/req\u003Eing [prompt on logic or rationality; anti-prompt on deduction or induction; do not accept or prompt on \u0022thinking\u0022 or \u0022cognition\u0022]",
+            "question_sanitized": "In a book attacking Western ideals of scientific progress, Paul Feyerabend (\u0022FYE-ur-AH-bint\u0022) said Farewell to this concept. In a book about the Aspects of this concept, Paul Grice examined whether the same principles underlie its alethic (\u0022uh-LEE-thik\u0022) and standard forms. This function is a necessary result of successful human interaction according to Habermas\u0027s (*) communicative theory. David Hume said this faculty \u0022is, and ought only to be the slave of the passions.\u0022 Both the Practical and Pure forms of this cognitive process were the subject of Critiques by Immanuel Kant. For 10 points, name this logical process that has inductive and deductive varieties.",
+            "answer_sanitized": "logical reasoning [prompt on logic or rationality; anti-prompt on deduction or induction; do not accept or prompt on \u0022thinking\u0022 or \u0022cognition\u0022]"
+        },
+        {
+            "number": 15,
+            "question": "\u003Cb\u003EThis actress played Clair Dowar, who runs an inquiry into the 00 program in the film \u003Cem\u003ESkyfall\u003C/em\u003E. This actress starred alongside her husband as Queen Elizabeth I in 2015\u0027s \u003Cem\u003EBill.\u003C/em\u003E This actress voiced Lord Asrael\u0027s daemon Stelmaria in the recent TV adaptation of \u003Cem\u003EHis Dark Materials\u003C/em\u003E. This actress twice played (*)\u003C/b\u003E Cherie Blair alongside Michael Sheen. A character played by this actress has a romance in the forest with Aberama Gray who is played by Aiden Gillen. This actress was described as \u0022a beautiful and mighty woman\u0022 in a tribute by her husband Damian Lewis. For 10 points, name this British actress who played Aunt Polly in \u003Cem\u003EPeaky Blinders \u003C/em\u003E and Narcissa Malfoy in the \u003Cem\u003EHarry Potter Series\u003C/em\u003E and passed away in 2021.",
+            "answer": "Helen (Elizabeth) \u003Creq\u003EMcCrory\u003C/req\u003E",
+            "question_sanitized": "This actress played Clair Dowar, who runs an inquiry into the 00 program in the film Skyfall. This actress starred alongside her husband as Queen Elizabeth I in 2015\u0027s Bill. This actress voiced Lord Asrael\u0027s daemon Stelmaria in the recent TV adaptation of His Dark Materials. This actress twice played (*) Cherie Blair alongside Michael Sheen. A character played by this actress has a romance in the forest with Aberama Gray who is played by Aiden Gillen. This actress was described as \u0022a beautiful and mighty woman\u0022 in a tribute by her husband Damian Lewis. For 10 points, name this British actress who played Aunt Polly in Peaky Blinders  and Narcissa Malfoy in the Harry Potter Series and passed away in 2021.",
+            "answer_sanitized": "Helen (Elizabeth) McCrory"
+        },
+        {
+            "number": 16,
+            "question": "\u003Cb\u003EThe manufacture of these circuit elements is the destination of most of the minerals extracted from coltan mining. Drawing a Gaussian surface in a system with one of these elements is a simple way to justify the displacement current of Amp\u00E8re\u0027s law. These elements decrease the reactance of a circuit because their voltage lags 90 degrees behind the current. Because the characteristic unit of these fundamental circuit elements is defined to be proportional to the Coulomb, examples with more than a few (*)\u003C/b\u003E microfarads are very dangerous. Examples of these elements in parallel have additive constants because they have a larger effective area. The Leyden jar was an early example of, for 10 points, what circuit element, which stores energy in an electric field and can have two parallel plates?",
+            "answer": "\u003Creq\u003Ecapacitor\u003C/req\u003Es [accept tantalum electrolytic \u003Creq\u003Ecapacitor\u003C/req\u003Es or parallel-plate \u003Creq\u003Ecapacitor\u003C/req\u003Es; prompt on capacitance]",
+            "question_sanitized": "The manufacture of these circuit elements is the destination of most of the minerals extracted from coltan mining. Drawing a Gaussian surface in a system with one of these elements is a simple way to justify the displacement current of Amp\u00E8re\u0027s law. These elements decrease the reactance of a circuit because their voltage lags 90 degrees behind the current. Because the characteristic unit of these fundamental circuit elements is defined to be proportional to the Coulomb, examples with more than a few (*) microfarads are very dangerous. Examples of these elements in parallel have additive constants because they have a larger effective area. The Leyden jar was an early example of, for 10 points, what circuit element, which stores energy in an electric field and can have two parallel plates?",
+            "answer_sanitized": "capacitors [accept tantalum electrolytic capacitors or parallel-plate capacitors; prompt on capacitance]"
+        },
+        {
+            "number": 17,
+            "question": "\u003Cb\u003EWhile living at the Villa Senar on Lake Lucerne, this composer completed a concertante work that Fokine used for a ballet about a guitar player. An incredibly difficult section for the bass voices appears in the \u003Cem\u003ENunc Dimitis\u003C/em\u003E (\u0022noonk dih-MITT-iss\u0022) section of this composer\u0027s \u003Cem\u003EAll-Night Vigil\u003C/em\u003E. After Glazunov\u0027s (*) \u003C/b\u003Edrunken conducting ruined the premiere of this man\u0027s first Symphony, he suffered an extended depression. This composer emerged from his depression to perform in the 1901 debut of his C minor second Piano Concerto. 24 variations comprise this composer\u0027s \u003Cem\u003ERhapsody on a Theme of Paganini\u003C/em\u003E. For 10 points, name this chief Russian piano virtuoso of the first half of the 20th century.",
+            "answer": "Sergei (Vasilyevich) \u003Creq\u003ERachmaninoff\u003C/req\u003E",
+            "question_sanitized": "While living at the Villa Senar on Lake Lucerne, this composer completed a concertante work that Fokine used for a ballet about a guitar player. An incredibly difficult section for the bass voices appears in the Nunc Dimitis (\u0022noonk dih-MITT-iss\u0022) section of this composer\u0027s All-Night Vigil. After Glazunov\u0027s (*) drunken conducting ruined the premiere of this man\u0027s first Symphony, he suffered an extended depression. This composer emerged from his depression to perform in the 1901 debut of his C minor second Piano Concerto. 24 variations comprise this composer\u0027s Rhapsody on a Theme of Paganini. For 10 points, name this chief Russian piano virtuoso of the first half of the 20th century.",
+            "answer_sanitized": "Sergei (Vasilyevich) Rachmaninoff"
+        },
+        {
+            "number": 18,
+            "question": "\u003Cb\u003EThis instrument carries the melody in the rap song \u0022Imaginary Places\u0022 by Busdriver. The Romanian musician Gheorghe Zamfir was a master of one form of this instrument. Bud Shank plays a solo on this instrument on the song \u0022California Dreamin\u0027\u0022. This instrument plays the opening notes of the song \u0022Going Up the (*)\u003C/b\u003E Country\u0022 by Canned Heat. Sasha is the name of one of these instruments owned by Lizzo. Ian Anderson played this instrument for the band Jethro Tull. Both James Galway and Jean-Pierre Rampal have, for 10 points, been nicknamed \u0022the man with\u0022 a golden version of what woodwind instrument?",
+            "answer": "transverse \u003Creq\u003Eflute\u003C/req\u003E [accept golden \u003Creq\u003Eflute\u003C/req\u003E or pan \u003Creq\u003Eflute\u003C/req\u003E or \u003Creq\u003Epiccolo\u003C/req\u003E]",
+            "question_sanitized": "This instrument carries the melody in the rap song \u0022Imaginary Places\u0022 by Busdriver. The Romanian musician Gheorghe Zamfir was a master of one form of this instrument. Bud Shank plays a solo on this instrument on the song \u0022California Dreamin\u0027\u0022. This instrument plays the opening notes of the song \u0022Going Up the (*) Country\u0022 by Canned Heat. Sasha is the name of one of these instruments owned by Lizzo. Ian Anderson played this instrument for the band Jethro Tull. Both James Galway and Jean-Pierre Rampal have, for 10 points, been nicknamed \u0022the man with\u0022 a golden version of what woodwind instrument?",
+            "answer_sanitized": "transverse flute [accept golden flute or pan flute or piccolo]"
+        },
+        {
+            "number": 19,
+            "question": "\u003Cb\u003EMiguel Fernandez de la Cruz pretended to be Filotea (\u0022FEE-loh-tay-uh\u0022), a woman in this profession, and was rebuked by another woman in this profession in an early feminist response. That woman in this profession wrote the long poem \u0022First Dream,\u0022 and her work was re-popularized after Octavio Paz wrote a biography of her. A character in this profession tells an anti-Semitic story of a young boy who is\u003C/b\u003E (*) murdered by Jews but continues singing a hymn even after his death. A woman with this profession treacherously kills Robin Hood by letting too much of his blood. For 10 points, name this profession of Sor Juana, who lived in a convent.",
+            "answer": "\u003Creq\u003Enun\u003C/req\u003Es [accept \u003Creq\u003Eprioress\u003C/req\u003Ees or \u003Creq\u003Eabbess\u003C/req\u003E; prompt on religious sisters or female monastics; prompt on pilgrim by saying \u0022What profession are they named for?\u0022]",
+            "question_sanitized": "Miguel Fernandez de la Cruz pretended to be Filotea (\u0022FEE-loh-tay-uh\u0022), a woman in this profession, and was rebuked by another woman in this profession in an early feminist response. That woman in this profession wrote the long poem \u0022First Dream,\u0022 and her work was re-popularized after Octavio Paz wrote a biography of her. A character in this profession tells an anti-Semitic story of a young boy who is (*) murdered by Jews but continues singing a hymn even after his death. A woman with this profession treacherously kills Robin Hood by letting too much of his blood. For 10 points, name this profession of Sor Juana, who lived in a convent.",
+            "answer_sanitized": "nuns [accept prioresses or abbess; prompt on religious sisters or female monastics; prompt on pilgrim by saying \u0022What profession are they named for?\u0022]"
+        },
+        {
+            "number": 20,
+            "question": "\u003Cb\u003EA conflict fought for control of this region is sometimes called the War of the Two Jeannes (\u0022zhahnz\u0022). During a war fought in this region, Robert Bemborough was slain in a large-scale duel called the Combat of the Thirty. During the Hundred Years\u0027 War, the Blois and Montfort families fought for control of this region. The myth of (*) \u003C/b\u003EMerlin is linked with the Paimpont forest in this region. This region shares an etymology with an island across the English Channel. This is the only region on mainland Europe to name one of the Celtic nations. Nantes and Rennes are found in, for 10 points, what peninsula and historic region of France?",
+            "answer": "\u003Creq\u003EBrittany\u003C/req\u003E [accept \u003Creq\u003EBreton\u003C/req\u003E or \u003Creq\u003EBretagne\u003C/req\u003E; accept the War of the \u003Creq\u003EBreton\u003C/req\u003E Succession]",
+            "question_sanitized": "A conflict fought for control of this region is sometimes called the War of the Two Jeannes (\u0022zhahnz\u0022). During a war fought in this region, Robert Bemborough was slain in a large-scale duel called the Combat of the Thirty. During the Hundred Years\u0027 War, the Blois and Montfort families fought for control of this region. The myth of (*) Merlin is linked with the Paimpont forest in this region. This region shares an etymology with an island across the English Channel. This is the only region on mainland Europe to name one of the Celtic nations. Nantes and Rennes are found in, for 10 points, what peninsula and historic region of France?",
+            "answer_sanitized": "Brittany [accept Breton or Bretagne; accept the War of the Breton Succession]"
+        },
+        {
+            "number": 21,
+            "question": "\u003Cb\u003EIn a novel by this author, a character who has been forced to marry the town schoolteacher jumps out of the window when he tries to have sex. That character created by this author does not have sex with her next husband until his legal wife returns from Australia, and her two children are later killed by Little Father Time. The title character marries Sue\u003C/b\u003E (*) Bridehead in that novel by this author. The title character of a novel by this author is arrested at Stonehenge after stabbing her rapist, Alec, and is divorced by her husband Angel Clare. Many of this author\u0027s novels are set in the fictional county of Wessex. For 10 points, name this British author of \u003Cem\u003EJude the Obscure\u003C/em\u003E and \u003Cem\u003ETess of the D\u0027Urbervilles\u003C/em\u003E.",
+            "answer": "Thomas \u003Creq\u003EHardy\u003C/req\u003E",
+            "question_sanitized": "In a novel by this author, a character who has been forced to marry the town schoolteacher jumps out of the window when he tries to have sex. That character created by this author does not have sex with her next husband until his legal wife returns from Australia, and her two children are later killed by Little Father Time. The title character marries Sue (*) Bridehead in that novel by this author. The title character of a novel by this author is arrested at Stonehenge after stabbing her rapist, Alec, and is divorced by her husband Angel Clare. Many of this author\u0027s novels are set in the fictional county of Wessex. For 10 points, name this British author of Jude the Obscure and Tess of the D\u0027Urbervilles.",
+            "answer_sanitized": "Thomas Hardy"
+        }
+    ],
+    "bonuses": [
+        {
+            "leadin": "An art style from this country is characterized by the use of formlines and ovoid shapes. For 10 points each:",
+            "leadin_sanitized": "An art style from this country is characterized by the use of formlines and ovoid shapes. For 10 points each:",
+            "answers": [
+                "\u003Cb\u003E\u003Cu\u003ECanada\u003C/b\u003E\u003C/u\u003E",
+                "\u003Cb\u003E\u003Cu\u003Etotem pole\u003C/b\u003E\u003C/u\u003Es [prompt on \u003Cu\u003Etotem\u003C/u\u003Es or \u003Cu\u003Epole\u003C/u\u003Es]",
+                "Emily \u003Cb\u003E\u003Cu\u003ECarr\u003C/b\u003E\u003C/u\u003E"
+            ],
+            "answers_sanitized": [
+                "Canada",
+                "totem poles [prompt on totems or poles]",
+                "Emily Carr"
+            ],
+            "parts": [
+                "Name this country, the northernmost country whose native people depicted creatures such as \u003Cem\u003Esisiutls\u003C/em\u003E (\u0022sih-see-ooh-tulls\u0022) and thunderbirds in their art. Bill Reid, an artist from this country, championed its native art after discovering his Haida ancestry.",
+                "The best-known type of Northwest Coast art are these large wooden structures, which are carved from cedar trunks and painted, often telling a story in their design.",
+                "This Canadian artist drew inspiration from Fauvism and Northwest Coast art, including totem poles, in her art depicting the indigenous people of the British Columbian rainforest, such as in the painting \u003Cem\u003EChurch at Yuquot Village\u003C/em\u003E."
+            ],
+            "parts_sanitized": [
+                "Name this country, the northernmost country whose native people depicted creatures such as sisiutls (\u0022sih-see-ooh-tulls\u0022) and thunderbirds in their art. Bill Reid, an artist from this country, championed its native art after discovering his Haida ancestry.",
+                "The best-known type of Northwest Coast art are these large wooden structures, which are carved from cedar trunks and painted, often telling a story in their design.",
+                "This Canadian artist drew inspiration from Fauvism and Northwest Coast art, including totem poles, in her art depicting the indigenous people of the British Columbian rainforest, such as in the painting Church at Yuquot Village."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "m",
+                "e",
+                "h"
+            ]
+        },
+        {
+            "leadin": "For 10 points each, answer the following about amendments to Pakistan\u0027s constitution:",
+            "leadin_sanitized": "For 10 points each, answer the following about amendments to Pakistan\u0027s constitution:",
+            "answers": [
+                "People\u0027s Republic of \u003Cb\u003E\u003Cu\u003EBangladesh\u003C/b\u003E\u003C/u\u003E",
+                "\u003Cb\u003E\u003Cu\u003EAhmadi\u003C/b\u003E\u003C/u\u003Es [accept \u003Cb\u003E\u003Cu\u003EAhmadiyya\u003C/b\u003E\u003C/u\u003E]",
+                "\u003Cb\u003E\u003Cu\u003EBhutto\u003C/b\u003E\u003C/u\u003E family [accept Zulfikar Ali \u003Cb\u003E\u003Cu\u003EBhutto\u003C/b\u003E\u003C/u\u003E or Benazir \u003Cb\u003E\u003Cu\u003EBhutto\u003C/b\u003E\u003C/u\u003E]"
+            ],
+            "answers_sanitized": [
+                "People\u0027s Republic of Bangladesh",
+                "Ahmadis [accept Ahmadiyya]",
+                "Bhutto family [accept Zulfikar Ali Bhutto or Benazir Bhutto]"
+            ],
+            "parts": [
+                "The first amendment to Pakistan\u0027s constitution took place in 1974 and removed references to East Pakistan after it became this independent country.",
+                "The second amendment to Pakistan\u0027s constitution defined these people, known officially in Pakistan derisively as Qadianis (\u003Cb\u003E\u0022\u003C/b\u003Ecah-dee-ah-nees\u003Cb\u003E\u0022\u003C/b\u003E). The followers of this messianic movement founded in 19th century India consider themselves Muslims.",
+                "The first and second amendments to Pakistan\u0027s constitution were passed under Zulfikar Ali, a member of this prominent Pakistani political dynasty which runs the Pakistan People\u0027s Party."
+            ],
+            "parts_sanitized": [
+                "The first amendment to Pakistan\u0027s constitution took place in 1974 and removed references to East Pakistan after it became this independent country.",
+                "The second amendment to Pakistan\u0027s constitution defined these people, known officially in Pakistan derisively as Qadianis (\u0022cah-dee-ah-nees\u0022). The followers of this messianic movement founded in 19th century India consider themselves Muslims.",
+                "The first and second amendments to Pakistan\u0027s constitution were passed under Zulfikar Ali, a member of this prominent Pakistani political dynasty which runs the Pakistan People\u0027s Party."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "e",
+                "h",
+                "m"
+            ]
+        },
+        {
+            "leadin": "This work coined the phrase \u0022Tell me what you eat, and I will tell you what you are.\u0022 For 10 points each:",
+            "leadin_sanitized": "This work coined the phrase \u0022Tell me what you eat, and I will tell you what you are.\u0022 For 10 points each:",
+            "answers": [
+                "\u003Cem\u003EThe \u003Cb\u003E\u003Cu\u003EPhysiology of Taste\u003C/b\u003E\u003C/u\u003E\u003C/em\u003E [or \u003Cb\u003E\u003Cu\u003E\u003Cem\u003EPhysiologie du Go\u00FBt\u003C/b\u003E\u003C/u\u003E\u003C/em\u003E]",
+                "Honor\u00E9 de \u003Cb\u003E\u003Cu\u003EBalzac\u003C/b\u003E\u003C/u\u003E [or Honor\u00E9 \u003Cb\u003E\u003Cu\u003EBalzac\u003C/b\u003E\u003C/u\u003E]",
+                "St. \u003Cb\u003E\u003Cu\u003EPetersburg\u003C/b\u003E\u003C/u\u003E [or Sankt-\u003Cb\u003E\u003Cu\u003EPeterburg\u003C/b\u003E\u003C/u\u003E; prompt on \u003Cu\u003EPetrograd\u003C/u\u003E or \u003Cu\u003ELeningrad\u003C/u\u003E]"
+            ],
+            "answers_sanitized": [
+                "The Physiology of Taste [or Physiologie du Go\u00FBt]",
+                "Honor\u00E9 de Balzac [or Honor\u00E9 Balzac]",
+                "St. Petersburg [or Sankt-Peterburg; prompt on Petrograd or Leningrad]"
+            ],
+            "parts": [
+                "Name this book of aphorisms and short essays on gastronomy, the master-work of Jean-Anthelm Brillat-Savarin.",
+                "This French author wrote the \u003Cem\u003EPhysiology of Marriage\u003C/em\u003E but didn\u0027t marry until shortly before his death. His bride was the Polish woman Ewelina Hanska, who was a fan of this author\u2019s novel \u003Cem\u003ELe P\u00E8re Goriot\u003C/em\u003E.",
+                "Early works of Dostoevsky were published by Nikolai Nekrasov in a journal titled \u003Cem\u003EThe Physiology of \u003C/em\u003Ethis city. \u003Cem\u003ECrime and Punishment\u003C/em\u003E is set in this city on the western coast of Russia."
+            ],
+            "parts_sanitized": [
+                "Name this book of aphorisms and short essays on gastronomy, the master-work of Jean-Anthelm Brillat-Savarin.",
+                "This French author wrote the Physiology of Marriage but didn\u0027t marry until shortly before his death. His bride was the Polish woman Ewelina Hanska, who was a fan of this author\u2019s novel Le P\u00E8re Goriot.",
+                "Early works of Dostoevsky were published by Nikolai Nekrasov in a journal titled The Physiology of this city. Crime and Punishment is set in this city on the western coast of Russia."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "h",
+                "e",
+                "m"
+            ]
+        },
+        {
+            "leadin": "Edwin Hubble developed his namesake law after observing Andromeda with the Hooker Telescope in this state. For 10 points each:",
+            "leadin_sanitized": "Edwin Hubble developed his namesake law after observing Andromeda with the Hooker Telescope in this state. For 10 points each:",
+            "answers": [
+                "\u003Cb\u003E\u003Cu\u003ECalifornia\u003C/b\u003E\u003C/u\u003E",
+                "\u003Cb\u003E\u003Cu\u003EHawai\u02BBi\u003C/b\u003E\u003C/u\u003E",
+                "\u003Cb\u003E\u003Cu\u003EArizona\u003C/b\u003E\u003C/u\u003E (Flagstaff, Arizona is the \u0022Dark Sky City\u0022)"
+            ],
+            "answers_sanitized": [
+                "California",
+                "Hawai\u02BBi",
+                "Arizona (Flagstaff, Arizona is the \u0022Dark Sky City\u0022)"
+            ],
+            "parts": [
+                "Name this state. The incredibly steady air above this state\u0027s city of Pasadena is perfect for Mount Wilson Observatory and Griffith Observatory.",
+                "The Keck Observatory in this state has astronomical seeing rivaled only by the Canary Islands. This state is the proposed location for the Thirty Meter Telescope, which has been delayed by protests from native groups.",
+                "After Gerard Kuiper lost the Keck contract, he retired to a university in this state. This state is home to the first International Dark Sky Place, which is near the Lowell Observatory where Clyde Tombaugh discovered Pluto and \u0022Burnham\u0027s Celestial Handbook\u0022 was written."
+            ],
+            "parts_sanitized": [
+                "Name this state. The incredibly steady air above this state\u0027s city of Pasadena is perfect for Mount Wilson Observatory and Griffith Observatory.",
+                "The Keck Observatory in this state has astronomical seeing rivaled only by the Canary Islands. This state is the proposed location for the Thirty Meter Telescope, which has been delayed by protests from native groups.",
+                "After Gerard Kuiper lost the Keck contract, he retired to a university in this state. This state is home to the first International Dark Sky Place, which is near the Lowell Observatory where Clyde Tombaugh discovered Pluto and \u0022Burnham\u0027s Celestial Handbook\u0022 was written."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "e",
+                "m",
+                "h"
+            ]
+        },
+        {
+            "leadin": "This is the surname of the player who, along with Beckenbauer and Lahm, is one of only three players named to three FIFA World Cup All Star teams. For 10 points each:",
+            "leadin_sanitized": "This is the surname of the player who, along with Beckenbauer and Lahm, is one of only three players named to three FIFA World Cup All Star teams. For 10 points each:",
+            "answers": [
+                "\u003Cb\u003E\u003Cu\u003ESantos\u003C/b\u003E\u003C/u\u003E [accept \u003Cb\u003E\u003Cu\u003ESantos FC\u003C/b\u003E\u003C/u\u003E]",
+                "\u003Cb\u003E\u003Cu\u003EBotafogo\u003C/b\u003E\u003C/u\u003E de Futebol e Regatas",
+                "\u003Cb\u003E\u003Cu\u003ESweden\u003C/b\u003E\u003C/u\u003E [or \u003Cb\u003E\u003Cu\u003ESverige\u003C/b\u003E\u003C/u\u003E]"
+            ],
+            "answers_sanitized": [
+                "Santos [accept Santos FC]",
+                "Botafogo de Futebol e Regatas",
+                "Sweden [or Sverige]"
+            ],
+            "parts": [
+                "What surname was shared by Brazilian fullbacks of the 50s and 60s with the given names Djalma and N\u00EDlton? This is also the name of the Brazilian club from which Barcelona purchased Neymar.",
+                "What Rio based football club plays at the Est\u00E1dio Nilton Santos? The Lone Star is the symbol of this club, whose legends include Manga and Garrincha.",
+                "When Djalma and N\u00EDlton Santos started in the 1958 FIFA World Cup Final, Brazil defeated this country. This country is home to the oldest World Cup Final scorer, Nils Liedholm, as well as Zlatan Ibrahimovic."
+            ],
+            "parts_sanitized": [
+                "What surname was shared by Brazilian fullbacks of the 50s and 60s with the given names Djalma and N\u00EDlton? This is also the name of the Brazilian club from which Barcelona purchased Neymar.",
+                "What Rio based football club plays at the Est\u00E1dio Nilton Santos? The Lone Star is the symbol of this club, whose legends include Manga and Garrincha.",
+                "When Djalma and N\u00EDlton Santos started in the 1958 FIFA World Cup Final, Brazil defeated this country. This country is home to the oldest World Cup Final scorer, Nils Liedholm, as well as Zlatan Ibrahimovic."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "m",
+                "h",
+                "e"
+            ]
+        },
+        {
+            "leadin": "The gold standard for identifying these structures is apple-green birefringence after staining with Congo red. For 10 points each:",
+            "leadin_sanitized": "The gold standard for identifying these structures is apple-green birefringence after staining with Congo red. For 10 points each:",
+            "answers": [
+                "\u003Cb\u003E\u003Cu\u003Eamyloid\u003C/b\u003E\u003C/u\u003Es [or \u003Cb\u003E\u003Cu\u003Eamyloid\u003C/b\u003E\u003C/u\u003E fibrils; or \u003Cb\u003E\u003Cu\u003Eamyloid\u003C/b\u003E\u003C/u\u003E plaques; accept beta-\u003Cb\u003E\u003Cu\u003Eamyloid\u003C/b\u003E\u003C/u\u003E protein or \u003Cb\u003E\u003Cu\u003Eamyloid\u003C/b\u003E\u003C/u\u003E-beta precursor protein; prompt on \u003Cu\u003EAPP\u003C/u\u003E, \u003Cu\u003Efibril\u003C/u\u003Es, \u003Cu\u003Eplaque\u003C/u\u003Es, or neurofibrillary \u003Cu\u003Etangle\u003C/u\u003Es]",
+                "\u003Cb\u003E\u003Cu\u003Eantibodies\u003C/b\u003E\u003C/u\u003E [or \u003Cb\u003E\u003Cu\u003Eantibody\u003C/b\u003E\u003C/u\u003E; accept humanized monoclonal \u003Cb\u003E\u003Cu\u003Eantibodies\u003C/b\u003E\u003C/u\u003E, \u003Cb\u003E\u003Cu\u003Eimmunoglobulin\u003C/b\u003E\u003C/u\u003Es, do not accept or prompt on \u0022antigen\u0022]",
+                "\u003Cb\u003E\u003Cu\u003EAlzheimer\u0027s\u003C/b\u003E\u003C/u\u003E disease [prompt on \u003Cu\u003EAD\u003C/u\u003E]"
+            ],
+            "answers_sanitized": [
+                "amyloids [or amyloid fibrils; or amyloid plaques; accept beta-amyloid protein or amyloid-beta precursor protein; prompt on APP, fibrils, plaques, or neurofibrillary tangles]",
+                "antibodies [or antibody; accept humanized monoclonal antibodies, immunoglobulins, do not accept or prompt on \u0022antigen\u0022]",
+                "Alzheimer\u0027s disease [prompt on AD]"
+            ],
+            "parts": [
+                "Name these structures, which are often found in a cell\u2019s IPOD. A precursor protein named for its role in forming these structures is cleaved by beta- and gamma secretase.",
+                "Amyloid plaque levels are lowered by the controversial new drug aducanumab (\u0022add-you-can-oh-mab\u0022), whose -mab suffix indicates it is a monoclonal one of these molecules. Other drugs based on these molecules can treat rheumatoid arthritis.",
+                "Formation of amyloid plaques is a leading theory for the cause of this neurodegenerative disease responsible for the majority of dementia cases."
+            ],
+            "parts_sanitized": [
+                "Name these structures, which are often found in a cell\u2019s IPOD. A precursor protein named for its role in forming these structures is cleaved by beta- and gamma secretase.",
+                "Amyloid plaque levels are lowered by the controversial new drug aducanumab (\u0022add-you-can-oh-mab\u0022), whose -mab suffix indicates it is a monoclonal one of these molecules. Other drugs based on these molecules can treat rheumatoid arthritis.",
+                "Formation of amyloid plaques is a leading theory for the cause of this neurodegenerative disease responsible for the majority of dementia cases."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "h",
+                "m",
+                "e"
+            ]
+        },
+        {
+            "leadin": "The animators who created \u003Cem\u003EOK K.O.! Let\u0027s Be Heroes\u003C/em\u003E and \u003Cem\u003ESteven Universe\u003C/em\u003E came to prominence working on this show. For 10 points each:",
+            "leadin_sanitized": "The animators who created OK K.O.! Let\u0027s Be Heroes and Steven Universe came to prominence working on this show. For 10 points each:",
+            "answers": [
+                "\u003Cb\u003E\u003Cu\u003E\u003Cem\u003EAdventure Time\u003C/b\u003E\u003C/u\u003E\u003C/em\u003E",
+                "Duncan \u003Cb\u003E\u003Cu\u003ETrussell\u003C/b\u003E\u003C/u\u003E",
+                "\u003Cb\u003E\u003Cu\u003ENetflix\u003C/b\u003E\u003C/u\u003E"
+            ],
+            "answers_sanitized": [
+                "Adventure Time",
+                "Duncan Trussell",
+                "Netflix"
+            ],
+            "parts": [
+                "Identify this cartoon created by Pendleton Ward. In this show, Jake the Dog\u0027s friend, Finn the Human, must often deal with the overbearing affections of Princess Bubblegum.",
+                "With Pendleton Ward, this comedian created the cartoon \u003Cem\u003EThe Midnight Gospel\u003C/em\u003E. A regular guest on \u003Cem\u003EThe Joe Rogan Experience\u003C/em\u003E, this man hosts his namesake spirituality-focused \u003Cem\u003EFamily Hour\u003C/em\u003E podcast.",
+                "Ward and Trussell created \u003Cem\u003EThe Midnight Gospel\u003C/em\u003E for the animation wing of what streaming service?\u003Cem\u003E Kid Cosmic\u003C/em\u003E and \u003Cem\u003EAggretsuko\u003C/em\u003E are other animations shown on this service, whose first original series was \u003Cem\u003EHouse of Cards\u003C/em\u003E."
+            ],
+            "parts_sanitized": [
+                "Identify this cartoon created by Pendleton Ward. In this show, Jake the Dog\u0027s friend, Finn the Human, must often deal with the overbearing affections of Princess Bubblegum.",
+                "With Pendleton Ward, this comedian created the cartoon The Midnight Gospel. A regular guest on The Joe Rogan Experience, this man hosts his namesake spirituality-focused Family Hour podcast.",
+                "Ward and Trussell created The Midnight Gospel for the animation wing of what streaming service? Kid Cosmic and Aggretsuko are other animations shown on this service, whose first original series was House of Cards."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "m",
+                "h",
+                "e"
+            ]
+        },
+        {
+            "leadin": "The man was appointed dictator, won the Battle of Mount Algidus and returned to his farm within 15 days. For 10 points each:",
+            "leadin_sanitized": "The man was appointed dictator, won the Battle of Mount Algidus and returned to his farm within 15 days. For 10 points each:",
+            "answers": [
+                "Lucius Quinctius \u003Cb\u003E\u003Cu\u003ECincinnatus\u003C/b\u003E\u003C/u\u003E",
+                "\u003Cb\u003E\u003Cu\u003E\u003Cem\u003EAb Urbe Condita\u003C/b\u003E\u003C/u\u003E Libri\u003C/em\u003E [by Livy, the second clue refers to Machievelli\u2019s \u003Cem\u003EDiscourses on Livy\u003C/em\u003E]",
+                "Edward \u003Cb\u003E\u003Cu\u003ESnowden\u003C/b\u003E\u003C/u\u003E"
+            ],
+            "answers_sanitized": [
+                "Lucius Quinctius Cincinnatus",
+                "Ab Urbe Condita Libri [by Livy, the second clue refers to Machievelli\u2019s Discourses on Livy]",
+                "Edward Snowden"
+            ],
+            "parts": [
+                "Name this statesman of the Roman republic.",
+                "Most of the fantastic details of the life of Cincinnatus are taken from this book. Francesco Guicciardini argued that his friend\u2019s 1531 study of this ancient book was not critical enough of Rome.",
+                "This American whistleblower used the codename Cincinnatus when he first contacted Glenn Greenwald. This man currently has asylum in Russia."
+            ],
+            "parts_sanitized": [
+                "Name this statesman of the Roman republic.",
+                "Most of the fantastic details of the life of Cincinnatus are taken from this book. Francesco Guicciardini argued that his friend\u2019s 1531 study of this ancient book was not critical enough of Rome.",
+                "This American whistleblower used the codename Cincinnatus when he first contacted Glenn Greenwald. This man currently has asylum in Russia."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "m",
+                "h",
+                "e"
+            ]
+        },
+        {
+            "leadin": "This poem compares the \u0022heavy and slow\u0022 passage of time with the movement of a tortoise. For 10 points each:",
+            "leadin_sanitized": "This poem compares the \u0022heavy and slow\u0022 passage of time with the movement of a tortoise. For 10 points each:",
+            "answers": [
+                "\u0022\u003Cb\u003E\u003Cu\u003ETelling the Bees\u003C/b\u003E\u003C/u\u003E\u0022",
+                "Sylvia \u003Cb\u003E\u003Cu\u003EPlath\u003C/b\u003E\u003C/u\u003E",
+                "\u003Cem\u003EThe \u003Cb\u003E\u003Cu\u003EProphet\u003C/b\u003E\u003C/u\u003E\u003C/em\u003E"
+            ],
+            "answers_sanitized": [
+                "\u0022Telling the Bees\u0022",
+                "Sylvia Plath",
+                "The Prophet"
+            ],
+            "parts": [
+                "Identify this poem by John Greenleaf Whittier. This poem about the death of \u0022Mistress Mary\u0022 is titled for a European tradition of informing insects of important events.",
+                "This poet included a sequence of \u0022Bee poems\u0022 in the collection \u003Cem\u003EAriel\u003C/em\u003E. This poet wanted the collection to conclude with the poems, but her husband, Ted Hughes, moved them to the middle.",
+                "In a section of this book, the people of Orphalese are told to \u0022be in your pleasures like the flowers and the bees.\u0022 Khalil Gibran is best known for this collection of 26 inspirational prose poems."
+            ],
+            "parts_sanitized": [
+                "Identify this poem by John Greenleaf Whittier. This poem about the death of \u0022Mistress Mary\u0022 is titled for a European tradition of informing insects of important events.",
+                "This poet included a sequence of \u0022Bee poems\u0022 in the collection Ariel. This poet wanted the collection to conclude with the poems, but her husband, Ted Hughes, moved them to the middle.",
+                "In a section of this book, the people of Orphalese are told to \u0022be in your pleasures like the flowers and the bees.\u0022 Khalil Gibran is best known for this collection of 26 inspirational prose poems."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "h",
+                "e",
+                "m"
+            ]
+        },
+        {
+            "leadin": "During the festival of Pongal, the largest women-only religious gathering takes place at the Attukal Temple in this state. For 10 points each:",
+            "leadin_sanitized": "During the festival of Pongal, the largest women-only religious gathering takes place at the Attukal Temple in this state. For 10 points each:",
+            "answers": [
+                "\u003Cb\u003E\u003Cu\u003EKerala\u003C/b\u003E\u003C/u\u003E",
+                "\u003Cb\u003E\u003Cu\u003Echastity\u003C/b\u003E\u003C/u\u003E [prompt on \u003Cu\u003Eabstinence\u003C/u\u003E]",
+                "\u003Cb\u003E\u003Cu\u003Euntouchable\u003C/b\u003E\u003C/u\u003Es [accept \u003Cb\u003E\u003Cu\u003Edalit\u003C/b\u003E\u003C/u\u003Es]"
+            ],
+            "answers_sanitized": [
+                "Kerala",
+                "chastity [prompt on abstinence]",
+                "untouchables [accept dalits]"
+            ],
+            "parts": [
+                "Name this Indian state where women fought a prolonged battle over entry into the Sabarimala Temple of the local deity Ayyappan.",
+                "The Attukal Temple is dedicated to Kannaki, a woman praised for showing this virtue. Christian monks often take a vow to follow this principle of not having sexual relations outside marriage.",
+                "Like many Indian temples, Sabarimala has traditionally banned members of this group. B.R. Ambedkar led a mass conversion of these people to Buddhism."
+            ],
+            "parts_sanitized": [
+                "Name this Indian state where women fought a prolonged battle over entry into the Sabarimala Temple of the local deity Ayyappan.",
+                "The Attukal Temple is dedicated to Kannaki, a woman praised for showing this virtue. Christian monks often take a vow to follow this principle of not having sexual relations outside marriage.",
+                "Like many Indian temples, Sabarimala has traditionally banned members of this group. B.R. Ambedkar led a mass conversion of these people to Buddhism."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "h",
+                "e",
+                "m"
+            ]
+        },
+        {
+            "leadin": "1963\u0027s \u003Cem\u003ECharade \u003C/em\u003Ehas been dubbed the \u0022greatest Hitchcock film which Hitchcock never made\u0022. For 10 points each:",
+            "leadin_sanitized": "1963\u0027s Charade has been dubbed the \u0022greatest Hitchcock film which Hitchcock never made\u0022. For 10 points each:",
+            "answers": [
+                "Audrey \u003Cb\u003E\u003Cu\u003EHepburn\u003C/b\u003E\u003C/u\u003E [or Audrey Kathleen \u003Cb\u003E\u003Cu\u003ERuston\u003C/b\u003E\u003C/u\u003E]",
+                "Cary \u003Cb\u003E\u003Cu\u003EGrant\u003C/b\u003E\u003C/u\u003E [or Archibald Alec \u003Cb\u003E\u003Cu\u003ELeach\u003C/b\u003E\u003C/u\u003E]",
+                "James \u003Cb\u003E\u003Cu\u003ECoburn\u003C/b\u003E\u003C/u\u003E [or James Harrison \u003Cb\u003E\u003Cu\u003ECoburn\u003C/b\u003E\u003C/u\u003E III]"
+            ],
+            "answers_sanitized": [
+                "Audrey Hepburn [or Audrey Kathleen Ruston]",
+                "Cary Grant [or Archibald Alec Leach]",
+                "James Coburn [or James Harrison Coburn III]"
+            ],
+            "parts": [
+                "This Belgian born star of\u003Cem\u003E Breakfast at Tiffany\u0027s \u003C/em\u003E plays Regina Lampert, a widow pursued for money her husband stole in \u003Cem\u003ECharade\u003C/em\u003E.",
+                "This actor who starred in Hitchock\u0027s\u003Cem\u003E Suspicion\u003C/em\u003E and \u003Cem\u003ETo Catch a Thief\u003C/em\u003E plays the male lead in \u003Cem\u003ECharade\u003C/em\u003E.",
+                "This rugged actor from \u003Cem\u003EThe Magnificent Seven\u003C/em\u003E plays one of a number of mysterious men in \u003Cem\u003ECharade. \u003C/em\u003EHe won an Oscar 43 years later, for his role in \u003Cem\u003EAffliction\u003C/em\u003E."
+            ],
+            "parts_sanitized": [
+                "This Belgian born star of Breakfast at Tiffany\u0027s  plays Regina Lampert, a widow pursued for money her husband stole in Charade.",
+                "This actor who starred in Hitchock\u0027s Suspicion and To Catch a Thief plays the male lead in Charade.",
+                "This rugged actor from The Magnificent Seven plays one of a number of mysterious men in Charade. He won an Oscar 43 years later, for his role in Affliction."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "e",
+                "m",
+                "h"
+            ]
+        },
+        {
+            "leadin": "A landmark 1987 release by Nonesuch Records included a recording of this composer\u0027s \u003Cem\u003EMusic for a Summer Evening\u003C/em\u003E. For 10 points each:",
+            "leadin_sanitized": "A landmark 1987 release by Nonesuch Records included a recording of this composer\u0027s Music for a Summer Evening. For 10 points each:",
+            "answers": [
+                "George \u003Cb\u003E\u003Cu\u003ECrumb\u003C/b\u003E\u003C/u\u003E [or George Henry Jr. \u003Cb\u003E\u003Cu\u003ECrumb\u003C/b\u003E\u003C/u\u003E]",
+                "B\u00E9la \u003Cb\u003E\u003Cu\u003EBart\u00F3k\u003C/b\u003E\u003C/u\u003E [or B\u00E9la Viktor J\u00E1nos \u003Cb\u003E\u003Cu\u003EBart\u00F3k\u003C/b\u003E\u003C/u\u003E]",
+                "\u003Cb\u003E\u003Cu\u003Ewhale\u003C/b\u003E\u003C/u\u003E [accept \u003Cem\u003EVox \u003Cb\u003E\u003Cu\u003EBalaenae\u003C/u\u003E\u003C/em\u003E]\u003C/b\u003E"
+            ],
+            "answers_sanitized": [
+                "George Crumb [or George Henry Jr. Crumb]",
+                "B\u00E9la Bart\u00F3k [or B\u00E9la Viktor J\u00E1nos Bart\u00F3k]",
+                "whale [accept Vox Balaenae]"
+            ],
+            "parts": [
+                "Identify this contemporary American composer of \u003Cem\u003EBlack Angels\u003C/em\u003E. This composer set texts by Lorca to music in the piece \u003Cem\u003EAncient Voices for Children\u003C/em\u003E.",
+                "A work by this composer inspired a four-volume piece by George Crumb called \u003Cem\u003EMakrokosmos\u003C/em\u003E. This pioneering ethnomusicologist composed the opera \u003Cem\u003EBluebeard\u0027s Castle\u003C/em\u003E.",
+                "In a George Crumb composition named for this animal, the soloist strums a cello using a paper clip. The Biblical story of Jonah and this animal inspired the first major composition by John Tavener."
+            ],
+            "parts_sanitized": [
+                "Identify this contemporary American composer of Black Angels. This composer set texts by Lorca to music in the piece Ancient Voices for Children.",
+                "A work by this composer inspired a four-volume piece by George Crumb called Makrokosmos. This pioneering ethnomusicologist composed the opera Bluebeard\u0027s Castle.",
+                "In a George Crumb composition named for this animal, the soloist strums a cello using a paper clip. The Biblical story of Jonah and this animal inspired the first major composition by John Tavener."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "h",
+                "m",
+                "e"
+            ]
+        },
+        {
+            "leadin": "Chongryon has acted as a representative body for people from this country living in Japan. For 10 points each:",
+            "leadin_sanitized": "Chongryon has acted as a representative body for people from this country living in Japan. For 10 points each:",
+            "answers": [
+                "\u003Cb\u003E\u003Cu\u003ENorth Korea\u003C/b\u003E\u003C/u\u003E [or \u003Cb\u003E\u003Cu\u003EDemocratic People\u0027s Republic of Korea\u003C/b\u003E\u003C/u\u003E; prompt on \u003Cu\u003EDPRK\u003C/u\u003E]",
+                "\u003Cb\u003E\u003Cu\u003Epachinko\u003C/b\u003E\u003C/u\u003E machines",
+                "\u003Cb\u003E\u003Cu\u003Eschool\u003C/b\u003E\u003C/u\u003Es [accept \u003Cb\u003E\u003Cu\u003Ehigh school\u003C/b\u003E\u003C/u\u003Es or \u003Cb\u003E\u003Cu\u003Esecondary school\u003C/b\u003E\u003C/u\u003Es or \u003Cb\u003E\u003Cu\u003Ecram school\u003C/b\u003E\u003C/u\u003Es\u003Cb\u003E]\u003C/b\u003E"
+            ],
+            "answers_sanitized": [
+                "North Korea [or Democratic People\u0027s Republic of Korea; prompt on DPRK]",
+                "pachinko machines",
+                "schools [accept high schools or secondary schools or cram schools]"
+            ],
+            "parts": [
+                "Name this country whose Hwasong missile launch tests have travelled over Japan into the Pacific Ocean.",
+                "Many people associated with the Chongryon run these pinball machines in Japan which are used to gain cash inflows for the North Korean state.",
+                "North Korea and Chongryon sponsor the controversial \u003Cem\u003EChosen gakko \u003C/em\u003Evariety of what institutions in Japan? Many Japanese people pay to enter the \u003Cem\u003Ejuku\u003C/em\u003E variety of these institutions."
+            ],
+            "parts_sanitized": [
+                "Name this country whose Hwasong missile launch tests have travelled over Japan into the Pacific Ocean.",
+                "Many people associated with the Chongryon run these pinball machines in Japan which are used to gain cash inflows for the North Korean state.",
+                "North Korea and Chongryon sponsor the controversial Chosen gakko variety of what institutions in Japan? Many Japanese people pay to enter the juku variety of these institutions."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "e",
+                "m",
+                "h"
+            ]
+        },
+        {
+            "leadin": "This person is theorized to have inspired lines about an \u0022absent child\u0022 who \u0022remembers me of all his gracious parts\u0022 and \u0022stuffs out his vacant garments with his form.\u0022 For 10 points each:",
+            "leadin_sanitized": "This person is theorized to have inspired lines about an \u0022absent child\u0022 who \u0022remembers me of all his gracious parts\u0022 and \u0022stuffs out his vacant garments with his form.\u0022 For 10 points each:",
+            "answers": [
+                "\u003Cb\u003E\u003Cu\u003EHamnet\u003C/b\u003E\u003C/u\u003E Shakespeare [do not accept or prompt on \u0022Hamlet\u0022] (The quoted lines are from \u003Cem\u003EKing John\u003C/em\u003E.)",
+                "\u003Cb\u003E\u003Cu\u003EJudith\u003C/b\u003E\u003C/u\u003E Shakespeare",
+                "\u003Cb\u003E\u003Cu\u003E\u003Cem\u003ETwelfth Night\u003C/b\u003E\u003C/u\u003E\u003C/em\u003E"
+            ],
+            "answers_sanitized": [
+                "Hamnet Shakespeare [do not accept or prompt on \u0022Hamlet\u0022] (The quoted lines are from King John.)",
+                "Judith Shakespeare",
+                "Twelfth Night"
+            ],
+            "parts": [
+                "Name this person. His life and the repercussions of his death from bubonic plague at age 11 form the basis of a Maggie O\u0027Farrell novel titled for him.",
+                "Hamnet\u0027s real-life sister had this given name. In \u003Cem\u003EA Room of One\u0027s Own\u003C/em\u003E, Virginia Woolf imagined a sister of William Shakespeare with this given name.",
+                "Theories abound about how the death of Hamnet has influenced various Shakespeare plays, including this play in which Viola believes her twin brother Sebastian has died."
+            ],
+            "parts_sanitized": [
+                "Name this person. His life and the repercussions of his death from bubonic plague at age 11 form the basis of a Maggie O\u0027Farrell novel titled for him.",
+                "Hamnet\u0027s real-life sister had this given name. In A Room of One\u0027s Own, Virginia Woolf imagined a sister of William Shakespeare with this given name.",
+                "Theories abound about how the death of Hamnet has influenced various Shakespeare plays, including this play in which Viola believes her twin brother Sebastian has died."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "h",
+                "m",
+                "e"
+            ]
+        },
+        {
+            "leadin": "This leader\u0027s existence is attested to in the Tel Dan stele, the only archaeological find that refers specifically to his line. For 10 points each:",
+            "leadin_sanitized": "This leader\u0027s existence is attested to in the Tel Dan stele, the only archaeological find that refers specifically to his line. For 10 points each:",
+            "answers": [
+                "King \u003Cb\u003E\u003Cu\u003EDavid\u003C/b\u003E\u003C/u\u003E [or \u003Cb\u003E\u003Cu\u003EDawud\u003C/b\u003E\u003C/u\u003E]",
+                "\u003Cb\u003E\u003Cu\u003EMaccabee\u003C/b\u003E\u003C/u\u003Es [or \u003Cb\u003E\u003Cu\u003EHasmonean\u003C/b\u003E\u003C/u\u003E dynasty]",
+                "\u003Cb\u003E\u003Cu\u003EChanukah\u003C/b\u003E\u003C/u\u003E [or \u003Cb\u003E\u003Cu\u003EHanukkah\u003C/b\u003E\u003C/u\u003E]"
+            ],
+            "answers_sanitized": [
+                "King David [or Dawud]",
+                "Maccabees [or Hasmonean dynasty]",
+                "Chanukah [or Hanukkah]"
+            ],
+            "parts": [
+                "Name this ruler. His descendants led the Exilarchate during the Parthian and Sassanian dynasties.",
+                "This Jewish dynasty did not claim descent from David, which may have caused a lack of legitimacy. Nevertheless, they were able to defeat the Seleucid Empire of Antiochus IV in a namesake revolt.",
+                "The Maccabean victory over the Seleucid Empire is celebrated during this Jewish holiday. People observing this holiday light one additional candle on the menorah each night."
+            ],
+            "parts_sanitized": [
+                "Name this ruler. His descendants led the Exilarchate during the Parthian and Sassanian dynasties.",
+                "This Jewish dynasty did not claim descent from David, which may have caused a lack of legitimacy. Nevertheless, they were able to defeat the Seleucid Empire of Antiochus IV in a namesake revolt.",
+                "The Maccabean victory over the Seleucid Empire is celebrated during this Jewish holiday. People observing this holiday light one additional candle on the menorah each night."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "h",
+                "m",
+                "e"
+            ]
+        },
+        {
+            "leadin": "The musician Julian Cope wrote a sampler titled for a genre of music from this country. For 10 points each:",
+            "leadin_sanitized": "The musician Julian Cope wrote a sampler titled for a genre of music from this country. For 10 points each:",
+            "answers": [
+                "\u003Cb\u003E\u003Cu\u003EGermany\u003C/b\u003E\u003C/u\u003E [accept \u003Cem\u003EBundesrepublik \u003Cb\u003E\u003Cu\u003EDeutschland\u003C/b\u003E\u003C/u\u003E\u003C/em\u003E or Federal Republic of \u003Cb\u003E\u003Cu\u003EGermany\u003C/b\u003E\u003C/u\u003E; the book is \u003Cem\u003EKrautrocksampler\u003C/em\u003E]",
+                "\u003Cb\u003E\u003Cu\u003EKraftwerk\u003C/b\u003E\u003C/u\u003E",
+                "\u003Cb\u003E\u003Cu\u003ECan\u003C/b\u003E\u003C/u\u003E [or \u003Cb\u003E\u003Cu\u003ECAN\u003C/b\u003E\u003C/u\u003E]"
+            ],
+            "answers_sanitized": [
+                "Germany [accept Bundesrepublik Deutschland or Federal Republic of Germany; the book is Krautrocksampler]",
+                "Kraftwerk",
+                "Can [or CAN]"
+            ],
+            "parts": [
+                "Name this country. The \u003Cem\u003Emotorik\u003C/em\u003E beat was pioneered in this country, whose rock bands include Popol Vuh, Amon D\u00FC\u00FCl, and Ash Ra Tempel.",
+                "Cope included this band\u0027s self-titled 1970 album in his top 50 krautrock releases. Ralf H\u00FCtter and Florian Schneider formed this band, whose albums include \u003Cem\u003EThe Man-Machine\u003C/em\u003E, \u003Cem\u003ETrans-Europe Express\u003C/em\u003E, and \u003Cem\u003EAutobahn\u003C/em\u003E.",
+                "\u003Cem\u003EKrautrocksampler\u003C/em\u003E includes a chapter on this band, whose one-time lead singer was Damo Suzuki. This Cologne-based band included the track \u0022Vitamin C\u0022 on their 1972 album \u003Cem\u003EEge Bamyasi\u003C/em\u003E."
+            ],
+            "parts_sanitized": [
+                "Name this country. The motorik beat was pioneered in this country, whose rock bands include Popol Vuh, Amon D\u00FC\u00FCl, and Ash Ra Tempel.",
+                "Cope included this band\u0027s self-titled 1970 album in his top 50 krautrock releases. Ralf H\u00FCtter and Florian Schneider formed this band, whose albums include The Man-Machine, Trans-Europe Express, and Autobahn.",
+                "Krautrocksampler includes a chapter on this band, whose one-time lead singer was Damo Suzuki. This Cologne-based band included the track \u0022Vitamin C\u0022 on their 1972 album Ege Bamyasi."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "m",
+                "e",
+                "h"
+            ]
+        },
+        {
+            "leadin": "The speaker of this poem compares the moonlight streaming through his window to frost on the ground. For 10 points each:",
+            "leadin_sanitized": "The speaker of this poem compares the moonlight streaming through his window to frost on the ground. For 10 points each:",
+            "answers": [
+                "\u0022\u003Cb\u003E\u003Cu\u003EQuiet Night Thought\u003C/b\u003E\u003C/u\u003Es\u0022 [or \u0022\u003Cb\u003E\u003Cu\u003EJ\u00ECng Y\u00E8 S\u012B\u003C/b\u003E\u003C/u\u003E\u0022]",
+                "\u003Cb\u003E\u003Cu\u003ELi Bai\u003C/b\u003E\u003C/u\u003E [or \u003Cb\u003E\u003Cu\u003ELi Po\u003C/b\u003E\u003C/u\u003E; or \u003Cb\u003E\u003Cu\u003ELi Bo\u003C/b\u003E\u003C/u\u003E; or \u003Cb\u003E\u003Cu\u003ELi Pai\u003C/b\u003E\u003C/u\u003E; or \u003Cb\u003E\u003Cu\u003EL\u01D0 B\u00E1i\u003C/b\u003E\u003C/u\u003E; prompt on \u003Cu\u003ELi\u003C/u\u003E]",
+                "\u003Cb\u003E\u003Cu\u003EConfucius\u003C/b\u003E\u003C/u\u003E [or \u003Cb\u003E\u003Cu\u003EKong Feizi\u003C/b\u003E\u003C/u\u003E or \u003Cb\u003E\u003Cu\u003EKong Zi\u003C/b\u003E\u003C/u\u003E]"
+            ],
+            "answers_sanitized": [
+                "\u0022Quiet Night Thoughts\u0022 [or \u0022J\u00ECng Y\u00E8 S\u012B\u0022]",
+                "Li Bai [or Li Po; or Li Bo; or Li Pai; or L\u01D0 B\u00E1i; prompt on Li]",
+                "Confucius [or Kong Feizi or Kong Zi]"
+            ],
+            "parts": [
+                "Name this poem written from the perspective of a man away from his family, who \u0022bows his head and dreams of home.\u0022",
+                "This Tang dynasty poet wrote \u0022Quiet Night Thought\u0022 and \u0022Drinking Alone by Moonlight\u0022.",
+                "\u0022Quiet Night Thought\u0022 is frequently taught and memorized in Chinese schools for how it exemplifies the values of this philosopher. Literature based on this philosopher\u0027s teachings often includes themes of filial piety."
+            ],
+            "parts_sanitized": [
+                "Name this poem written from the perspective of a man away from his family, who \u0022bows his head and dreams of home.\u0022",
+                "This Tang dynasty poet wrote \u0022Quiet Night Thought\u0022 and \u0022Drinking Alone by Moonlight\u0022.",
+                "\u0022Quiet Night Thought\u0022 is frequently taught and memorized in Chinese schools for how it exemplifies the values of this philosopher. Literature based on this philosopher\u0027s teachings often includes themes of filial piety."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "h",
+                "m",
+                "e"
+            ]
+        },
+        {
+            "leadin": "The process ontology of Alfred Whitehead inspired a move past this concept developed by Rosi Braidotti. For 10 points each:",
+            "leadin_sanitized": "The process ontology of Alfred Whitehead inspired a move past this concept developed by Rosi Braidotti. For 10 points each:",
+            "answers": [
+                "post\u003Cb\u003E\u003Cu\u003Ehumanism\u003C/b\u003E\u003C/u\u003E [accept word forms or\u003Cem\u003E \u003Cb\u003E\u003Cu\u003Ehumanisme\u003C/b\u003E\u003C/u\u003E\u003C/em\u003E; do not accept \u003Cu\u003Esecularism\u003C/u\u003E]",
+                "Donna \u003Cb\u003E\u003Cu\u003EHaraway\u003C/b\u003E\u003C/u\u003E",
+                "Friedrich \u003Cb\u003E\u003Cu\u003ENietzsche\u003C/b\u003E\u003C/u\u003E"
+            ],
+            "answers_sanitized": [
+                "posthumanism [accept word forms or humanisme; do not accept secularism]",
+                "Donna Haraway",
+                "Friedrich Nietzsche"
+            ],
+            "parts": [
+                "Identify this concept. The Renaissance form of this school of thought was exemplified by Pico della Mirandola, while Sartre argued that \u0022existentialism\u0022 was a form of this concept.",
+                "This philosopher rejected posthumanism on the grounds that we have never been human. The idea of \u0022situated knowledge\u0022 was developed by this author of \u003Cem\u003EStaying with the Trouble\u003C/em\u003E.",
+                "Teenage posthumanists like to cite this German philosopher\u0027s theory of the \u003Cem\u003E\u00FCbermensch\u003C/em\u003E, which he outlined in the book \u003Cem\u003EThus Spoke Zarathustra\u003C/em\u003E."
+            ],
+            "parts_sanitized": [
+                "Identify this concept. The Renaissance form of this school of thought was exemplified by Pico della Mirandola, while Sartre argued that \u0022existentialism\u0022 was a form of this concept.",
+                "This philosopher rejected posthumanism on the grounds that we have never been human. The idea of \u0022situated knowledge\u0022 was developed by this author of Staying with the Trouble.",
+                "Teenage posthumanists like to cite this German philosopher\u0027s theory of the \u00FCbermensch, which he outlined in the book Thus Spoke Zarathustra."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "m",
+                "h",
+                "e"
+            ]
+        },
+        {
+            "leadin": "For 10 points each, answer the following about media figures whose parents were politicians:",
+            "leadin_sanitized": "For 10 points each, answer the following about media figures whose parents were politicians:",
+            "answers": [
+                "\u003Cb\u003E\u003Cu\u003EArkansas\u003C/b\u003E\u003C/u\u003E",
+                "Mika \u003Cb\u003E\u003Cu\u003EBrzezinski\u003C/b\u003E\u003C/u\u003E (\u0022brr-zheh-ZIN-ski\u0022) [prompt on \u003Cu\u003EMika\u003C/u\u003E]",
+                "John \u003Cb\u003E\u003Cu\u003ESmith\u003C/b\u003E\u003C/u\u003E"
+            ],
+            "answers_sanitized": [
+                "Arkansas",
+                "Mika Brzezinski (\u0022brr-zheh-ZIN-ski\u0022) [prompt on Mika]",
+                "John Smith"
+            ],
+            "parts": [
+                "Sarah Huckabee Sanders served as Donald Trump\u0027s Press Secretary and will attempt to follow in the footsteps of her father Mike and President Bill Clinton in serving as this state\u0027s governor.",
+                "This wife and co-host of \u003Cem\u003EMorning Joe\u003C/em\u003E with Joe Scarborough was the daughter of Jimmy Carter\u0027s influential National Security Advisor.",
+                "BBC News\u0027 Scotland editor is Sarah, the daughter of which former Labour Party Leader? This man died of a heart attack after replacing Neil Kinnock, but before Tony Blair took over."
+            ],
+            "parts_sanitized": [
+                "Sarah Huckabee Sanders served as Donald Trump\u0027s Press Secretary and will attempt to follow in the footsteps of her father Mike and President Bill Clinton in serving as this state\u0027s governor.",
+                "This wife and co-host of Morning Joe with Joe Scarborough was the daughter of Jimmy Carter\u0027s influential National Security Advisor.",
+                "BBC News\u0027 Scotland editor is Sarah, the daughter of which former Labour Party Leader? This man died of a heart attack after replacing Neil Kinnock, but before Tony Blair took over."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "e",
+                "m",
+                "h"
+            ]
+        },
+        {
+            "leadin": "After being forced to maneuver during Apollo 11, Michael Collins asked Houston for a fourth of these objects for Christmas. For 10 points:",
+            "leadin_sanitized": "After being forced to maneuver during Apollo 11, Michael Collins asked Houston for a fourth of these objects for Christmas. For 10 points:",
+            "answers": [
+                "\u003Cb\u003E\u003Cu\u003Egimbal\u003C/b\u003E\u003C/u\u003Es [accept \u003Cb\u003E\u003Cu\u003Egimbal lock\u003C/b\u003E\u003C/u\u003Eing; prompt on \u003Cu\u003Egyroscope\u003C/u\u003Es]",
+                "\u003Cb\u003E\u003Cu\u003Erotation\u003C/b\u003E\u003C/u\u003E [or \u003Cb\u003E\u003Cu\u003Erotating\u003C/b\u003E\u003C/u\u003E; prompt on \u003Cu\u003Espin\u003C/u\u003Ening, \u003Cu\u003Epivot\u003C/u\u003Eing, or \u003Cu\u003Eturn\u003C/u\u003Eing]",
+                "\u003Cb\u003E\u003Cu\u003ESO(3)\u003C/b\u003E\u003C/u\u003E (\u0022S-O-three\u003Cb\u003E\u0022\u003C/b\u003E) [or \u003Cb\u003E\u003Cu\u003Especial orthogonal\u003C/b\u003E\u003C/u\u003E group in \u003Cb\u003E\u003Cu\u003Ethree\u003C/b\u003E\u003C/u\u003E dimensions; prompt on the \u003Cu\u003Erotation group\u003C/u\u003E in three dimensions; do not accept \u0022orthogonal group\u0022 or \u0022general orthogonal group\u0022]"
+            ],
+            "answers_sanitized": [
+                "gimbals [accept gimbal locking; prompt on gyroscopes]",
+                "rotation [or rotating; prompt on spinning, pivoting, or turning]",
+                "SO(3) (\u0022S-O-three\u0022) [or special orthogonal group in three dimensions; prompt on the rotation group in three dimensions; do not accept \u0022orthogonal group\u0022 or \u0022general orthogonal group\u0022]"
+            ],
+            "parts": [
+                "Name these mechanical devices which can maintain a stabilized platform. A standard set of three of these devices is vulnerable to a namesake \u201Clock\u201D when two of them align, losing a degree of freedom.",
+                "Each gimbal provides an axis for this kind of motion, which changes the angle something points at. The three types of this motion that a three-dimensional object can perform can be called yaw, pitch, and roll.",
+                "The Euler (\u003Cb\u003E\u0022\u003C/b\u003EOIL-er\u003Cb\u003E\u0022\u003C/b\u003E) angles that describe gimbals are one way to parameterize this mathematical group, which describes rotations in three dimensions. This group is a connected subgroup of a similarly named group of isometries."
+            ],
+            "parts_sanitized": [
+                "Name these mechanical devices which can maintain a stabilized platform. A standard set of three of these devices is vulnerable to a namesake \u201Clock\u201D when two of them align, losing a degree of freedom.",
+                "Each gimbal provides an axis for this kind of motion, which changes the angle something points at. The three types of this motion that a three-dimensional object can perform can be called yaw, pitch, and roll.",
+                "The Euler (\u0022OIL-er\u0022) angles that describe gimbals are one way to parameterize this mathematical group, which describes rotations in three dimensions. This group is a connected subgroup of a similarly named group of isometries."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "m",
+                "e",
+                "h"
+            ]
+        },
+        {
+            "leadin": "A Danielle Allen book presents a reading of this document \u0022in defense of equality.\u0022 For 10 points each:",
+            "leadin_sanitized": "A Danielle Allen book presents a reading of this document \u0022in defense of equality.\u0022 For 10 points each:",
+            "answers": [
+                "the \u003Cb\u003E\u003Cu\u003EDeclaration of Independence\u003C/b\u003E\u003C/u\u003E [accept \u003Cb\u003E\u003Cu\u003E\u003Cem\u003EOur Declaration\u003C/b\u003E\u003C/u\u003E\u003C/em\u003E] ",
+                "\u003Cb\u003E\u003Cu\u003EAmerican Revolution\u003C/b\u003E\u003C/u\u003E [or \u003Cb\u003E\u003Cu\u003EAmerican War of Independence\u003C/b\u003E\u003C/u\u003E; prompt on \u003Cu\u003ERevolutionary War\u003C/u\u003E]",
+                "Gordon \u003Cb\u003E\u003Cu\u003EWood\u003C/b\u003E\u003C/u\u003E"
+            ],
+            "answers_sanitized": [
+                "the Declaration of Independence [accept Our Declaration] ",
+                "American Revolution [or American War of Independence; prompt on Revolutionary War]",
+                "Gordon Wood"
+            ],
+            "parts": [
+                "Name this document. Allen contrasts this document\u0027s use of the phrase \u0022we hold these truths to be self-evident\u0022 with the statement \u0022I believe\u0022 in the Catholic \u003Cem\u003ECredo\u003C/em\u003E.",
+                "The Declaration of Independence was issued to declare American sovereignty from Great Britain, an issue which was decided by this war.",
+                "This historian described the sociopolitical context of the Revolution in \u003Cem\u003EThe Radicalism of the American Revolution\u003C/em\u003E, and tracked the emerging country in \u003Cem\u003EThe Creation of the American Republic\u003C/em\u003E."
+            ],
+            "parts_sanitized": [
+                "Name this document. Allen contrasts this document\u0027s use of the phrase \u0022we hold these truths to be self-evident\u0022 with the statement \u0022I believe\u0022 in the Catholic Credo.",
+                "The Declaration of Independence was issued to declare American sovereignty from Great Britain, an issue which was decided by this war.",
+                "This historian described the sociopolitical context of the Revolution in The Radicalism of the American Revolution, and tracked the emerging country in The Creation of the American Republic."
+            ],
+            "values": [
+                10,
+                10,
+                10
+            ],
+            "difficultyModifiers": [
+                "m",
+                "e",
+                "h"
+            ]
+        }
+    ]
+}

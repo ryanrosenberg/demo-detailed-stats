@@ -20,23 +20,36 @@ def fetch_df(_cursor):
     return results
 
 @st.cache
-def load_buzzes():
-    con = sq.connect('stats.db')
+def load_buzzes(tournaments):
+    if tournaments == 1:
+        con = sq.connect('s1_stats.db')
+    else:
+        con = sq.connect('stats.db')
     cur = con.cursor()
 
     cur.execute('SELECT * FROM buzzes')
     buzzes = fetch_df(cur)
     con.close()
+    buzzes[['packet']] = buzzes[['packet']].astype(int)
+    buzzes[['tossup']] = buzzes[['tossup']].astype(int)
+    buzzes[['buzz_position']] = buzzes[['buzz_position']].astype(int)
+    buzzes[['buzz_value']] = buzzes[['buzz_value']].astype(int)
     return buzzes
 
 @st.cache
-def load_bonuses():
-    con = sq.connect('stats.db')
+def load_bonuses(tournaments):
+    if tournaments == 1:
+        con = sq.connect('s1_stats.db')
+    else:
+        con = sq.connect('stats.db')
     cur = con.cursor()
 
     cur.execute('SELECT * FROM bonuses')
     bonuses = fetch_df(cur)
     con.close()
+    bonuses[['packet']] = bonuses[['packet']].astype(int)
+    bonuses[['bonus']] = bonuses[['bonus']].astype(int)
+    bonuses[['tossup']] = bonuses[['tossup']].astype(int)
     return bonuses
 
 @st.cache
@@ -47,6 +60,7 @@ def load_tossup_meta():
     cur.execute('SELECT * FROM tossup_meta')
     tossup_meta = fetch_df(cur)
     con.close()
+    tossup_meta[['packet']] = tossup_meta[['packet']].astype(int)
     return tossup_meta
 
 @st.cache
@@ -57,11 +71,15 @@ def load_bonus_meta():
     cur.execute('SELECT * FROM bonus_meta')
     bonus_meta = fetch_df(cur)
     con.close()
+    bonus_meta[['packet']] = bonus_meta[['packet']].astype(int)
     return bonus_meta
 
 @st.cache
-def load_team_stats():
-    con = sq.connect('stats.db')
+def load_team_stats(tournaments):
+    if tournaments == 1:
+        con = sq.connect('s1_stats.db')
+    else:
+        con = sq.connect('stats.db')
     cur = con.cursor()
 
     cur.execute('SELECT * FROM team_stats')
@@ -70,8 +88,11 @@ def load_team_stats():
     return team_stats
 
 @st.cache
-def load_player_stats():
-    con = sq.connect('stats.db')
+def load_player_stats(tournaments):
+    if tournaments == 1:
+        con = sq.connect('s1_stats.db')
+    else:
+        con = sq.connect('stats.db')
     cur = con.cursor()
 
     cur.execute('SELECT * FROM player_stats')
@@ -180,7 +201,7 @@ def make_category_ppb_chart(df, cat_ppb):
 
     return bar + top + ppb + rank
     
-def aggrid_interactive_table(df: pd.DataFrame, accent_color = '#ff4b4b'):
+def aggrid_interactive_table(df: pd.DataFrame, accent_color = '#ff4b4b', height = 400):
         """Creates an st-aggrid interactive table based on a dataframe.
         Args:
             df (pd.DataFrame]): Source dataframe
@@ -193,6 +214,7 @@ def aggrid_interactive_table(df: pd.DataFrame, accent_color = '#ff4b4b'):
 
         options.configure_default_column(min_column_width=0.1)
         options.configure_selection("single")
+        # options.configure_auto_height(False)
 
         for name in df.columns:
             if name in ['P', 'G', 'N']:
@@ -211,6 +233,7 @@ def aggrid_interactive_table(df: pd.DataFrame, accent_color = '#ff4b4b'):
             enable_enterprise_modules=True,
             gridOptions=options.build(),
             theme="streamlit",
+            height=height,
             custom_css=custom_css,
             update_mode=GridUpdateMode.SELECTION_CHANGED,
             allow_unsafe_jscode=True,
@@ -226,11 +249,11 @@ def fill_out_tossup_values(df):
                 df[entry] = 0
     return df
 
-@st.experimental_memo
-def get_packets():
+# @st.experimental_memo
+def get_packets(tournaments):
     packets = []
     for i in range(1, 10):
-        with open(f'packets/packet{str(i)}.json', 'r') as f:
+        with open(f'packets/season{tournaments}-packet{str(i)}.json', 'r') as f:
             packets.append(json.load(f))
     return packets
 
