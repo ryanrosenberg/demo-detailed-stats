@@ -65,7 +65,7 @@ def app(tournaments, divisions, accent_color):
         player_rank['Rk'] = player_rank['Rk'].astype(int)
         
         with col1:
-            utils.aggrid_interactive_table(player_rank, accent_color=accent_color)
+            utils.aggrid_interactive_table(player_rank, accent_color=accent_color, height = 250)
         negs = col2.checkbox("Add negs?")
         col2.altair_chart(utils.make_category_buzz_chart(player_buzzes, negs))
         
