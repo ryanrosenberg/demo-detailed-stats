@@ -1,47 +1,8 @@
-team,Games,G,N,Pts
-North Carolina,15,40,3,385
-Connecticut,14,40,11,345
-Illinois Blue,15,34,5,315
-Pennsylvania,15,35,8,310
-New Jersey A,13,31,3,295
-Missouri C,15,32,7,285
-California,16,31,5,285
-Maryland Gold,15,33,10,280
-Michigan,15,32,9,275
-New Jersey B,14,30,9,255
-Illinois Orange,15,27,5,245
-Asia A,14,27,10,220
-Maryland White,15,26,10,210
-Maryland Red,13,21,4,190
-Missouri B,14,23,9,185
-Kentucky A,14,24,13,175
-Kentucky B,14,21,7,175
-Illinois Blue,15,19,4,170
-Missouri A,15,21,9,165
-Minnesota,13,21,9,165
-Maryland Gold,15,18,4,160
-Asia B,13,18,4,160
-Missouri A,15,16,1,155
-California,16,18,6,150
-Iowa Gold,14,16,3,145
-Missouri B,14,16,3,145
-Pennsylvania,15,15,2,140
-Connecticut,14,15,3,135
-Illinois Orange,15,16,7,125
-New Jersey A,13,15,5,125
-Michigan,15,15,6,120
-Kentucky B,14,12,0,120
-Missouri C,15,12,3,105
-North Carolina,15,13,6,100
-Iowa Blue,13,11,2,100
-Iowa Gold,14,11,2,100
-New Jersey B,14,11,3,95
-Asia A,14,10,2,90
-Kentucky A,14,10,3,85
-Iowa Blue,13,9,1,85
-Minnesota,13,10,8,60
-Asia B,13,7,2,60
-Maryland Red,13,6,2,50
-Maryland White,15,6,5,35
-Liberia,4,2,0,20
-Liberia,4,0,1,-5
+Term,Definition
+<b>ACC</b>,Average correct celerity. The average % of a question remaining when a player/team buzzed correctly.
+<b>BPA</b>,"Buzzpoint AUC. The area under the curve of a player/team's <a href = ""https://hsquizbowl.org/forums/viewtopic.php?t=21962"">buzzpoint curve</a>."
+"<b>Easy.Conv</b>, <b>Med.Conv</b>, <b>Hard.Conv</b>",Conversion percentage for the bonus part with the given difficulty. Difficulty was assigned based on which part was converted most/least.
+<b>Conv.</b>,Conversion percentage. The number of rooms where the tossup(s) were converted.
+<b>Neg.</b>,Neg percentage. The number of rooms where the tossup(s) were negged.
+<b>PPB</b>,Points per bonus
+<b>PPG</b>,Points per game
