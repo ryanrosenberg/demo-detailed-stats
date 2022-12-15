@@ -67,5 +67,5 @@ utils.df_to_kable(pd.DataFrame(gloss))
 #     utils.populate_db_packets(packets)
 
 # with st.spinner("Processing files..."):
-    # utils.populate_db_qbjs_nasat()
-    # utils.populate_db_packets_nasat()
+#     utils.populate_db_qbjs_nasat()
+#     utils.populate_db_packets_nasat()
