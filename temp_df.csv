@@ -1,0 +1,8 @@
+Term,Definition
+<b>ACC</b>,"Buzzpoint AUC. The area under the curve of a player/team's <a href = ""https://hsquizbowl.org/forums/viewtopic.php?t=21962"">buzzpoint curve</a>."
+<b>BPA</b>,Average correct celerity. The average % of a question remaining when a player/team buzzed correctly.
+"<b>Easy.Conv</b>, <b>Med.Conv</b>, <b>Hard.Conv</b>",Conversion percentage for the bonus part with the given difficulty. Difficulty was assigned based on which part was converted most/least.
+<b>Conv.</b>,Conversion percentage. The number of rooms where the tossup(s) were converted.
+<b>Neg.</b>,Neg percentage. The number of rooms where the tossup(s) were negged.
+<b>PPB</b>,Points per bonus
+<b>PPG</b>,Points per game

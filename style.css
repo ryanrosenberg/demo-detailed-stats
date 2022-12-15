@@ -1,0 +1,82 @@
+/* General */
+section[data-testid="stSidebar"] {
+    width: 210px !important;
+}
+
+.block-container {
+    padding: 1em;
+}
+
+h2 {
+    padding-bottom: 0px;
+}
+
+/* Inputs */
+.stTextInput,
+.stSelectbox {
+    display: flex;
+}
+
+.stTextInput>label,
+.stSelectbox>label {
+    flex: 1;
+    justify-content: flex-end;
+    padding: 1em;
+}
+
+.stTextInput>div,
+.stSelectbox>div {
+    flex: 1;
+}
+
+/* Tables */
+table {
+    font-family: 'Source Sans Pro';
+    width: 80% !important;
+}
+
+th {
+    background-color: #555555;
+    color: whitesmoke;
+    padding: 0.1em 0.5em !important;
+    border-bottom: 2px solid #ff4b4b !important;
+}
+
+table > tbody > tr > td {
+    padding: 0.1em 0.5em !important;
+}
+
+tr:nth-child(even) {
+    background-color: #e7e8e9;
+  }
+
+/* Buzzes */
+p {
+    display: inline;
+}
+
+.buzz {
+    display: inline;
+    background-color: #e4e1e2;
+    padding: 0em 0.1em;
+}
+
+.buzz-value {
+    display: inline;
+    background-color: #e4e1e2;
+    font-size: 70%;
+    font-family: 'Source Sans Pro' !important;
+}
+
+.buzz-value.correct-buzz-value {
+    color: #007ccf;
+}
+
+.buzz-value.incorrect-buzz-value {
+    color: #ff4b4b;
+}
+
+.question-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.1em;
+}
