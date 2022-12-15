@@ -63,9 +63,13 @@ with tossup_cat:
                     index = ['player', 'team', 'category'], columns='value', values=0
                     ).reset_index().rename(columns={10: 'G', -5:'N'}).merge(
                         player_games, on=['player', 'team']
-                        ).merge(
+                        )
+                        
+        if len(filter_categories) == 1 and len(filter_subcategories) == len(subcats):
+            category_summary = category_summary.merge(
                             player_cat_bpa, on=['player', 'team', 'category']
                         )
+
         team_category_summary = chart_buzzes.groupby(
             ['team', 'category', 'value']
             ).agg(
@@ -74,9 +78,11 @@ with tossup_cat:
                     index = ['team', 'category'], columns='value', values=0
                     ).reset_index().rename(columns={10: 'G', -5:'N'}).merge(
                         team_games, on=['team']
-                        ).merge(
-                            team_cat_bpa, on=['team', 'category']
                         )
+        if len(filter_categories) == 1 and len(filter_subcategories) == len(subcats):
+            team_category_summary = team_category_summary.merge(
+                        team_cat_bpa, on=['team', 'category']
+                    )
 
     else:
         chart_buzzes = full_buzzes
@@ -104,22 +110,42 @@ with tossup_cat:
                             team_bpa, on=['team']
                         )
 
-    for x in ['G', 'N']:
+    for x in ['P', 'G', 'N']:
         if x not in category_summary.columns:
             category_summary[x] = 0
 
-    player_stats = category_summary[['player', 'team', 'Games', 'G', 'N', 'BPA']].fillna(0).assign(
-        Pts = lambda x: x.G*10 - x.N*5,
-        BPA = lambda x: round(x.BPA, 3)
-        ).sort_values(('Pts'), ascending=False)
+    if len(filter_categories) == 1 and len(filter_subcategories) == len(subcats):
+        player_stats = category_summary[['player', 'team', 'Games', 'G', 'N', 'BPA']].fillna(0).assign(
+            Pts = lambda x: x.G*10 - x.N*5,
+            BPA = lambda x: round(x.BPA, 3)
+            ).sort_values(('Pts'), ascending=False)
 
-    player_stats[['G', 'N', 'Pts']] = player_stats[['G', 'N', 'Pts']].astype(int)
+        team_stats = team_category_summary[['team', 'Games', 'G', 'N', 'BPA']].fillna(0).assign(
+            Pts = lambda x: x.G*10 - x.N*5,
+            BPA = lambda x: round(x.BPA, 3)
+            ).sort_values(('Pts'), ascending=False)
 
-    team_stats = team_category_summary[['team', 'Games', 'G', 'N', 'BPA']].fillna(0).assign(
-        Pts = lambda x: x.G*10 - x.N*5,
-        BPA = lambda x: round(x.BPA, 3)
-        ).sort_values(('Pts'), ascending=False)
+    elif len(filter_categories) == 0:
+        player_stats = category_summary[['player', 'team', 'Games', 'G', 'N', 'BPA']].fillna(0).assign(
+            Pts = lambda x: x.G*10 - x.N*5,
+            BPA = lambda x: round(x.BPA, 3)
+            ).sort_values(('Pts'), ascending=False)
 
+        team_stats = team_category_summary[['team', 'Games', 'G', 'N', 'BPA']].fillna(0).assign(
+            Pts = lambda x: x.G*10 - x.N*5,
+            BPA = lambda x: round(x.BPA, 3)
+            ).sort_values(('Pts'), ascending=False)
+            
+    else:
+        player_stats = category_summary[['player', 'team', 'Games', 'G', 'N']].fillna(0).assign(
+            Pts = lambda x: x.G*10 - x.N*5
+            ).sort_values(('Pts'), ascending=False)
+        player_stats[['G', 'N', 'Pts']] = player_stats[['G', 'N', 'Pts']].astype(int)
+
+        team_stats = team_category_summary[['team', 'Games', 'G', 'N']].fillna(0).assign(
+            Pts = lambda x: x.G*10 - x.N*5
+            ).sort_values(('Pts'), ascending=False)
+ 
     team_stats[['G', 'N', 'Pts']] = team_stats[['G', 'N', 'Pts']].astype(int)
 
 players, teams = st.tabs(["Players", "Teams"])
