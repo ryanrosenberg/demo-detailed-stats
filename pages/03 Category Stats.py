@@ -140,7 +140,8 @@ with tossup_cat:
         player_stats = category_summary[['player', 'team', 'Games', 'G', 'N']].groupby(
             ['team']
             ).agg(
-                P = ('P', np.sum), G = ('G', np.sum), N = ('N', np.sum)
+                Games= ('Games', np.mean), P = ('P', np.sum), 
+                G = ('G', np.sum), N = ('N', np.sum)
             ).reset_index().fillna(0).assign(
             Pts = lambda x: x.G*10 - x.N*5
             ).sort_values(('Pts'), ascending=False)
@@ -149,7 +150,8 @@ with tossup_cat:
         team_stats = team_category_summary[['team', 'Games', 'G', 'N']].groupby(
             ['team']
             ).agg(
-                P = ('P', np.sum), G = ('G', np.sum), N = ('N', np.sum)
+                Games= ('Games', np.mean), P = ('P', np.sum), 
+                G = ('G', np.sum), N = ('N', np.sum)
             ).reset_index().fillna(0).assign(
             Pts = lambda x: x.G*10 - x.N*5
             ).sort_values(('Pts'), ascending=False)
