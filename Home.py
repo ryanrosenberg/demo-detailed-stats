@@ -43,8 +43,8 @@ gloss = {
         '<b>PPG</b>'
         ],
     'Definition': [
-        'Buzzpoint AUC. The area under the curve of a player/team\'s <a href = "https://hsquizbowl.org/forums/viewtopic.php?t=21962">buzzpoint curve</a>.', 
         'Average correct celerity. The average % of a question remaining when a player/team buzzed correctly.',
+        'Buzzpoint AUC. The area under the curve of a player/team\'s <a href = "https://hsquizbowl.org/forums/viewtopic.php?t=21962">buzzpoint curve</a>.', 
         'Conversion percentage for the bonus part with the given difficulty. Difficulty was assigned based on which part was converted most/least.',
         'Conversion percentage. The number of rooms where the tossup(s) were converted.',
         'Neg percentage. The number of rooms where the tossup(s) were negged.',
