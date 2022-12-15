@@ -386,6 +386,12 @@ def make_category_buzz_chart(df, negs):
                       else cat for cat in df['category']]
     if not negs:
         df = df[df['value'].isin([15, 10])]
+    else:
+        df = df[df['value'].isin([15, 10, -5])]
+
+    
+    domain = [15, 10, -5]
+    range_ = ['blue', '#007ccf', '#ff4b4b']
     # p = ggplot(df, aes("buzz_position")) + geom_histogram(
     #     aes(fill = "category"), binwidth = 10
     #     ) + facet_wrap(['category']) + scale_x_continuous(
@@ -397,8 +403,8 @@ def make_category_buzz_chart(df, negs):
     ).encode(
         x=alt.X('buzz_position', bin=alt.Bin(maxbins=10),
                 scale=alt.Scale(domain=(0, 150))),
-        y=alt.Y('count()', stack=None),
-        color='category',
+        y=alt.Y('count()'),
+        color=alt.Color('value:O', scale=alt.Scale(domain=domain, range = range_)),
         facet=alt.Facet('category', columns=2)
     ).properties(
         width=200,
