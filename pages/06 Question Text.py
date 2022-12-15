@@ -21,6 +21,7 @@ bonus_meta = utils.load_bonus_meta()
 full_buzzes = buzzes.merge(tossup_meta, on=['packet', 'tossup'])
 
 full_bonuses = bonuses.merge(bonus_meta, on=['packet', 'bonus'])
+print()
 
 packet_nums = full_buzzes['packet'].unique().tolist()
 packet_nums.sort()
@@ -30,7 +31,7 @@ if question_type == 'Tossup':
     tu = st.selectbox('Question Number', options=range(1, 21), format_func=lambda x: str(
         x) + ' (' + utils.sanitize_answer(full_buzzes['answer'][full_buzzes['packet'] == pac][full_buzzes['tossup'] == x].unique()[0]) + ')')
 else:
-    tu = st.selectbox('Question Number', options=range(1, 21), format_func=lambda x: str(
+    tu = st.selectbox('Question Number', options=bonuses['bonus'][bonuses['packet'] == pac].unique(), format_func=lambda x: str(
         x) + ' (' + utils.sanitize_answer(full_bonuses['answers'][full_bonuses['packet'] == pac][full_bonuses['bonus'] == x].unique()[0]) + ')')
 utils.hr()
 packets = utils.get_packets()
