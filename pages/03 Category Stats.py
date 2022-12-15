@@ -137,12 +137,20 @@ with tossup_cat:
             ).sort_values(('Pts'), ascending=False)
             
     else:
-        player_stats = category_summary[['player', 'team', 'Games', 'G', 'N']].fillna(0).assign(
+        player_stats = category_summary[['player', 'team', 'Games', 'G', 'N']].groupby(
+            ['team']
+            ).agg(
+                P = ('P', np.sum), G = ('G', np.sum), N = ('N', np.sum)
+            ).reset_index().fillna(0).assign(
             Pts = lambda x: x.G*10 - x.N*5
             ).sort_values(('Pts'), ascending=False)
         player_stats[['G', 'N', 'Pts']] = player_stats[['G', 'N', 'Pts']].astype(int)
 
-        team_stats = team_category_summary[['team', 'Games', 'G', 'N']].fillna(0).assign(
+        team_stats = team_category_summary[['team', 'Games', 'G', 'N']].groupby(
+            ['team']
+            ).agg(
+                P = ('P', np.sum), G = ('G', np.sum), N = ('N', np.sum)
+            ).reset_index().fillna(0).assign(
             Pts = lambda x: x.G*10 - x.N*5
             ).sort_values(('Pts'), ascending=False)
  

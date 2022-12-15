@@ -380,7 +380,6 @@ def make_buzz_chart(df):
     return c
 
 
-@st.experimental_memo
 def make_category_buzz_chart(df, negs):
     df['category'] = ['Other' if cat in ['Geo/CE', 'Other Academic']
                       else cat for cat in df['category']]
