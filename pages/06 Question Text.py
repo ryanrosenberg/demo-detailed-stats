@@ -43,6 +43,9 @@ if question_type == 'Tossup':
                         == pac][full_buzzes['tossup'] == tu]
 
     for i, row in qbuzz.iterrows():
+        if row['buzz_position'] > len(sani):
+            print(row['buzz_position'], len(sani))
+            row['buzz_position'] = len(sani)
         if row['value'] in [15, 10]:
             sani[row['buzz_position'] - 1] = str(
                 div(_class='buzz')(
