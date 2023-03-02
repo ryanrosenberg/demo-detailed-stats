@@ -15,12 +15,14 @@ from st_aggrid import AgGrid, GridOptionsBuilder, ColumnsAutoSizeMode
 from st_aggrid.shared import GridUpdateMode
 import subprocess
 
+
 def fetch_df(_cursor):
     rows = _cursor.fetchall()
     keys = [k[0] for k in _cursor.description]
     game_results = [dict(zip(keys, row)) for row in rows]
     results = pd.DataFrame(game_results)
     return results
+
 
 def parse_stats(qbj):
     match_players = []
@@ -47,25 +49,37 @@ def parse_stats(qbj):
         index=['player', 'team'], columns='value', values='size'
     ).reset_index()
 
-    for x in ['10', '-5']:
+    answer_values = []
+    for team in qbj['match_teams']:
+        for player in team['match_players']:
+            answer_values.extend([answer['answer']['value'] for answer in player['answer_counts']])
+
+    answer_values = np.unique([str(value) for value in answer_values])
+
+    for x in answer_values:
         if x not in player_stats.columns:
             player_stats[x] = 0
-
-    if '0' in player_stats.columns:
-        player_stats = player_stats.drop(columns=['0'])
 
     for player in match_players:
         if player['name'] not in player_stats['player'].values:
             player_stats.loc[len(player_stats.index)] = [
-                player['name'], player['team'], 0, 0]
+                player['name'], player['team']] + [0]*len(answer_values)
 
-    player_stats[['10', '-5']] = player_stats[['10', '-5']].fillna(0).astype(int)
-    player_stats['Pts'] = 10*player_stats['10'] - 5*player_stats['-5']
-    player_stats = player_stats[['player', 'team', '10', '-5', 'Pts']]
+    player_stats[answer_values] = player_stats[answer_values
+                                              ].fillna(0).astype(int)
+    pts_col = []
+    for i, val in enumerate(answer_values):
+        print(val)
+        if i == 0:
+            pts_col = int(val)*player_stats[val]
+        else:
+            pts_col += int(val)*player_stats[val]
+    player_stats['Pts'] = pts_col
 
     buzzes = pd.DataFrame(buzzes)
 
-    all_bonuses = [{'bonus': question['bonus'], 'question_number': question['question_number']} for question in qbj['match_questions'] if 'bonus' in question]
+    all_bonuses = [{'bonus': question['bonus'], 'question_number': question['question_number']}
+                   for question in qbj['match_questions'] if 'bonus' in question]
     bonus_df = []
     bonuses = []
     for bonus in all_bonuses:
@@ -87,13 +101,15 @@ def parse_stats(qbj):
             }
         )
 
-    team_bonuses = pd.DataFrame(bonus_df).merge(buzzes[buzzes['value'] == '10'][['tossup', 'team']], on = 'tossup').groupby(['team'], as_index=False).agg(
+    team_bonuses = pd.DataFrame(bonus_df).merge(buzzes[buzzes['value'] == '10'][['tossup', 'team']], on='tossup').groupby(['team'], as_index=False).agg(
         {'value': 'sum'}
     ).rename(columns={'value': 'BPts'})
 
-    bonuses = pd.DataFrame(bonuses).merge(buzzes[buzzes['value'] == '10'][['tossup', 'team']], on = 'tossup')
+    bonuses = pd.DataFrame(bonuses).merge(
+        buzzes[buzzes['value'] == '10'][['tossup', 'team']], on='tossup')
 
-    team_stats = player_stats.groupby('team', as_index=False).agg('sum').rename(columns={'Pts': 'TUPts'})
+    team_stats = player_stats.groupby('team', as_index=False).agg(
+        'sum').rename(columns={'Pts': 'TUPts'})
     team_stats['BHrd'] = team_stats['10']
     team_stats = team_stats.merge(pd.DataFrame(team_bonuses))
     team_stats['PPB'] = team_stats['BPts']/team_stats['BHrd']
@@ -103,9 +119,10 @@ def parse_stats(qbj):
     for team in qbj['match_teams']:
         if team['team']['name'] not in team_stats['team'].values:
             team_stats.loc[len(team_stats.index)] = [
-                team['team']['name'], 0, 0, 0, 0, 0, 0.00, 0]
+                team['team']['name']] + [0]*len(answer_values) + [0, 0, 0, 0.00, 0]
 
     return buzzes, bonuses, player_stats, team_stats
+
 
 def parse_packet(packet):
     tossup_meta = []
@@ -157,6 +174,7 @@ def parse_packet(packet):
 
     return tossup_meta, bonus_meta
 
+
 def populate_db_qbjs(qbjs):
     all_buzzes = []
     all_bonuses = []
@@ -166,7 +184,7 @@ def populate_db_qbjs(qbjs):
     for i, qbj_path in enumerate(qbjs):
         qbj = json.load(qbj_path)
         print(qbj_path.name)
-        packet = re.search(r'(?<=Round\s)\d+', qbj_path.name).group(0)
+        packet = qbj['_round']
         buzzes, bonuses, player_stats, team_stats = parse_stats(qbj)
 
         buzzes['packet'] = packet
@@ -183,64 +201,27 @@ def populate_db_qbjs(qbjs):
         all_player_stats.append(player_stats)
         all_team_stats.append(team_stats)
 
-    player_bpas, player_cat_bpas = calculate_player_bpas(pd.concat(all_buzzes), pd.concat(all_player_stats))
-    team_bpas, team_cat_bpas = calculate_team_bpas(pd.concat(all_buzzes), pd.concat(all_player_stats))
+    # player_bpas, player_cat_bpas = calculate_player_bpas(
+    #     pd.concat(all_buzzes), pd.concat(all_player_stats))
+    # team_bpas, team_cat_bpas = calculate_team_bpas(
+    #     pd.concat(all_buzzes), pd.concat(all_player_stats))
 
     con = sq.connect('stats.db')
 
     pd.concat(all_buzzes).to_sql(name='buzzes', con=con, if_exists='replace')
     pd.concat(all_bonuses).to_sql(name='bonuses', con=con, if_exists='replace')
-    pd.concat(all_player_stats).to_sql(name='player_stats', con=con, if_exists='replace')
-    pd.concat(all_team_stats).to_sql(name='team_stats', con=con, if_exists='replace')
+    pd.concat(all_player_stats).to_sql(
+        name='player_stats', con=con, if_exists='replace')
+    pd.concat(all_team_stats).to_sql(
+        name='team_stats', con=con, if_exists='replace')
 
-    print(player_bpas)
-    player_bpas.to_sql(name = 'player_bpa', con=con, if_exists='replace')
-    player_cat_bpas.to_sql(name = 'player_cat_bpa', con=con, if_exists='replace')
-    team_bpas.to_sql(name = 'team_bpa', con=con, if_exists='replace')
-    team_cat_bpas.to_sql(name = 'team_cat_bpa', con=con, if_exists='replace')
+    # print(player_bpas)
+    # player_bpas.to_sql(name='player_bpa', con=con, if_exists='replace')
+    # player_cat_bpas.to_sql(name='player_cat_bpa', con=con, if_exists='replace')
+    # team_bpas.to_sql(name='team_bpa', con=con, if_exists='replace')
+    # team_cat_bpas.to_sql(name='team_cat_bpa', con=con, if_exists='replace')
 
-def populate_db_qbjs_nasat():
-    all_buzzes = []
-    all_bonuses = []
-    all_player_stats = []
-    all_team_stats = []
 
-    for i, qbj_path in enumerate(glob.glob('qbjs/*.qbj')):
-        with open(qbj_path, 'r') as f:
-            qbj = json.load(f)
-
-        packet = re.search(r'(?<=Round\s)\d+', qbj_path).group(0)
-        buzzes, bonuses, player_stats, team_stats = parse_stats(qbj)
-
-        buzzes['packet'] = packet
-        buzzes['game_id'] = i
-        bonuses['packet'] = packet
-        bonuses['game_id'] = i
-        player_stats['packet'] = packet
-        player_stats['game_id'] = i
-        team_stats['packet'] = packet
-        team_stats['game_id'] = i
-
-        all_buzzes.append(buzzes)
-        all_bonuses.append(bonuses)
-        all_player_stats.append(player_stats)
-        all_team_stats.append(team_stats)
-
-    player_bpas, player_cat_bpas = calculate_player_bpas(pd.concat(all_buzzes), pd.concat(all_player_stats))
-    team_bpas, team_cat_bpas = calculate_team_bpas(pd.concat(all_buzzes), pd.concat(all_player_stats))
-
-    con = sq.connect('stats.db')
-
-    pd.concat(all_buzzes).to_sql(name='buzzes', con=con, if_exists='replace')
-    pd.concat(all_bonuses).to_sql(name='bonuses', con=con, if_exists='replace')
-    pd.concat(all_player_stats).to_sql(name='player_stats', con=con, if_exists='replace')
-    pd.concat(all_team_stats).to_sql(name='team_stats', con=con, if_exists='replace')
-
-    print(player_bpas)
-    player_bpas.to_sql(name = 'player_bpa', con=con, if_exists='replace')
-    player_cat_bpas.to_sql(name = 'player_cat_bpa', con=con, if_exists='replace')
-    team_bpas.to_sql(name = 'team_bpa', con=con, if_exists='replace')
-    team_cat_bpas.to_sql(name = 'team_cat_bpa', con=con, if_exists='replace')
 def populate_db_packets(packets):
     all_tossup_meta = []
     all_bonus_meta = []
@@ -261,30 +242,11 @@ def populate_db_packets(packets):
 
     con = sq.connect('stats.db')
 
-    pd.concat(all_tossup_meta).to_sql(name='tossup_meta', con=con, if_exists='replace')
-    pd.concat(all_bonus_meta).to_sql(name='bonus_meta', con=con, if_exists='replace')
+    pd.concat(all_tossup_meta).to_sql(
+        name='tossup_meta', con=con, if_exists='replace')
+    pd.concat(all_bonus_meta).to_sql(
+        name='bonus_meta', con=con, if_exists='replace')
 
-def populate_db_packets_nasat():
-    all_tossup_meta = []
-    all_bonus_meta = []
-    for packet_path in glob.glob('packets/*.json'):
-        with open(packet_path, "r") as f:
-            packet = json.load(f)
-
-        packet_num = re.search(r'(?<=packet)\d+', packet_path).group(0)
-
-        print(packet_path)
-        tossup_meta, bonus_meta = parse_packet(packet)
-
-        tossup_meta['packet'] = packet_num
-        bonus_meta['packet'] = packet_num
-        all_tossup_meta.append(tossup_meta)
-        all_bonus_meta.append(bonus_meta)
-
-    con = sq.connect('stats.db')
-    
-    pd.concat(all_tossup_meta).to_sql(name='tossup_meta', con=con, if_exists='replace')
-    pd.concat(all_bonus_meta).to_sql(name='bonus_meta', con=con, if_exists='replace')
 
 def load_buzzes():
     con = sq.connect('stats.db')
@@ -312,6 +274,7 @@ def load_bonuses():
     bonuses[['tossup']] = bonuses[['tossup']].astype(int)
     return bonuses
 
+
 def load_tossup_meta():
     con = sq.connect('stats.db')
     cur = con.cursor()
@@ -322,6 +285,7 @@ def load_tossup_meta():
     tossup_meta[['packet']] = tossup_meta[['packet']].astype(int)
     return tossup_meta
 
+
 def load_bonus_meta():
     con = sq.connect('stats.db')
     cur = con.cursor()
@@ -331,6 +295,7 @@ def load_bonus_meta():
     con.close()
     bonus_meta[['packet']] = bonus_meta[['packet']].astype(int)
     return bonus_meta
+
 
 def load_team_stats():
     con = sq.connect('stats.db')
@@ -351,6 +316,7 @@ def load_player_stats():
     con.close()
     return player_stats
 
+
 def load_player_bpa():
     con = sq.connect('stats.db')
     cur = con.cursor()
@@ -362,6 +328,7 @@ def load_player_bpa():
     con.close()
     return player_bpa, player_cat_bpa
 
+
 def load_team_bpa():
     con = sq.connect('stats.db')
     cur = con.cursor()
@@ -372,7 +339,7 @@ def load_team_bpa():
     team_cat_bpa = fetch_df(cur)
     con.close()
     return team_bpa, team_cat_bpa
-    
+
 
 def make_buzz_chart(df):
     c = alt.Chart(df).mark_square(size=100).encode(x='buzz_position', y=alt.Y(field='num', type='ordinal',
@@ -388,7 +355,6 @@ def make_category_buzz_chart(df, negs):
     else:
         df = df[df['value'].isin([15, 10, -5])]
 
-    
     domain = [15, 10, -5]
     range_ = ['blue', '#007ccf', '#ff4b4b']
     # p = ggplot(df, aes("buzz_position")) + geom_histogram(
@@ -403,7 +369,8 @@ def make_category_buzz_chart(df, negs):
         x=alt.X('buzz_position', bin=alt.Bin(maxbins=10),
                 scale=alt.Scale(domain=(0, 150))),
         y=alt.Y('count()'),
-        color=alt.Color('value:O', scale=alt.Scale(domain=domain, range = range_)),
+        color=alt.Color('value:O', scale=alt.Scale(
+            domain=domain, range=range_)),
         facet=alt.Facet('category', columns=2)
     ).properties(
         width=200,
@@ -412,7 +379,6 @@ def make_category_buzz_chart(df, negs):
     return c
 
 
-@st.experimental_memo
 def make_category_ppb_chart(df, cat_ppb):
     # df['category'] = ['Other' if cat in ['Geo/CE', 'Other Academic'] else cat for cat in df['category']]
     cat_ppb['rank'] = cat_ppb.groupby('category')['PPB'].rank(
@@ -442,7 +408,7 @@ def make_category_ppb_chart(df, cat_ppb):
 
     bar = alt.Chart(df).mark_bar().encode(
         x='category',
-        y=alt.Y('PPB', scale = alt.Scale(domain = [0, 30])),
+        y=alt.Y('PPB', scale=alt.Scale(domain=[0, 30])),
         color=alt.Color('category', scale=alt.Scale(scheme='viridis'))
     ).properties(
         width=alt.Step(60),  # controls width of bar.
@@ -484,11 +450,13 @@ def make_category_ppb_chart(df, cat_ppb):
 
     return bar + top + ppb + rank
 
+
 def local_css(file_name):
     st.markdown('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">', unsafe_allow_html=True)
     st.markdown('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />', unsafe_allow_html=True)
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
 
 def sanitize_answer(answer):
     answer = re.sub(r'\<b\>', '', answer)
@@ -503,8 +471,10 @@ def sanitize_answer(answer):
 
     return answer
 
+
 def hr():
     return st.markdown('<hr>', unsafe_allow_html=True)
+
 
 def aggrid_interactive_table(df: pd.DataFrame, accent_color='#ff4b4b', height=400):
     """Creates an st-aggrid interactive table based on a dataframe.
@@ -549,6 +519,7 @@ def aggrid_interactive_table(df: pd.DataFrame, accent_color='#ff4b4b', height=40
 
     return selection
 
+
 def fill_out_tossup_values(df):
     tossup_values = ['P', 'G', 'N']
     for entry in tossup_values:
@@ -556,7 +527,6 @@ def fill_out_tossup_values(df):
             df[entry] = 0
     return df
 
-# @st.experimental_memo
 
 def get_packets():
     packets = {}
@@ -564,6 +534,7 @@ def get_packets():
         with open(file, 'r') as f:
             packets[file] = json.load(f)
     return packets
+
 
 def get_packet_meta():
     packets = get_packets()
@@ -579,9 +550,11 @@ def get_packet_meta():
             )
     return pd.DataFrame(packet_meta)
 
+
 def calculate_bpa(buzzes, tuh):
     buzzes['bpa_comp'] = buzzes['celerity']*100/tuh
-    return(sum(buzzes['bpa_comp']))
+    return (sum(buzzes['bpa_comp']))
+
 
 def calculate_player_bpas(buzzes, player_stats):
     tossup_meta = load_tossup_meta()
@@ -592,14 +565,15 @@ def calculate_player_bpas(buzzes, player_stats):
     full_buzzes = buzzes.merge(
         tossup_meta, on=['packet', 'tossup']
     ).merge(
-            packet_meta, on=['packet', 'tossup']
-        )
-    
-    full_buzzes['celerity'] = 1 - full_buzzes['buzz_position']/full_buzzes['tossup_length']
-    
+        packet_meta, on=['packet', 'tossup']
+    )
+
+    full_buzzes['celerity'] = 1 - full_buzzes['buzz_position'] / \
+        full_buzzes['tossup_length']
+
     player_games = player_stats.groupby(
         ['player', 'team']
-        ).agg({'game_id': 'nunique'}).reset_index().rename(columns = {'game_id': 'Games'})
+    ).agg({'game_id': 'nunique'}).reset_index().rename(columns={'game_id': 'Games'})
     player_games['TUH'] = player_games['Games']*20
 
     player_bpa_list = []
@@ -607,7 +581,7 @@ def calculate_player_bpas(buzzes, player_stats):
         player_buzzes = full_buzzes[full_buzzes['value'].isin(['15', '10'])]
         player_buzzes = player_buzzes[player_buzzes['player'] == row['player']]
         player_buzzes = player_buzzes[player_buzzes['team'] == row['team']]
-        
+
         player_bpa_list.append({
             'player': row['player'],
             'team': row['team'],
@@ -617,32 +591,35 @@ def calculate_player_bpas(buzzes, player_stats):
     player_bpa = pd.DataFrame(player_bpa_list)
 
     packet_tuhs = {
-    'History': 4,
-    'Science': 4,
-    'Literature': 4,
-    'Arts': 3,
-    'Beliefs': 2,
-    'Thought': 2,
-    'Other': 1,
+        'History': 4,
+        'Science': 4,
+        'Literature': 4,
+        'Arts': 3,
+        'Beliefs': 2,
+        'Thought': 2,
+        'Other': 1,
     }
 
     player_cat_bpa_list = []
     for i, row in player_games.iterrows():
         for category, tuh in packet_tuhs.items():
-            player_cat_buzzes = full_buzzes[full_buzzes['value'].isin(['15', '10'])]
-            player_cat_buzzes = player_cat_buzzes[player_cat_buzzes['player'] == row['player']]
+            player_cat_buzzes = full_buzzes[full_buzzes['value'].isin([
+                                                                      '15', '10'])]
+            player_cat_buzzes = player_cat_buzzes[player_cat_buzzes['player']
+                                                  == row['player']]
             player_cat_buzzes = player_cat_buzzes[player_cat_buzzes['team'] == row['team']]
             player_cat_buzzes = player_cat_buzzes[player_cat_buzzes['category'] == category]
             player_cat_bpa_list.append({
-                    'player': row['player'],
-                    'team': row['team'],
-                    'category': category,
-                    'BPA': calculate_bpa(player_cat_buzzes, row['Games']*tuh),
-                    'ACC': np.mean(player_cat_buzzes['celerity'])
-                })
+                'player': row['player'],
+                'team': row['team'],
+                'category': category,
+                'BPA': calculate_bpa(player_cat_buzzes, row['Games']*tuh),
+                'ACC': np.mean(player_cat_buzzes['celerity'])
+            })
     player_cat_bpa = pd.DataFrame(player_cat_bpa_list)
 
     return player_bpa, player_cat_bpa
+
 
 def calculate_team_bpas(buzzes, team_stats):
     tossup_meta = load_tossup_meta()
@@ -651,15 +628,16 @@ def calculate_team_bpas(buzzes, team_stats):
     buzzes['packet'] = buzzes['packet'].astype(int)
 
     full_buzzes = buzzes.merge(
-    tossup_meta, on=['packet', 'tossup']
+        tossup_meta, on=['packet', 'tossup']
     ).merge(
         packet_meta, on=['packet', 'tossup']
-        )
-    full_buzzes['celerity'] = 1 - full_buzzes['buzz_position']/full_buzzes['tossup_length']
-    
+    )
+    full_buzzes['celerity'] = 1 - full_buzzes['buzz_position'] / \
+        full_buzzes['tossup_length']
+
     team_games = team_stats.groupby(
         ['team']
-        ).agg({'game_id': 'nunique'}).reset_index().rename(columns = {'game_id': 'Games'})
+    ).agg({'game_id': 'nunique'}).reset_index().rename(columns={'game_id': 'Games'})
     team_games['TUH'] = team_games['Games']*20
 
     team_bpa_list = []
@@ -674,40 +652,46 @@ def calculate_team_bpas(buzzes, team_stats):
     team_bpa = pd.DataFrame(team_bpa_list)
 
     packet_tuhs = {
-    'History': 4,
-    'Science': 4,
-    'Literature': 4,
-    'Arts': 3,
-    'Beliefs': 2,
-    'Thought': 2,
-    'Other': 1,
+        'History': 4,
+        'Science': 4,
+        'Literature': 4,
+        'Arts': 3,
+        'Beliefs': 2,
+        'Thought': 2,
+        'Other': 1,
     }
 
     team_cat_bpa_list = []
     for i, row in team_games.iterrows():
         for category, tuh in packet_tuhs.items():
-            team_cat_buzzes = full_buzzes[full_buzzes['value'].isin(['15', '10'])]
-            team_cat_buzzes = team_cat_buzzes[team_cat_buzzes['team'] == row['team']]
+            team_cat_buzzes = full_buzzes[full_buzzes['value'].isin([
+                                                                    '15', '10'])]
+            team_cat_buzzes = team_cat_buzzes[team_cat_buzzes['team']
+                                              == row['team']]
             team_cat_buzzes = team_cat_buzzes[team_cat_buzzes['category'] == category]
             team_cat_bpa_list.append({
-                    'team': row['team'],
-                    'category': category,
-                    'BPA': calculate_bpa(team_cat_buzzes, row['Games']*tuh),
-                    'ACC': np.mean(team_cat_buzzes['celerity'])
-                })
+                'team': row['team'],
+                'category': category,
+                'BPA': calculate_bpa(team_cat_buzzes, row['Games']*tuh),
+                'ACC': np.mean(team_cat_buzzes['celerity'])
+            })
     team_cat_bpa = pd.DataFrame(team_cat_bpa_list)
 
     return team_bpa, team_cat_bpa
+
 
 def make_scoresheet(game_id, buzzes, bonuses, player_stats):
     game_buzzes = buzzes[buzzes['game_id'] == game_id]
     game_bonuses = bonuses[bonuses['game_id'] == game_id]
 
     game_buzzes['value'] = game_buzzes['value'].astype(int)
-    game_buzzes['answer'] = [sanitize_answer(answer) for answer in game_buzzes['answer']]
+    game_buzzes['answer'] = [sanitize_answer(
+        answer) for answer in game_buzzes['answer']]
     print(game_bonuses['answers'])
-    game_bonuses['answers'] = [[sanitize_answer(part) for part in answer.split(' / ')] for answer in game_bonuses['answers']]
-    game_bonuses['answers'] = [' / '.join(answers) for answers in game_bonuses['answers']]
+    game_bonuses['answers'] = [[sanitize_answer(part) for part in answer.split(
+        ' / ')] for answer in game_bonuses['answers']]
+    game_bonuses['answers'] = [
+        ' / '.join(answers) for answers in game_bonuses['answers']]
 
     # scoresheet = game_buzzes.pivot(
     #     index = ['tossup'], columns=['team','player'], values='value'
@@ -890,14 +874,18 @@ def make_scoresheet(game_id, buzzes, bonuses, player_stats):
     ).configure_view(strokeWidth=0).configure_axis(grid=False, labelAngle=45).configure_text(size=11)
     # return team1_buzzes
 
+
 def df_to_kable(df):
-    df.to_csv('temp_df.csv', index = False)
-    process = subprocess.Popen("Rscript kable.R", stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell = True)
+    df.to_csv('temp_df.csv', index=False)
+    process = subprocess.Popen(
+        "Rscript kable.R", stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
     result = process.communicate()
     st.markdown(result[0], unsafe_allow_html=True)
 
+
 def df_to_dt(df):
-    df.to_csv('temp_df.csv', index = False)
-    process = subprocess.Popen("Rscript dt.R", stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell = True)
+    df.to_csv('temp_df.csv', index=False)
+    process = subprocess.Popen(
+        "Rscript dt.R", stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
     result = process.communicate()
     st.markdown(result[0], unsafe_allow_html=True)

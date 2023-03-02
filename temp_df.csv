@@ -1,23 +1,8 @@
-category,subcategory,G,N,Pts
-Arts,Classical Music,8,0,80
-Arts,Other Auditory Arts,1,0,10
-Arts,Other Visual Arts,4,1,35
-Arts,Painting and Sculpture,1,1,5
-Beliefs,Mythology,5,0,50
-Beliefs,Religion,6,2,50
-History,American,7,1,65
-History,"Ancient, Commonwealth, Cross, and Misc.",4,0,40
-History,Post-Classical European,6,5,35
-History,World,3,0,30
-Literature,American,4,0,40
-Literature,British,3,0,30
-Literature,European,0,1,-5
-Literature,World and Misc.,5,1,45
-Other,Current Events,4,0,40
-Other,Geography,2,1,15
-Other,Other Academic,1,1,5
-Science,Biology,5,0,50
-Science,Other,3,0,30
-Science,Physics,1,0,10
-Thought,Philosophy,1,1,5
-Thought,Social Science,3,0,30
+Term,Definition
+<b>ACC</b>,Average correct celerity. The average % of a question remaining when a player/team buzzed correctly.
+<b>BPA</b>,"Buzzpoint AUC. The area under the curve of a player/team's <a href = ""https://hsquizbowl.org/forums/viewtopic.php?t=21962"">buzzpoint curve</a>."
+"<b>Easy.Conv</b>, <b>Med.Conv</b>, <b>Hard.Conv</b>",Conversion percentage for the bonus part with the given difficulty. Difficulty was assigned based on which part was converted most/least.
+<b>Conv.</b>,Conversion percentage. The number of rooms where the tossup(s) were converted.
+<b>Neg.</b>,Neg percentage. The number of rooms where the tossup(s) were negged.
+<b>PPB</b>,Points per bonus
+<b>PPG</b>,Points per game
