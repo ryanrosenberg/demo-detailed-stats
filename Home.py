@@ -24,11 +24,24 @@ st.markdown('''<style>
 
 accent_color = "#ff4b4b"
 
-st.markdown("""<h1>Welcome!</h1><br><span class="material-symbols-outlined">
-keyboard_double_arrow_left
-</span><br>
-Check out one of the stats pages on the left.""",
-unsafe_allow_html=True)
+# st.markdown("""<h1>Welcome!</h1><br><span class="material-symbols-outlined">
+# keyboard_double_arrow_left
+# </span><br>
+# Check out one of the stats pages on the left.""",
+# unsafe_allow_html=True)
+col1, col2 = st.columns(2)
+with col1:
+    qbjs = st.file_uploader("Upload QBJs", accept_multiple_files=True)
+with col2:
+    packets = st.file_uploader("Upload parsed packets", accept_multiple_files=True)
+
+if len(qbjs) > 0:
+    with st.spinner("Processing files..."):
+        utils.populate_db_qbjs(qbjs)
+
+if len(packets) > 0:
+    with st.spinner("Processing files..."):
+        utils.populate_db_packets(packets)
 
 utils.hr()
 st.header('Glossary')
@@ -54,18 +67,4 @@ gloss = {
     }
 
 utils.df_to_kable(pd.DataFrame(gloss))
-# col1, col2 = st.columns(2)
-# with col1:
-#     qbjs = st.file_uploader("Upload QBJs", accept_multiple_files=True)
-# with col2:
-#     packets = st.file_uploader("Upload parsed packets", accept_multiple_files=True)
 
-# if len(qbjs) > 0:
-#     utils.populate_db_qbjs(qbjs)
-
-# if len(packets) > 0:
-#     utils.populate_db_packets(packets)
-
-# with st.spinner("Processing files..."):
-#     utils.populate_db_qbjs_nasat()
-#     utils.populate_db_packets_nasat()
